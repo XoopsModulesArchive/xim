@@ -58,7 +58,8 @@ function chatHeartbeat() {
         }
         
         $chat['message'] = sanitize($chat['message']);
-        $uname = XoopsUser::getUnameFromId($chat['from']);
+		// changed to show link to user info for user "from"
+        $uname = "<a href='".XOOPS_URL."/userinfo.php?uid=".$chat['from']."'>".XoopsUser::getUnameFromId($chat['from'])."</a>";
         $items .= <<<EOD
 {"s":"0","n":"{$uname}","f":"{$chat['from']}","m":"{$chat['message']}"},
 
@@ -140,10 +141,11 @@ function startChatSession() {
     if ($items != '') {
         $items = substr($items, 0, -1);
     }
-
 $user=$xoopsUser->uname();    
+// changed to show link to user info for user "to"
+$userid= "<a href='".XOOPS_URL."/userinfo.php?uid=".$xoopsUser->uid()."'>".$user."</a>";
     $message = <<<EOD
-{"username":" $user ","items":[
+{"username":" $userid","items":[
 $items]} 
 EOD;
 //$xoopsLogger->activated = false;
