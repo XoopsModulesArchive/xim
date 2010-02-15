@@ -1,0 +1,95 @@
+.chatbox {
+	position: fixed;
+	position:expression("absolute");
+	width: 225px;
+	display:none;
+}
+
+.chatboxhead {
+	/*background-color: #f99d39;*/
+	padding:7px;
+	color: #ffffff;
+	width:209px;
+	background-image:url('../images/headerbg.png');
+	background-repeat:no-repeat;
+/*	border-right:1px solid #000000;
+	border-left:1px solid #000000; */
+}
+
+.chatboxblink {
+	background-image:url('../images/headerbg_blink.png');
+}
+
+.chatboxcontent {
+	font-family: arial,sans-serif;
+	font-size: 13px;
+	color: #333333;
+	height:200px;
+	width:209px;
+	overflow-y:auto;
+	overflow-x:auto;
+	padding:7px;
+	background-image: url('../images/bodybg.png');
+	line-height: 1.3em;
+}
+
+.chatboxinput {
+	padding: 5px;
+	width:209px;
+	border-right:2px solid #000000;
+	border-left:2px solid #000000;
+	border-top:3px solid #000000;
+	border-bottom:2px solid #000000;
+	background-image: url('../images/typebg.png');
+}
+
+.chatboxtextarea {
+	width: 206px;
+	height:44px;
+	padding:3px 0pt 3px 3px;
+	border: 1px solid #eeeeee;
+	margin: 1px;
+	overflow:hidden;
+	background-image:url('../images/writebg.png');
+}
+
+.chatboxtextareaselected {
+	border: 2px solid #ff0000;
+	margin:0;
+}
+
+.chatboxmessage {
+	margin-left:1em;
+}
+
+.chatboxinfo {
+	margin-left:-1em;
+	color:#f7f9c0;
+
+}
+
+.chatboxmessagefrom {
+	margin-left:-1em;
+	font-weight: bold;
+	color:#dedede;
+}
+
+.chatboxmessagecontent {
+color:#dedede;
+}
+
+.chatboxoptions {
+	float: right;
+}
+
+.chatboxoptions a {
+	text-decoration: none;
+	color: white;
+	font-weight:bold;
+	font-family:Verdana,Arial,"Bitstream Vera Sans",sans-serif;
+	font-size:12px;
+}
+
+.chatboxtitle {
+	float: left;
+}

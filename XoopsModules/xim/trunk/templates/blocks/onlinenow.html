@@ -1,0 +1,5 @@
+    <ul>
+      <{foreach item=user from=$block.amigos}>
+	<li style="list-style-type:none;"><a href="javascript:void(0)" onclick="javascript:chatWith('<{$user.id}>','<{$user.nome}>')"><img src="<{$block.image}>" style="margin-bottom:-3px"><{$user.nome}></a></li>
+      <{/foreach}>
+    </ul>

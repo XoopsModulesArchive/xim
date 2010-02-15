@@ -1,0 +1,12 @@
+<script type="text/javascript">
+var refreshId = setInterval(function() {
+im('#online_friends').load('<{$xoops_url}>/modules/xim/blocks/blockupdater.php');
+}, 30000);
+</script>
+<div id="online_friends">
+    <ul>
+      <{foreach item=user from=$block.amigos}>
+	<li style="list-style-type:none;"><a href="javascript:void(0)" onclick="javascript:chatWith('<{$user.id}>','<{$user.nome}>')"><img src="<{$block.image}>" style="margin-bottom:-3px"><{$user.nome}></a></li>
+      <{/foreach}>
+    </ul>
+</div>

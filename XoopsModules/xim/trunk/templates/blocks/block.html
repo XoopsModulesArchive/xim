@@ -1,0 +1,8 @@
+<div id="xim_container">
+  <ul>
+    <{foreach item=user from=$block.amigos}>
+	<li style="list-style-type:none;"""><a href="javascript:void(0)" onclick="javascript:chatWith('<{$user.id}>','<{$user.nome}>')"><img src="<{xoAppUrl /modules/xim/images/messenger-blue16.png}>" style="margin-bottom:-3px"><{$user.nome}></a></li>
+    <{/foreach}>
+  </ul>
+</div>
+
