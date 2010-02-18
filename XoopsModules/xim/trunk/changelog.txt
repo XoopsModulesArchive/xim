@@ -1,0 +1,16 @@
+Xoops Instant Messenger (XIM) Changelog
+
+=================================
+13/02/2010: Version 0.0.3
+=================================
+- NEW: Andrax XIM and Culex Xoops Instant Messenger merged as XIM (Andrax)
+- NEW: Added smilie and Xoops BBcode support (andrax)
+- NEW: Uploaded to /XoopsModules/xim/trunk as revision 4427 (culex)
+- BUG: Cleared up Jquery Conflict by renaming functions (Andrax)
+
+
+=================================
+??/??/2010: Version 1.0.0
+=================================
+- NEW: Added show userinfo link to chat names Revision: 4428 (culex)
+

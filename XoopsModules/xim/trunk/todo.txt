@@ -1,0 +1,15 @@
+				Xoops Instant Messenger (XIM) TODO list
+				----------------------------------------
+DONE: Merge xim and instant messenger to one. 		(andrax)
+DONE: Add link to info from chatname 				(culex)
+DONE: Clear Jquery conflicts						(Andrax)
+DONE: Smilie & Xoops BBcode							(Andrax)
+
+TODO: Add avatar to chat 							(Andrax 99% done)
+TODO: Add sound when recieving message 				(culex 10% done)
+TODO: Create buddylist 								(?? 0% done)
+TODO: Create footerbar like facebook 				(?? 0% done)
+TODO: Send file through chat 						(?? 0% done)
+TODO: Language defines to 'send at', 'writing..' 	(?? 0% done)
+
+
