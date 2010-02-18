@@ -44,13 +44,12 @@ if (!isset($_SESSION['openChatBoxes'])) {
 function chatHeartbeat() {
     
     global $xoopsDB, $xoopsUser;
-    //$xoopsLogger->activated = false;
     $sql = "select * from ".$xoopsDB->prefix('xim_chat')." where (".$xoopsDB->prefix(xim_chat).".to = '".mysql_real_escape_string($_SESSION['xoopsUserId'])."' AND recd = 0) order by id ASC";
     $query = $xoopsDB->query($sql);
     $items = '';
     
     $chatBoxes = array();
-    
+
     while ($chat = mysql_fetch_array($query)) {
         
         if (!isset($_SESSION['openChatBoxes'][$chat['from']]) && isset($_SESSION['chatHistory'][$chat['from']])) {
@@ -58,10 +57,17 @@ function chatHeartbeat() {
         }
         
         $chat['message'] = sanitize($chat['message']);
-		// changed to show link to user info for user "from"
-        $uname = "<a href='".XOOPS_URL."/userinfo.php?uid=".$chat['from']."'>".XoopsUser::getUnameFromId($chat['from'])."</a>";
+	$user = new XoopsUser($chat['from']);
+	// changed to show link to user info for user "from"
+	$uname = "<a href='".XOOPS_URL."/userinfo.php?uid=".$chat['from']."'>".$user->uname()."</a>";
+	$avatar =$user->user_avatar();
+	if ($avatar!='blank.gif') {
+	    $avatarURL = XOOPS_URL."/uploads/".$avatar;
+	} else {
+	    $avatarURL = XOOPS_URL."/modules/xim/images/default_avatar.png";
+	}
         $items .= <<<EOD
-{"s":"0","n":"{$uname}","f":"{$chat['from']}","m":"{$chat['message']}"},
+{"s":"0","n":"{$uname}","a":"$avatarURL","f":"{$chat['from']}","m":"{$chat['message']}"},
 
 EOD;
         
@@ -70,7 +76,7 @@ EOD;
         }
         
         $_SESSION['chatHistory'][$chat['from']] .= <<<EOD
-{"s":"0","n":"{$uname}","f":"{$chat['from']}","m":"{$chat['message']}"},
+{"s":"0","n":"{$uname}","a":"$avatarURL","f":"{$chat['from']}","m":"{$chat['message']}"},
 
 EOD;
         
@@ -141,14 +147,18 @@ function startChatSession() {
     if ($items != '') {
         $items = substr($items, 0, -1);
     }
-$user=$xoopsUser->uname();    
-// changed to show link to user info for user "to"
-$userid= "<a href='".XOOPS_URL."/userinfo.php?uid=".$xoopsUser->uid()."'>".$user."</a>";
+
+    $user=$xoopsUser->uname(); 
+	$avatar =$xoopsUser->getVar('user_avatar');
+	if ($avatar!='blank.gif') {
+	    $avatarURL = XOOPS_URL."/uploads/".$avatar;
+	} else {
+	    $avatarURL = XOOPS_URL."/modules/xim/images/default_avatar.png";
+	}
     $message = <<<EOD
-{"username":" $userid","items":[
+{"username":"$user","avatar":"$avatarURL","items":[
 $items]} 
 EOD;
-//$xoopsLogger->activated = false;
     header('Content-type: application/json');
     print($message);  
     
@@ -160,7 +170,14 @@ function sendChat() {
     $from = $_SESSION['xoopsUserId'];
     $to = $_POST['to'];
     $message = $_POST['message'];
-    $uname = XoopsUser::getUnameFromId($from);
+    $user = new XoopsUser($from);
+    $uname = $user->uname();
+	$avatar =$user->user_avatar();
+	if ($avatar!='blank.gif') {
+	    $avatarURL = XOOPS_URL."/uploads/".$avatar;
+	} else {
+	    $avatarURL = XOOPS_URL."/modules/xim/images/default_avatar.png";
+	}
     $_SESSION['openChatBoxes'][$_POST['to']] = date('Y-m-d H:i:s', time());
     
     $messagesan = sanitize($message);
@@ -171,7 +188,7 @@ function sendChat() {
     }
     
     $_SESSION['chatHistory'][$_POST['to']] .= <<<EOD
-{"s":"1","n":"{$uname}","f":"{$to}","m":"{$messagesan}"},
+{"s":"1","n":"{$uname}","a":"$avatarURL","f":"{$to}","m":"{$messagesan}"},
 
 EOD;
     

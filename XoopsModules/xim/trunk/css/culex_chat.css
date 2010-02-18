@@ -59,17 +59,18 @@
 }
 
 .chatboxmessage {
-	margin-left:1em;
+	/*margin-left:1em;*/
+	overflow:hidden;
 }
 
 .chatboxinfo {
-	margin-left:-1em;
+	/*margin-left:-1em;*/
 	color:#f7f9c0;
 
 }
 
 .chatboxmessagefrom {
-	margin-left:-1em;
+	/*margin-left:-1em;*/
 	font-weight: bold;
 	color:#dedede;
 }
@@ -92,4 +93,23 @@ color:#dedede;
 
 .chatboxtitle {
 	float: left;
+}
+
+.chatAvatar {
+        float:left;
+        clear:left;
+        margin: 4px 5px 2px 0;
+        width:35px;
+}
+
+.chatAvatar img {
+    height:35px;
+    width:35px;
+    border: solid 1px #ccc;
+
+       
+}
+.ghost {
+        float:left;
+        width:1px;
 }

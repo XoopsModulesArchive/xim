@@ -60,18 +60,23 @@ z-index:1000;
 }
 
 .chatboxmessage {
-	margin-left:1em;
+	
+	overflow:hidden;
+	/*margin-left:1em;
+	float: left;
+	position: relative;*/
 }
 
 .chatboxinfo {
-	margin-left:-1em;
+	/*margin-left:-1em;*/
 	color:#666666;
 
 }
 
 .chatboxmessagefrom {
-	margin-left:-1em;
+	/*margin-left:-1em;*/
 	font-weight: bold;
+      
 }
 
 .chatboxmessagecontent {
@@ -90,4 +95,23 @@ z-index:1000;
 
 .chatboxtitle {
 	float: left;
+}
+
+.chatAvatar {
+        float:left;
+        clear:left;
+        margin: 4px 5px 2px 0;
+        width:35px;
+}
+
+.chatAvatar img {
+    height:35px;
+    width:35px;
+    border: solid 1px #ccc;
+
+       
+}
+.ghost {
+        float:left;
+        width:1px;
 }
