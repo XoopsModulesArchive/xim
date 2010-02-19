@@ -207,12 +207,12 @@ function chatHeartbeat(){
 				}
 
 				if (item.s == 2) {
-					im("#chatbox_"+chatboxID+" .chatboxcontent").append('<class="chatboxmessage"><span class="chatboxinfo">'+item.m+'</span></div>');
+					im("#chatbox_"+chatboxID+" .chatboxcontent").append('<div class="chatboxmessage"><span class="chatboxinfo">'+item.m+'</span></div>');
 				} else {
 					newMessages[chatboxID] = true;
 					newMessagesWin[chatboxID] = true;
 					newMessagesUser[chatboxID]=item.n;
-					im("#chatbox_"+chatboxID+" .chatboxcontent").append('<div class="chatboxmessage"><div class="ghost"></div><div class="chatAvatar"><img src="'+item.a+'"/></div><span class="chatboxmessagefrom">'+item.n+':&nbsp;&nbsp;</span><span class="chatboxmessagecontent">'+item.m+'</span></div></div>');
+					im("#chatbox_"+chatboxID+" .chatboxcontent").append('<div class="chatboxmessage"><span class="ghost"></span><span class="chatAvatar"><img src="'+item.a+'"/></span><span class="chatboxmessagefrom">'+item.n+':&nbsp;&nbsp;</span><span class="chatboxmessagecontent">'+item.m+'</span></div>');
 				}
 
 				im("#chatbox_"+chatboxID+" .chatboxcontent").scrollTop(im("#chatbox_"+chatboxID+" .chatboxcontent")[0].scrollHeight);
@@ -298,7 +298,7 @@ function checkChatBoxInputKey(event,chatboxtextarea,chatboxID) {
 			im.post(xim_url+"chat.php?action=sendchat", {to: chatboxID, message: message} , function(data){
 				//message = message.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/\"/g,"&quot;");
 				message = data.message;
-				im("#chatbox_"+chatboxID+" .chatboxcontent").append('<div class="chatboxmessage"><div class="ghost"></div><div class="chatAvatar"><img src="'+userAvatar+'"/></div><span class="chatboxmessagefrom">'+username+':&nbsp;&nbsp;</span><span class="chatboxmessagecontent">'+message+'</span></div></div>');
+				im("#chatbox_"+chatboxID+" .chatboxcontent").append('<div class="chatboxmessage"><span class="ghost"></span><span class="chatAvatar"><img src="'+userAvatar+'"/></span><span class="chatboxmessagefrom">'+username+':&nbsp;&nbsp;</span><span class="chatboxmessagecontent">'+message+'</span></div>');
 				im("#chatbox_"+chatboxID+" .chatboxcontent").scrollTop(im("#chatbox_"+chatboxID+" .chatboxcontent")[0].scrollHeight);
 			}, "json");
 		}
@@ -346,9 +346,9 @@ function startChatSession(){
 				}
 
 				if (item.s == 2) {
-					im("#chatbox_"+chatboxID+" .chatboxcontent").append('<div class="chatboxmessage"><span class="chatboxinfo">'+item.m+'</span></div></div>');
+					im("#chatbox_"+chatboxID+" .chatboxcontent").append('<div class="chatboxmessage"><span class="chatboxinfo">'+item.m+'</span></div>');
 				} else {
-					im("#chatbox_"+chatboxID+" .chatboxcontent").append('<div class="chatboxmessage"><div class="ghost"></div><div class="chatAvatar"><img src="'+item.a+'"/></div><span class="chatboxmessagefrom">'+item.n+':&nbsp;&nbsp;</span><span class="chatboxmessagecontent">'+item.m+'</span></div></div>');
+					im("#chatbox_"+chatboxID+" .chatboxcontent").append('<div class="chatboxmessage"><span class="ghost"></span><span class="chatAvatar"><img src="'+item.a+'"/></span><span class="chatboxmessagefrom">'+item.n+':&nbsp;&nbsp;</span><span class="chatboxmessagecontent">'+item.m+'</span></div>');
 				}
 			}
 		});
