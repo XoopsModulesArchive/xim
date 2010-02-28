@@ -179,6 +179,7 @@ function chatHeartbeat(){
 			if (chatboxFocus[x] == false) {
 				//FIXME: add toggle all or none policy, otherwise it looks funny
 				im('#chatbox_'+x+' .chatboxhead').toggleClass('chatboxblink');
+
 			}
 		}
 	}
@@ -188,7 +189,6 @@ function chatHeartbeat(){
 	  cache: false,
 	  dataType: "json",
 	  success: function(data) {
-
 		im.each(data.items, function(i,item){
 			if (item)	{ // fix strange ie bug
 
@@ -212,8 +212,19 @@ function chatHeartbeat(){
 					newMessages[chatboxID] = true;
 					newMessagesWin[chatboxID] = true;
 					newMessagesUser[chatboxID]=item.n;
+
+				soundManager.createSound({
+				 id: item.q, // required
+				 url: item.q, // required
+				 // optional sound parameters here, see Sound Properties for full list
+				 volume: 50,
+				 autoPlay: true
+				});
+					soundManager.play(item.q, item.q);
+			
 					im("#chatbox_"+chatboxID+" .chatboxcontent").append('<div class="chatboxmessage"><span class="ghost"></span><span class="chatAvatar"><img src="'+item.a+'"/></span><span class="chatboxmessagefrom">'+item.n+':&nbsp;&nbsp;</span><span class="chatboxmessagecontent">'+item.m+'</span></div>');
-				}
+					
+					}
 
 				im("#chatbox_"+chatboxID+" .chatboxcontent").scrollTop(im("#chatbox_"+chatboxID+" .chatboxcontent")[0].scrollHeight);
 				itemsfound += 1;
@@ -374,7 +385,7 @@ function startChatSession(){
  *
  */
 
-jQuery.cookie = function(name, value, options) {
+im.cookie = function(name, value, options) {
     if (typeof value != 'undefined') { // name and value given, set cookie
         options = options || {};
         if (value === null) {
@@ -404,7 +415,7 @@ jQuery.cookie = function(name, value, options) {
         if (document.cookie && document.cookie != '') {
             var cookies = document.cookie.split(';');
             for (var i = 0; i < cookies.length; i++) {
-                var cookie = jQuery.trim(cookies[i]);
+                var cookie = im.trim(cookies[i]);
                 // Does this cookie string begin with the name we want?
                 if (cookie.substring(0, name.length + 1) == (name + '=')) {
                     cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
@@ -415,3 +426,7 @@ jQuery.cookie = function(name, value, options) {
         return cookieValue;
     }
 };
+
+/*
+im('#chatbox_'+chatboxID+' .chatboxcontent').append('<embed src="<{$xoops_url}>/modules/lightbox/test.wma" autostart="true" hidden="true" loop="false">');
+*/

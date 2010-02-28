@@ -57,4 +57,21 @@ echo 'removendo usuário de' . $id;
 // return $result;
 }
 
+/*
+** $culex	.: culex@culex.dk
+** $username.: The username used in the chat
+** $value	.: Eigher status or sound to be returned
+*/
+function im_Getconfig ($username) {
+ global $xoopsUser, $xoopsDB;
+ $persc = array();
+ $sql = "SELECT * FROM ".$xoopsDB->prefix('xim_pers_conf')." WHERE username='".$username."'";
+  $result = $xoopsDB->query($sql);
+	while ($sqlfetch = $xoopsDB->fetchArray($result)) {
+	 $persc['sound'] = $sqlfetch['sound'];
+	 $persc['status'] = $sqlfetch['status'];
+	}
+return $persc;
+}
+
 ?>

@@ -1,0 +1,30 @@
+.xim_configDiv_head {
+padding: 5px 10px;
+cursor: pointer;
+margin:1px;
+font-size: 10px;
+}
+
+.xim_configDiv_body {
+padding: 5px 10px 15px;
+font-size: 10px;
+}
+
+.xim_img_info {
+position:relative;
+left:75%;
+}
+
+ol.timeline{
+list-style:none;font-size:1.2em;
+}
+ol.timeline li{
+display:none;position:relative;
+padding:.7em 0 .6em 0;
+border-bottom:1px dashed #000;
+line-height:1.1em;
+background-color:#D3E7F5;
+height:55px;
+width:499px;}
+ol.timeline li:first-child{
+border-top:1px dashed #000;}

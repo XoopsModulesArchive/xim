@@ -21,12 +21,17 @@ class XimCorePreload extends XoopsPreloadItem{
 	} else {
 		$xoTheme->addStylesheet(XOOPS_URL.'/modules/xim/css/culex_chat.css');
 		$xoTheme->addStylesheet(XOOPS_URL.'/modules/xim/css/culex_screen.css');
+		$xoTheme->addStylesheet(XOOPS_URL.'/modules/xim/css/configdiv.css');
 	}
 
         $xoTheme->addScript(XOOPS_URL.'/modules/xim/js/jquery.js');
 	$xoTheme->addScript('','','var xim_url="'.XOOPS_URL.'/modules/xim/";
 	var im = jQuery.noConflict();');
 	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/chat.js');
+	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/configdiv.js');
+	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/configscript.js');
+	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/soundmanager2.js');
+	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/sm_default.js');
     }
 
 }

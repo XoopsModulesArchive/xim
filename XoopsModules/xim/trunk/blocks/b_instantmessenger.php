@@ -25,15 +25,16 @@
 //  along with this program; if not, write to the Free Software              //
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 //  ------------------------------------------------------------------------ //
-
-
 /*
+
 * Main block function. Created from the online system block
 * Adds an "who is online" block with a link to chat with registered user.
 */
 function b_instantmessenger() {
-    global $xoopsUser, $xoopsModule;
-$xoopsLogger->activated = false;
+    include XOOPS_ROOT_PATH.'/class/xoopsformloader.php';
+	include XOOPS_ROOT_PATH.'/modules/xim/include/functions.php';
+	global $xoopsUser, $xoopsModule,$xoopsTpl;
+	$xoopsLogger->activated = false;
 	$online_handler =& xoops_gethandler('online');
     mt_srand((double)microtime()*1000000);
     // set gc probabillity to 10% for now..
@@ -44,6 +45,7 @@ $xoopsLogger->activated = false;
         $uid = $xoopsUser->getVar('uid');
         $uname = $xoopsUser->getVar('uname');
 		$_SESSION['username'] = $uname;
+		xim_setPersonalConfig (); // Function to create/check personal config (culex)
     } else {
         $uid = 0;
         $uname = '';
@@ -60,12 +62,12 @@ $xoopsLogger->activated = false;
     		$style = $moduleConfig['chatstyle'];
     	}
     }
-
-    if($style == 0) {
+	
+/*    if($style == 0) {
 	$block['image'] =XOOPS_URL.'/modules/xim/images/messenger-blue16.png';
     } else {
-	$block['image']=XOOPS_URL.'/modules/xim/images/online.png';
-    }
+	$block['image'] =XOOPS_URL."/modules/xim/images/online.png";
+    } */
 
 
     if (is_object($xoopsModule)) {
@@ -79,13 +81,64 @@ $xoopsLogger->activated = false;
         $total = count($onlines);
         for ($i = 0; $i < $total; $i++) {
             if (($onlines[$i]['online_uid'] > 0) && ($onlines[$i]['online_uid']!=$uid)) {
-		     $block['amigos'][] = array('id'=> $onlines[$i]['online_uid'], 'nome' => $onlines[$i]['online_uname']);
-	    }
-        }
-       //$block['online_names'] = $members;
+		    	 $config = im_Getconfig($onlines[$i]['online_uname']);
+				 $status = $config['status'];
+				 if ($status == '0') {$image = XOOPS_URL."/modules/xim/images/na.png";}
+				 if ($status == '1') {$image = XOOPS_URL."/modules/xim/images/busy.png";}
+				 if ($status == '2') {$image = XOOPS_URL."/modules/xim/images/online.png";}
+				 
+				 $block['amigos'][] = array('id'=> $onlines[$i]['online_uid'], 'nome' => $onlines[$i]['online_uname'], 'status' => $image);	
+				// print_r($block);
+	   
+	// Config form for personal config.
+	// $cf assigned to $block['config'], controlled by /js/configdiv.js & js/configscript.js
+	// Using ajax to call /include/update_config.php wich serialize $_POST to sql.
+	 $cf = "<form method='post' id='config' action=''>"._MB_XIM_USESOUND."
+		<select name='sound'>
+		 <option value='0'>"._MB_XIM_NOSOUND."</option>
+		 <option value='1'>"._MB_XIM_SOUND1."</option>
+		 <option value='2'>"._MB_XIM_SOUND2."</option>
+		 <option value='3'>"._MB_XIM_SOUND3."</option>
+		 <option value='4'>"._MB_XIM_SOUND4."</option>
+		 <option value='5'>"._MB_XIM_SOUND5."</option>
+		 <option value='6'>"._MB_XIM_SOUND6."</option>
+		 <option value='7'>"._MB_XIM_SOUND7."</option>
+		 <option value='8'>"._MB_XIM_SOUND8."</option>
+		 <option value='9'>"._MB_XIM_SOUND9."</option>
+		 <option value='10'>"._MB_XIM_SOUND10."</option></select><br /><br />
+		 "._MB_XIM_STATUS."
+		<select name='status'>
+		 <option value='0'>"._MB_XIM_HIDDEN."</option>
+		 <option value='1'>"._MB_XIM_BUSY."</option>
+		 <option value='2'>"._MB_XIM_ONLINE."</option></select><br /><br /><center>
+	  <input type='submit' value='"._MB_XIM_UPDATE."' name='submit' class='update_button'/></center></select>
+	 </form>
+		</span><div id='flash'></div>";  
+	   
+	  $block['config'] = $cf;
+	 }
+	 }
         return $block;
     } else {
         return false;
     }
 }
+
+function xim_setPersonalConfig () {
+	global $xoopsDB, $xoopsTpl, $xoopsModule,$xoopsUser;
+	 $username = $xoopsUser->getVar('uname');
+	 // make mysql look up for configs already set
+		$checkconfig = "SELECT * FROM ".$xoopsDB->prefix('xim_pers_conf')." WHERE username='".$username."'";
+		 $result = $xoopsDB->query($checkconfig);
+		  if ($xoopsDB->getRowsNum($result) < 1) {
+		   // If none set, insert defaults
+		    $default = "INSERT INTO ".$xoopsDB->prefix('xim_pers_conf')." (id, username, sound, status) VALUES ('', '$username', '1', 'online')";
+			 $result = $xoopsDB->queryF($default);
+		  } 
+		   else {
+		   // If set and update do an mysql update
+		   }
+}
+
+
 ?>
