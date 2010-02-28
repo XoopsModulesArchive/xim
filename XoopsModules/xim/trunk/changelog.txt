@@ -13,4 +13,7 @@ Xoops Instant Messenger (XIM) Changelog
 ??/??/2010: Version 1.0.0
 =================================
 - NEW: Added show userinfo link to chat names Revision: 4428 (culex)
+- NEW: Showing user avatar in chat Revision 4446: (Andrax)
+- NEW: Added sound library + 10 sounds to chat Revision 4512: (culex)
+- NEW: Added change, show config for status Revision 4512: (Culex)
 
