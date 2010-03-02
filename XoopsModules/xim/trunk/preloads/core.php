@@ -18,6 +18,7 @@ class XimCorePreload extends XoopsPreloadItem{
 	if($style == 0) {
 		$xoTheme->addStylesheet(XOOPS_URL.'/modules/xim/css/default_chat.css');
 		$xoTheme->addStylesheet(XOOPS_URL.'/modules/xim/css/culex_screen.css');
+		$xoTheme->addStylesheet(XOOPS_URL.'/modules/xim/css/configdiv.css');
 	} else {
 		$xoTheme->addStylesheet(XOOPS_URL.'/modules/xim/css/culex_chat.css');
 		$xoTheme->addStylesheet(XOOPS_URL.'/modules/xim/css/culex_screen.css');

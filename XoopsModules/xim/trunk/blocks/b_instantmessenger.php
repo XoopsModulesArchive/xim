@@ -83,10 +83,15 @@ function b_instantmessenger() {
             if (($onlines[$i]['online_uid'] > 0) && ($onlines[$i]['online_uid']!=$uid)) {
 		    	 $config = im_Getconfig($onlines[$i]['online_uname']);
 				 $status = $config['status'];
-				 if ($status == '0') {$image = XOOPS_URL."/modules/xim/images/na.png";}
-				 if ($status == '1') {$image = XOOPS_URL."/modules/xim/images/busy.png";}
-				 if ($status == '2') {$image = XOOPS_URL."/modules/xim/images/online.png";}
-				 
+				if($style == 0) {
+					 if ($status == '0') {$image = XOOPS_URL."/modules/xim/images/Absent-blue16.png";}
+					 if ($status == '1') {$image = XOOPS_URL."/modules/xim/images/busy-blue16.png";}
+					 if ($status == '2') {$image = XOOPS_URL."/modules/xim/images/messenger-blue16.png";}
+				} else {
+					 if ($status == '0') {$image = XOOPS_URL."/modules/xim/images/na.png";}
+					 if ($status == '1') {$image = XOOPS_URL."/modules/xim/images/busy.png";}
+					 if ($status == '2') {$image = XOOPS_URL."/modules/xim/images/online.png";}
+				  }
 				 $block['amigos'][] = array('id'=> $onlines[$i]['online_uid'], 'nome' => $onlines[$i]['online_uname'], 'status' => $image);	
 				// print_r($block);
 	   
