@@ -29,7 +29,7 @@ im(".update_button").click(function()
 {
 var sound = im("#sound").val();
 var status = im("#status").val();
-dataString = $("#config").serialize();
+dataString = im("#config").serialize();
 //var dataString = 'sound='+ sound + '&status=' + status;
 if(status=='' || sound=='')
 {
