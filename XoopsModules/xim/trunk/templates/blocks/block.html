@@ -1,12 +1,10 @@
   <span class="xim_configDiv_head"><img class="xim_img_info" src="<{$xoops_url}>/modules/xim/images/info.png"></img></span>
 		<span class="xim_configDiv_body">
-<{$block.config}>
-		</span>
-  </span>
+<{$block.config}></span>
 <div id="xim_container">
   <ul>
     <{foreach item=user from=$block.amigos}>
-	<li style="list-style-type:none;"""><a href="javascript:void(0)" onclick="javascript:chatWith('<{$user.id}>','<{$user.nome}>')"><img src="<{xoAppUrl /modules/xim/images/messenger-blue16.png}>" style="margin-bottom:-3px"><{$user.nome}></a></li>
+	<li style="list-style-type:none;"""><a href="javascript:void(0)" onclick="javascript:chatWith('<{$user.id}>','<{$user.nome}>')"><img src="<{$user.status}>" style="margin-bottom:-3px"><{$user.nome}></a></li>
     <{/foreach}>
   </ul>
 </div>

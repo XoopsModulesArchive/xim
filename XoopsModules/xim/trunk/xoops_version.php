@@ -41,6 +41,7 @@ $modversion['sqlfile']['mysql'] = "sql/mysql.sql";
 // Tables
 $modversion['tables'][0] = 'xim_chat';
 $modversion['tables'][1] = 'xim_friends'; //Future buddy list
+$modversion['tables'][2] = 'xim_pers_conf'; //Personal configs
 
 //Templates
 $modversion['templates'][0]['file'] = 'xim_index.html';
@@ -49,7 +50,7 @@ $modversion['templates'][0]['description'] = '';
 // Blocks
 $i=0;
 $modversion['blocks'][$i]['file'] = "b_instantmessenger.php";
-$modversion['blocks'][$i]['name'] = '_MI_XIM_BLOCK';
+$modversion['blocks'][$i]['name'] = _MI_XIM_BLOCK;
 $modversion['blocks'][$i]['description'] = 'This is a Block for the empty module';
 $modversion['blocks'][$i]['show_func'] = "b_instantmessenger";
 $modversion['blocks'][$i]['template'] = 'b_instantmessenger.html';
