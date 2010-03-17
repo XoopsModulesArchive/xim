@@ -24,6 +24,7 @@
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 //  ------------------------------------------------------------------------ //
 
+im(document).ready(function() {
 	//hide the all of the element with class msg_body
 	im(".xim_configDiv_body").hide();
 
@@ -31,3 +32,4 @@
 	im(".xim_configDiv_head").click(function() {
     im(this).next(".xim_configDiv_body").slideToggle(2500);
 	});
+});

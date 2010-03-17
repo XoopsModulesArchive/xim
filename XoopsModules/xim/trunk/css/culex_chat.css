@@ -1,6 +1,5 @@
 .chatbox {
 	position: fixed;
-	position:expression("absolute");
 	width: 225px;
 	display:none;
 }
@@ -11,7 +10,7 @@
 	color: #ffffff;
 	width:209px;
 	background-image:url('../images/headerbg.png');
-	background-repeat:no-repeat;
+	background-repeat: repeat; 
 /*	border-right:1px solid #000000;
 	border-left:1px solid #000000; */
 }
@@ -77,6 +76,9 @@
 
 .chatboxmessagecontent {
 color:#dedede;
+background-image: url('../images/bodybg.png');
+background-repeat: repeat; 
+
 }
 
 .chatboxoptions {
