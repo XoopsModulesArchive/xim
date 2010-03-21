@@ -32,7 +32,7 @@
 */
 function b_instantmessenger() {
     include XOOPS_ROOT_PATH.'/class/xoopsformloader.php';
-	include XOOPS_ROOT_PATH.'/modules/xim/include/functions.php';
+	require_once XOOPS_ROOT_PATH.'/modules/xim/include/functions.php';
 	global $xoopsUser, $xoopsModule,$xoopsTpl;
 	$xoopsLogger->activated = false;
 	$online_handler =& xoops_gethandler('online');

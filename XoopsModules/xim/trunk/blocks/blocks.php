@@ -6,7 +6,7 @@
     E-Mail: lcbc@ig.com.br
 **********************************************************************/
  
- include(XOOPS_ROOT_PATH."/modules/xim/include/functions.php");
+ require_once (XOOPS_ROOT_PATH."/modules/xim/include/functions.php");
 
 
  function amigos() {
