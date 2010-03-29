@@ -47,7 +47,7 @@ $xoopsLogger->activated = false;
 		$userid=$onlines[$i]['online_uid'];
 		$username = $onlines[$i]['online_uname'];
 		$userlist .= <<<EOD
-{"id":"$userid","n":"$username","a":"$avatarURL","status":$status},
+{"id":"$userid","n":"$username","a":"$avatarURL","status":"$status"},
 
 EOD;
 	    }
