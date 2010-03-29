@@ -68,7 +68,7 @@ $modversion['config'][$i]['options'] = array('_XIM_FOOTER_FULL' => 0, '_XIM_FOOT
 // Blocks
 $i=0;
 $modversion['blocks'][$i]['file'] = "b_instantmessenger.php";
-$modversion['blocks'][$i]['name'] = "_MB_XIM_BLOCK";
+$modversion['blocks'][$i]['name'] = _MB_XIM_BLOCK;
 $modversion['blocks'][$i]['description'] = 'This is a Block for the empty module';
 $modversion['blocks'][$i]['show_func'] = "b_instantmessenger";
 $modversion['blocks'][$i]['template'] = 'b_instantmessenger.html';
