@@ -18,7 +18,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 */
 /*********************************************************************
-    Xoops Module Author: Andrax                                                         
+    Xoops Module Author: Andrax & Culex                                                      
     URL: http://guxbrasil.org
     E-Mail: lcbc@ig.com.br
 **********************************************************************/
@@ -213,6 +213,7 @@ function sendChat() {
     
     $_SESSION['chatHistory'][$_POST['to']] .= <<<EOD
 {"s":"1","n":"{$uname}","a":"$avatarURL","f":"{$to}","m":"{$messagesan}","q":"$soundUrl","p":"$status"},
+
 EOD;
     
     unset($_SESSION['tsChatBoxes'][$_POST['to']]);
@@ -233,6 +234,7 @@ function closeChat() {
 
 function sanitize($text) {
     $text = htmlspecialchars($text, ENT_QUOTES);
+    //$text = preg_replace('/([^\s]{10})(?=[^\s])/m', '$1 <br />', $text); 
     $myts = MyTextSanitizer::getInstance();
     $text = $myts->displayTarea($text,1,1,1,1);
     $text = str_replace("\n\r","\n",$text);

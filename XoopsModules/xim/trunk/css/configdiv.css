@@ -28,3 +28,9 @@ height:55px;
 width:499px;}
 ol.timeline li:first-child{
 border-top:1px dashed #000;}
+
+#xim_configDiv {
+position:relative;
+margin:0 10px;
+
+}

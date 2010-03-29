@@ -3,7 +3,7 @@
 define("_MB_XIM_BLOCK","IM"); 
 
 // added v0.4
-define("_MB_XIM_USESOUND","sound.:"); 
+define("_MB_XIM_USESOUND","Sound.:"); 
 define("_MB_XIM_NOSOUND","None"); 
 define("_MB_XIM_SOUND1","Beer"); 
 define("_MB_XIM_SOUND2","Rooster"); 
@@ -15,7 +15,7 @@ define("_MB_XIM_SOUND7","Sword");
 define("_MB_XIM_SOUND8","click"); 
 define("_MB_XIM_SOUND9","Wolf"); 
 define("_MB_XIM_SOUND10","signal"); 
-define("_MB_XIM_STATUS","Your status ?"); 
+define("_MB_XIM_STATUS","Your status?");
 define("_MB_XIM_HIDDEN","Away"); 
 define("_MB_XIM_BUSY","busy"); 
 define("_MB_XIM_ONLINE","Online"); 

@@ -74,4 +74,20 @@ function im_Getconfig ($username) {
 return $persc;
 }
 
+function xim_setPersonalConfig () {
+	global $xoopsDB, $xoopsTpl, $xoopsModule,$xoopsUser;
+	 $username = $xoopsUser->getVar('uname');
+	 // make mysql look up for configs already set
+		$checkconfig = "SELECT * FROM ".$xoopsDB->prefix('xim_pers_conf')." WHERE username='".$username."'";
+		 $result = $xoopsDB->query($checkconfig);
+		  if ($xoopsDB->getRowsNum($result) < 1) {
+		   // If none set, insert defaults
+		    $default = "INSERT INTO ".$xoopsDB->prefix('xim_pers_conf')." (id, username, sound, status) VALUES ('', '$username', '1', 'online')";
+			 $result = $xoopsDB->queryF($default);
+		  } 
+		   else {
+		   // If set and update do an mysql update
+		   }
+}
+
 ?>

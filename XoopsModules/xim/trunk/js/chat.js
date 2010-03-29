@@ -63,6 +63,10 @@ function restructureChatBoxes() {
 }
 
 function chatWith(chatuser, chatusername) {
+	if (showFooterBar ==1) {
+		im(".subpanel").hide(); //hide subpanel
+		im("#footpanel li a").removeClass('active'); //remove active class on subpanel 
+	}
 	createChatBox(chatuser, chatusername);
 	im("#chatbox_"+chatuser+" .chatboxtextarea").focus();
 }
@@ -100,8 +104,8 @@ function createChatBox(chatboxID,chatboxname,minimizeChatBox) {
 	}
 	
 	chatBoxes.push(chatboxID);
-
-	if (minimizeChatBox == 1) {
+	//Verify minimizedChatBoxes 
+//	if (minimizeChatBox == 1) {
 		minimizedChatBoxes = new Array();
 
 		if (im.cookie('chatbox_minimized')) {
@@ -118,7 +122,7 @@ function createChatBox(chatboxID,chatboxname,minimizeChatBox) {
 			im('#chatbox_'+chatboxID+' .chatboxcontent').css('display','none');
 			im('#chatbox_'+chatboxID+' .chatboxinput').css('display','none');
 		}
-	}
+//	}
 
 	chatboxFocus[chatboxID] = false;
 
@@ -179,7 +183,6 @@ function chatHeartbeat(){
 			if (chatboxFocus[x] == false) {
 				//FIXME: add toggle all or none policy, otherwise it looks funny
 				im('#chatbox_'+x+' .chatboxhead').toggleClass('chatboxblink');
-
 			}
 		}
 	}
@@ -213,18 +216,17 @@ function chatHeartbeat(){
 					newMessagesWin[chatboxID] = true;
 					newMessagesUser[chatboxID]=item.n;
 
-				soundManager.createSound({
-				 id: item.q, // required
-				 url: item.q, // required
-				 // optional sound parameters here, see Sound Properties for full list
-				 volume: 50,
-				 autoPlay: true
-				});
+					soundManager.createSound({
+						id: item.q, // required
+						url: item.q, // required
+						// optional sound parameters here, see Sound Properties for full list
+						volume: 50,
+						autoPlay: true
+					});
 					soundManager.play(item.q, item.q);
-			
+
 					im("#chatbox_"+chatboxID+" .chatboxcontent").append('<div class="chatboxmessage"><span class="ghost"></span><span class="chatAvatar"><img src="'+item.a+'"/></span><span class="chatboxmessagefrom">'+item.n+':&nbsp;&nbsp;</span><span class="chatboxmessagecontent">'+item.m+'</span></div>');
-					
-					}
+				}
 
 				im("#chatbox_"+chatboxID+" .chatboxcontent").scrollTop(im("#chatbox_"+chatboxID+" .chatboxcontent")[0].scrollHeight);
 				itemsfound += 1;
@@ -335,6 +337,10 @@ function checkChatBoxInputKey(event,chatboxtextarea,chatboxID) {
 }
 
 function startChatSession(){  
+	  if (showFooterBar==1) {
+		createFooterBar();
+		updateUserList();
+	  }
 	im.ajax({
 	  url: xim_url+"chat.php?action=startchatsession",
 	  cache: false,
@@ -369,7 +375,6 @@ function startChatSession(){
 			im("#chatbox_"+chatboxID+" .chatboxcontent").scrollTop(im("#chatbox_"+chatboxID+" .chatboxcontent")[0].scrollHeight);
 			setTimeout('im("#chatbox_"+chatboxID+" .chatboxcontent").scrollTop(im("#chatbox_"+chatboxID+" .chatboxcontent")[0].scrollHeight);', 100); // yet another strange ie bug
 		}
-	
 	setTimeout('chatHeartbeat();',chatHeartbeatTime);
 		
 	}});
@@ -427,6 +432,149 @@ im.cookie = function(name, value, options) {
     }
 };
 
+
 /*
-im('#chatbox_'+chatboxID+' .chatboxcontent').append('<embed src="<{$xoops_url}>/modules/lightbox/test.wma" autostart="true" hidden="true" loop="false">');
+function createFooterBar() {
+	if (showFooterBar ==1) {
+		if(footerBarStyle==0){
+			im(" <div />" ).attr("id","footpanel")
+			.html('<ul id="mainpanel"><li><a href="#" class="home"><small>Design Bombs</small></a></li><li><a href="#" class="profile">View Profile <small>View Profile</small></a></li><li><a href="#" class="editprofile">Edit Profile <small>Edit Profile</small></a></li><li><a href="#" class="contacts">Contacts <small>Contacts</small></a></li><li><a href="#" class="messages">Messages (10) <small>Messages</small></a></li><li><a href="#" class="playlist">Play List <small>Play List</small></a></li><li><a href="#" class="videos">Videos <small>Videos</small></a></li><li id="chatpanel"><a href="#" class="chat">Friends (<span id="total"></span>) </a><div style="height: 486px; display: none;" class="subpanel"><h3><span> &#8211; </span>Friends Online</h3><ul id="userlist" style="height: 461px;"></ul>')
+			.appendTo(im( "body" ));
+		} else {
+			im(" <div />" ).attr("id","footpanel")
+			.html('<div id="footpanel"><ul id="mainpanel"><li id="chatpanel"><a class="chat" href="#">Friends (<span id="total">1</span>) </a><div class="subpanel" style="height: 486px; display: none;"><h3><span> &ndash; </span>Friends Online</h3><ul style="height: 461px;" id="userlist"></ul></div></li></ul></div>')
+			.appendTo(im( "body" ));
+		}   
+		im("footpanel").show();
+	}
+}
 */
+
+
+function createFooterBar() {
+    im(" <div />" ).attr("id","footpanel")
+    .appendTo(im( "body" ));
+    im("footpanel").show();
+    im('#footpanel').load(xim_url+"footer_bar.php?style="+footerBarStyle , function() {  
+	/* Credit: http://www.sohtanaka.com  */
+	//Adjust panel height
+	im.fn.adjustPanel = function(){ 
+		im(this).find("ul, .subpanel").css({ 'height' : 'auto'}); //Reset subpanel and ul height
+		
+		var windowHeight = im(window).height(); //Get the height of the browser viewport
+		var panelsub = im(this).find(".subpanel").height(); //Get the height of subpanel	
+		var panelAdjust = windowHeight - 100; //Viewport height - 100px (Sets max height of subpanel)
+		var ulAdjust =  panelAdjust - 25; //Calculate ul size after adjusting sub-panel (27px is the height of the base panel)
+		
+		if ( panelsub >= panelAdjust ) {	 //If subpanel is taller than max height...
+			im(this).find(".subpanel").css({ 'height' : panelAdjust }); //Adjust subpanel to max height
+			im(this).find("ul").css({ 'height' : ulAdjust}); //Adjust subpanel ul to new size
+		}
+		else if ( panelsub < panelAdjust ) { //If subpanel is smaller than max height...
+			im(this).find("ul").css({ 'height' : 'auto'}); //Set subpanel ul to auto (default size)
+		}
+	};
+	
+	//Execute function on load
+	im("#chatpanel").adjustPanel(); //Run the adjustPanel function on #chatpanel
+	im("#alertpanel").adjustPanel(); //Run the adjustPanel function on #alertpanel
+	
+	//Each time the viewport is adjusted/resized, execute the function
+	im(window).resize(function () { 
+		im("#chatpanel").adjustPanel();
+		im("#alertpanel").adjustPanel();
+	});
+	
+	//Click event on Chat Panel + Alert Panel	
+	im("#chatpanel a:first, #alertpanel a:first").click(function() { //If clicked on the first link of #chatpanel and #alertpanel...
+		if(im(this).next(".subpanel").is(':visible')){ //If subpanel is already active...
+			im(this).next(".subpanel").hide(); //Hide active subpanel
+			im("#footpanel li a").removeClass('active'); //Remove active class on the subpanel trigger
+		}
+		else { //if subpanel is not active...
+			im(".subpanel").hide(); //Hide all subpanels
+			im(this).next(".subpanel").toggle(); //Toggle the subpanel to make active
+			im("#footpanel li a").removeClass('active'); //Remove active class on all subpanel trigger
+			im(this).toggleClass('active'); //Toggle the active class on the subpanel trigger
+		}
+		return false; //Prevent browser jump to link anchor
+	});
+	
+	//Click event outside of subpanel
+	im(document).click(function() { //Click anywhere and...
+		im(".subpanel").hide(); //hide subpanel
+		im("#footpanel li a").removeClass('active'); //remove active class on subpanel trigger
+	});
+	im('.subpanel ul').click(function(e) { 
+		e.stopPropagation(); //Prevents the subpanel ul from closing on click
+	});
+	
+	//Config Panel
+	im(".xim_configDiv_body").hide();
+	im(".xim_img_info").click(function() {
+	      im(".xim_configDiv_body").slideToggle(2500);
+	      return false;
+	});
+	im(".xim_configDiv_body").click(function() {
+	      return false;
+	});
+	im(".update_button").click(function() {
+		var sound = im("#sound").val();
+		var status = im("#status").val();
+		dataString = im("#config").serialize();
+		//var dataString = 'sound='+ sound + '&status=' + status;
+		if(status=='' || sound=='') {
+			alert('Please Give Valid Details');
+		} else {
+			im("#flash").show();
+			im("#flash").fadeIn(800).html('<img src="'+xim_url+'/images/ajaxloader.gif"/>Saved!');
+			im.ajax({
+			type: "POST",
+			url: xim_url+"include/update_config.php",
+			data: dataString,
+			cache: false,
+			success: function(html){
+			im("#flash").hide(2000);
+			im(".xim_configDiv_body").hide(6000);
+		}
+		});
+		}return false;
+	});
+
+	//Delete icons on Alert Panel
+	im("#alertpanel li").hover(function() {
+		im(this).find("a.delete").css({'visibility': 'visible'}); //Show delete icon on hover
+	},function() {
+		im(this).find("a.delete").css({'visibility': 'hidden'}); //Hide delete icon on hover out
+	});            
+    });  
+
+
+}
+
+function updateUserList() {
+	im.ajax({
+	  url: xim_url+"ajax_userlist.php",
+	  cache: false,
+	  dataType: "json",
+	  success: function(data) {
+		im("#total").html(data.total);
+		im("#userlist").html('');
+		im.each(data.users, function(i,user){
+			if (user){ 
+			    switch (user.status) {
+				case 0: userstatus=xim_url+"images/Absent-blue16.png"; 
+				break;
+				case 1: userstatus=xim_url+"images/busy-blue16.png"; 
+				break;
+				case 2: userstatus=xim_url+"images/messenger-blue16.png"; 
+				break;
+			    }
+				// fix strange ie bug  	<li><span>Family Members</span></li>
+				im("#userlist").append('<li><a href="javascript:void(0)" onclick="javascript:chatWith(\''+user.id+'\',\''+user.n+'\');"><img class="image" src="'+user.a+'">'+user.n+'<img class="status" src="'+userstatus+'"></a>');
+			}
+		});
+	}});
+
+	setTimeout('updateUserList();',30000);
+}

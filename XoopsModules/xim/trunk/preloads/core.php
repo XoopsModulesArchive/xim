@@ -1,4 +1,4 @@
-<?php
+<?php 
 defined('XOOPS_ROOT_PATH') or die('Restricted access');
 
 class XimCorePreload extends XoopsPreloadItem{
@@ -14,26 +14,47 @@ class XimCorePreload extends XoopsPreloadItem{
 	    	if(isset($moduleConfig['chatstyle'])) {
 	    		$style = $moduleConfig['chatstyle'];
 	    	}
+	    	if(isset($moduleConfig['showfooterbar'])) {
+	    		$showFooterBar = $moduleConfig['showfooterbar'];
+	    	}
+		if(isset($moduleConfig['footerbarstyle'])) {
+	    		$footerBarStyle =$moduleConfig['footerbarstyle'];
+	    	}
+		
 	}
 	if($style == 0) {
 		$xoTheme->addStylesheet(XOOPS_URL.'/modules/xim/css/default_chat.css');
 		$xoTheme->addStylesheet(XOOPS_URL.'/modules/xim/css/culex_screen.css');
 		$xoTheme->addStylesheet(XOOPS_URL.'/modules/xim/css/configdiv.css');
-		$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/block_update_default.js');
+		//Removed becouse cause unecessary requests when blocks isn't used
+		//$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/block_update_default.js'); 
 	} else {
 		$xoTheme->addStylesheet(XOOPS_URL.'/modules/xim/css/culex_chat.css');
 		$xoTheme->addStylesheet(XOOPS_URL.'/modules/xim/css/culex_screen.css');
 		$xoTheme->addStylesheet(XOOPS_URL.'/modules/xim/css/configdiv.css');
-		$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/block_update_culex.js');
+		//Removed becouse cause unecessary requests when blocks isn't used
+		//$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/block_update_culex.js');
+
 	}
-    $xoTheme->addScript(XOOPS_URL.'/modules/xim/js/jquery.js');
-	$xoTheme->addScript('','','var xim_url="'.XOOPS_URL.'/modules/xim/";
-	var im = jQuery.noConflict();');
+        $xoTheme->addScript(XOOPS_URL.'/modules/xim/js/jquery.js');
+$xoops_url= XOOPS_URL;
+$script= <<<SCRIPT
+var xoops_url="$xoops_url";
+var xim_url="$xoops_url/modules/xim/";
+var showFooterBar = $showFooterBar;
+var footerBarStyle = $footerBarStyle;
+	var im = jQuery.noConflict();
+SCRIPT;
+	$xoTheme->addScript('','',$script);
 	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/chat.js');
 	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/configdiv.js');
 	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/configscript.js');
 	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/soundmanager2.js');
 	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/sm_default.js');
+	if ($showFooterBar!=0) {
+		$xoTheme->addStylesheet(XOOPS_URL.'/modules/xim/css/footer.css.php?style='.$footerBarStyle);
+	}
+
     }
 
 }
