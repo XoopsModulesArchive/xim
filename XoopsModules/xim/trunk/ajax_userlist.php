@@ -15,7 +15,8 @@ $xoopsLogger->activated = false;
     if (is_object($xoopsUser)) {
         $uid = $xoopsUser->getVar('uid');
         $uname = $xoopsUser->getVar('uname');
-		$_SESSION['username'] = $uname;
+	$_SESSION['username'] = $uname;
+	xim_setPersonalConfig (); // Function to create/check personal config (culex)
     } else {
         $uid = 0;
         $uname = '';
@@ -47,7 +48,7 @@ $xoopsLogger->activated = false;
 		$userid=$onlines[$i]['online_uid'];
 		$username = $onlines[$i]['online_uname'];
 		$userlist .= <<<EOD
-{"id":"$userid","n":"$username","a":"$avatarURL","status":"$status"},
+{"id":"$userid","n":"$username","a":"$avatarURL","status":$status},
 
 EOD;
 	    }
