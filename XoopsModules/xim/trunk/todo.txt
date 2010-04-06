@@ -7,9 +7,11 @@ DONE: Smilie & Xoops BBcode							(Andrax)
 DONE: Show avatar in chat							(Andrax)
 DONE: Add sounds to chat							(Culex)
 DONE: Add status display + configs					(Culex)
+DONE: Create footerbar like facebook 				(Andrax)
 
+TODO: " im" is replaced by "" in chats, jquery rn ?	(?? 0%	done)
+TODO: Mysql 4 & 5 compat. sql file					(?? 0%	done)
 TODO: Create buddylist 								(?? 0%  done)
-TODO: Create footerbar like facebook 				(?? 0%  done)
 TODO: Send file through chat 						(?? 0%  done)
 TODO: Language defines to 'send at', 'writing..' 	(?? 0%  done)
 
