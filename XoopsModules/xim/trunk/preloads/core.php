@@ -43,7 +43,7 @@ var xoops_url="$xoops_url";
 var xim_url="$xoops_url/modules/xim/";
 var showFooterBar = $showFooterBar;
 var footerBarStyle = $footerBarStyle;
-	var im = jQuery.noConflict();
+	var xoops_im = jQuery.noConflict();
 SCRIPT;
 	$xoTheme->addScript('','',$script);
 	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/chat.js');

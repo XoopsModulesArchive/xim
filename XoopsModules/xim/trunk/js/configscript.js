@@ -24,12 +24,12 @@
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 //  ------------------------------------------------------------------------ //
 
-im(function() {
-im(".update_button").click(function()
+xoops_im(function() {
+xoops_im(".update_button").click(function()
 {
-var sound = im("#sound").val();
-var status = im("#status").val();
-dataString = im("#config").serialize();
+var sound = xoops_im("#sound").val();
+var status = xoops_im("#status").val();
+dataString = xoops_im("#config").serialize();
 //var dataString = 'sound='+ sound + '&status=' + status;
 if(status=='' || sound=='')
 {
@@ -37,16 +37,16 @@ alert('Please Give Valid Details');
 }
 else
 {
-im("#flash").show();
-im("#flash").fadeIn(800).html('<img src="'+xim_url+'/images/ajaxloader.gif"/>Saved!');
-im.ajax({
+xoops_im("#flash").show();
+xoops_im("#flash").fadeIn(800).html('<img src="'+xim_url+'/images/ajaxloader.gif"/>Saved!');
+xoops_im.ajax({
 type: "POST",
 url: xim_url+"include/update_config.php",
 data: dataString,
 cache: false,
 success: function(html){
-im("#flash").hide(2000);
-im(".xim_configDiv_body").hide(6000);
+xoops_im("#flash").hide(2000);
+xoops_im(".xim_configDiv_body").hide(6000);
 }
 });
 }return false;
