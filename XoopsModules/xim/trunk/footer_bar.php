@@ -37,7 +37,7 @@ if ($_GET['style']==0) {
 	$xoopsPreload->triggerEvent('system.panels.system_panels.usershow', array(&$pm_handler));
 
 	$panel['new_messages'] = $pm_handler->getCount($criteria);
-	$panel['inbox'] = 'Messages';
+	$panel['inbox'] = _XIM_BAR_MESSAGES;
 
 	$tpl->assign('panel', $panel);
 	$tpl->display(XOOPS_ROOT_PATH .'/modules/xim/templates/xim_full_footerbar.html');

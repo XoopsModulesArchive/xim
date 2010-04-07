@@ -26,6 +26,7 @@ define("_XIM_BAR_HOME","Home");
 define("_XIM_BAR_VIEW_PROFILE","View Profile");
 define("_XIM_BAR_EDIT_PROFILE","Edit Profile");
 define("_XIM_BAR_NOTIFICATIONS","Notifications");
+define("_XIM_BAR_MESSAGES","Messages");
 
 
 
