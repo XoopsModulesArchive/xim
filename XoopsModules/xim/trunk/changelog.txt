@@ -16,4 +16,12 @@ Xoops Instant Messenger (XIM) Changelog
 - NEW: Showing user avatar in chat Revision 4446: (Andrax)
 - NEW: Added sound library + 10 sounds to chat Revision 4512: (culex)
 - NEW: Added change, show config for status Revision 4512: (Culex)
+- NEW: Added the merged footerbar Revision 4638: (Andrax)
+- NEW: Added install.html with installation/error faq Revision 4647 (culex)
+
+- BUG: Fix problem with minimized chat, cookie problem Revision 4638: (Andrax)
+- BUG: Fixed malformed JSON document Revision: 4641 (andrax)
+- BUG: Jquery noconflict rename im() to xoops_im() to avoid "im " being blank in chats Revision: 4674 (culex)
+- BUG: Changed "Messages" hardcoded -> language define _XIM_BAR_MESSAGE in footer_bar.php and main.php Revisio: 4682 (culex)
+- BUG: Added a stripHTML function to chat.js for displaying item.f in document.title without html tags Revision: 4683 (culex)
 
