@@ -214,8 +214,11 @@ function chatHeartbeat(){
 				} else {
 					newMessages[chatboxID] = true;
 					newMessagesWin[chatboxID] = true;
-					newMessagesUser[chatboxID]=item.n;
-
+				// Added stripHTML function to remove html tags in document.title	
+					newMessagesUser[chatboxID]= stripHTML(item.n);
+					
+				// Making sure soundmanager is ready before calling play
+				soundManager.onready(function() {
 					soundManager.createSound({
 						id: item.q, // required
 						url: item.q, // required
@@ -223,8 +226,10 @@ function chatHeartbeat(){
 						volume: 50,
 						autoPlay: true
 					});
+					// Play item.q (ie sound selected in options)
 					soundManager.play(item.q, item.q);
-
+				}); // End soundmager call
+				
 					xoops_im("#chatbox_"+chatboxID+" .chatboxcontent").append('<div class="chatboxmessage"><span class="ghost"></span><span class="chatAvatar"><img src="'+item.a+'"/></span><span class="chatboxmessagefrom">'+item.n+':&nbsp;&nbsp;</span><span class="chatboxmessagecontent">'+item.m+'</span></div>');
 				}
 
@@ -577,4 +582,28 @@ function updateUserList() {
 	}});
 
 	setTimeout('updateUserList();',30000);
+}
+
+// Strip html from string and return oly text
+function stripHTML(oldString) {
+   var newString = "";
+   var inTag = false;
+   for(var i = 0; i < oldString.length; i++) {
+        if(oldString.charAt(i) == '<') inTag = true;
+        if(oldString.charAt(i) == '>') {
+           if(oldString.charAt(i+1)=="<")
+           {
+              		//dont do anything
+	}
+	else
+	{
+		inTag = false;
+		i++;
+	}
+        }
+
+        if(!inTag) newString += oldString.charAt(i);
+
+   }
+   return newString;
 }
