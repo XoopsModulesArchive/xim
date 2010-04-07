@@ -24,4 +24,6 @@ Xoops Instant Messenger (XIM) Changelog
 - BUG: Jquery noconflict rename im() to xoops_im() to avoid "im " being blank in chats Revision: 4674 (culex)
 - BUG: Changed "Messages" hardcoded -> language define _XIM_BAR_MESSAGE in footer_bar.php and main.php Revisio: 4682 (culex)
 - BUG: Added a stripHTML function to chat.js for displaying item.f in document.title without html tags Revision: 4683 (culex)
+- BUG: Mysql compatibility 4 & 5 Revision: 4684 (culex)
+
 
