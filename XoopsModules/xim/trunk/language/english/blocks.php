@@ -1,7 +1,4 @@
 <?php
-// added v0.3
-define("_MB_XIM_BLOCK","IM"); 
-
 // added v0.4
 define("_MB_XIM_USESOUND","Sound.:"); 
 define("_MB_XIM_NOSOUND","None"); 
