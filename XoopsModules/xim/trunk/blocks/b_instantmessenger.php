@@ -100,25 +100,32 @@ function b_instantmessenger() {
 	// Using ajax to call /include/update_config.php wich serialize $_POST to sql.
 	 $cf = "<form method='post' id='config' action=''>"._MB_XIM_USESOUND."
 		<select name='sound'>
-		 <option value='0'>"._MB_XIM_NOSOUND."</option>
-		 <option value='1'>"._MB_XIM_SOUND1."</option>
-		 <option value='2'>"._MB_XIM_SOUND2."</option>
-		 <option value='3'>"._MB_XIM_SOUND3."</option>
-		 <option value='4'>"._MB_XIM_SOUND4."</option>
-		 <option value='5'>"._MB_XIM_SOUND5."</option>
-		 <option value='6'>"._MB_XIM_SOUND6."</option>
-		 <option value='7'>"._MB_XIM_SOUND7."</option>
-		 <option value='8'>"._MB_XIM_SOUND8."</option>
-		 <option value='9'>"._MB_XIM_SOUND9."</option>
-		 <option value='10'>"._MB_XIM_SOUND10."</option></select><br /><br />
+			<option value='0'>"._MB_XIM_NOSOUND."</option>
+			<option value='1'>"._MB_XIM_SOUND1."</option>
+			<option value='2'>"._MB_XIM_SOUND2."</option>
+			<option value='3'>"._MB_XIM_SOUND3."</option>
+			<option value='4'>"._MB_XIM_SOUND4."</option>
+			<option value='5'>"._MB_XIM_SOUND5."</option>
+			<option value='6'>"._MB_XIM_SOUND6."</option>
+			<option value='7'>"._MB_XIM_SOUND7."</option>
+			<option value='8'>"._MB_XIM_SOUND8."</option>
+			<option value='9'>"._MB_XIM_SOUND9."</option>
+			<option value='10'>"._MB_XIM_SOUND10."</option>
+		</select>
+		<br /><br />
 		 "._MB_XIM_STATUS."
 		<select name='status'>
-		 <option value='0'>"._MB_XIM_HIDDEN."</option>
-		 <option value='1'>"._MB_XIM_BUSY."</option>
-		 <option value='2'>"._MB_XIM_ONLINE."</option></select><br /><br /><center>
-	  <input type='submit' value='"._MB_XIM_UPDATE."' name='submit' class='update_button'/></center></select>
+			<option value='0'>"._MB_XIM_HIDDEN."</option>
+			<option value='1'>"._MB_XIM_BUSY."</option>
+			<option value='2'>"._MB_XIM_ONLINE."</option>
+		</select>
+		<br /><br />
+		<div style='text-align:center;'>
+			<input type='submit' value='"._MB_XIM_UPDATE."' name='submit' class='update_button'/>
+		</div>
 	 </form>
-		</span><div id='flash'></div>";  
+	</span>
+	<div id='flash'></div>";  
 	   
 	  $block['config'] = $cf;
 	 }

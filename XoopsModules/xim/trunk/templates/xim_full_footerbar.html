@@ -1,27 +1,40 @@
 <ul id="mainpanel">
-  <li>
-    <a href="<{$xoops_url}>" class="home"><{$panel.home}><small><{$panel.home}></small></a>
-  </li>
-  <li>
-    <a href="<{$xoops_url}>/user.php" class="profile"><{$panel.profile}><small><{$panel.profile}></small></a>
-  </li>
-  <li>
-    <a href="<{$xoops_url}>/edituser.php" class="editprofile"> <{$panel.editprofile}><small><{$panel.editprofile}></small></a>
-  </li>
-  <li>
-      <{if $panel.new_messages > 0}>
-        <a class="messages" href="<{$xoops_url}>/viewpmsg.php" title="<{$panel.inbox}>"><{$panel.inbox}> <small><{$panel.inbox}> (<span style="color:#ff0000; font-weight: bold;"><{$panel.new_messages}></span>)</small></a>
-      <{else}>
-        <a class="nomessages" href="<{$xoops_url}>/viewpmsg.php" title="<{$panel.inbox}>"><{$panel.inbox}><small><{$panel.inbox}></small></a>
-      <{/if}>    
-  </li>
-  <li>
-    <a href="<{$xoops_url}>/notifications.php" class="notifications"> <{$panel.notifications}><small><{$panel.notifications}></small></a>
-    <{if $panel.is_admin==1}>
-	<a href="<{$xoops_url}>/admin.php" class="admin"> <{$panel.admin}><small><{$panel.admin}></small></a> 
-    <{/if}>  
-  
-  </li>
+	<li>
+		<a href="<{$xoops_url}>" class="home" title="<{$panel.home}>"><{$panel.home}>
+			<small><{$panel.home}></small>
+		</a>
+	</li>
+	<li>
+		<a href="<{$xoops_url}>/user.php" class="profile" title="<{$panel.profile}>"><{$panel.profile}>
+			<small><{$panel.profile}></small>
+		</a>
+	</li>
+	<li>
+		<a href="<{$xoops_url}>/edituser.php" class="editprofile" title="<{$panel.editprofile}>"> <{$panel.editprofile}>
+			<small><{$panel.editprofile}></small>
+		</a>
+	</li>
+	<li>
+		<{if $panel.new_messages > 0}>
+			<a class="messages" href="<{$xoops_url}>/viewpmsg.php" title="<{$panel.inbox}>"><{$panel.inbox}> 
+				<small><{$panel.inbox}> (<span style="color:#ff0000; font-weight: bold;"><{$panel.new_messages}></span>)</small>
+			</a>
+		<{else}>
+			<a class="nomessages" href="<{$xoops_url}>/viewpmsg.php" title="<{$panel.inbox}>"><{$panel.inbox}>
+				<small><{$panel.inbox}></small>
+			</a>
+		<{/if}>    
+	</li>
+	<li>
+		<a href="<{$xoops_url}>/notifications.php" class="notifications" title="<{$panel.notifications}>"> <{$panel.notifications}>
+			<small><{$panel.notifications}></small>
+		</a>
+		<{if $panel.is_admin==1}>
+			<a href="<{$xoops_url}>/admin.php" class="admin" title="<{$panel.admin}>"> <{$panel.admin}>
+				<small><{$panel.admin}></small>
+			</a> 
+		<{/if}>
+	</li>
    <!--     <li id="alertpanel">
         	<a href="#" class="alerts">Alerts</a>
             <div style="height: auto; display: none;" class="subpanel">
@@ -38,28 +51,33 @@
             </ul>
             </div>
         </li> -->
-  <li id="chatpanel">
-    <a href="#" class="chat"><{$panel.lang_friends}>(<span id="total"></span>) </a><div style="height: 486px; display: none;" class="subpanel">
-    <h3><span> &#8211; </span><{$panel.lang_friends_online}><img class="xim_img_info" src="<{$xoops_url}>/modules/xim/images/info.png"></img></h3>
-<div id="xim_configDiv">
-	<span class="xim_configDiv_body">
-		<form method='post' id='config' action=''><{$panel.config_sound}>
-			<select name='sound'>
-			<{foreach key=key item=item from=$panel.sound_options}>
-				<option value="<{$key}>"><{$item}></option>
-			<{/foreach}>	
-			 </select><br /><br />
-			  <{$panel.config_status}>
-			  <select name='status'>
-			  <{foreach key=key item=item from=$panel.status_options}>
-				<option value="<{$key}>"><{$item}></option>
-			  <{/foreach}>
-				</select><br /><br /><center>
-	  		<input type='submit' value='<{$panel.config_save}>' name='submit' class='update_button'/></center></select>
-	 </form>
-		</span><div id='flash'></div>
-</div>
-    <ul id="userlist" style="height: 461px;">
-    </ul>
-  </li>
+	<li id="chatpanel">
+		<a href="#" class="chat" title="<{$panel.lang_friends}>"><{$panel.lang_friends}>(<span id="total"></span>)</a>
+		<div style="height: 486px; display: none;" class="subpanel">
+			<h3><span> &#8211; </span><{$panel.lang_friends_online}><img class="xim_img_info" src="<{$xoops_url}>/modules/xim/images/info.png" alt="Info" /></h3>
+			<div id="xim_configDiv">
+				<span class="xim_configDiv_body">
+					<form method="post" id="config" action=''><{$panel.config_sound}>
+						<select name="sound">
+							<{foreach key=key item=item from=$panel.sound_options}>
+								<option value="<{$key}>"><{$item}></option>
+							<{/foreach}>	
+						</select>
+						<br /><br />
+						<{$panel.config_status}>
+						<select name="status">
+							<{foreach key=key item=item from=$panel.status_options}>
+								<option value="<{$key}>"><{$item}></option>
+							<{/foreach}>
+						</select>
+						<br /><br />
+						<div style="text-align: center;">
+							<input type="submit" value="<{$panel.config_save}>" name="submit" class="update_button" title="<{$panel.config_save}>"/>
+						</div>
+					</form>
+				</span>
+				<div id="flash"></div>
+			</div>
+			<ul id="userlist" style="height: 461px;"></ul>
+	</li>
 </ul>

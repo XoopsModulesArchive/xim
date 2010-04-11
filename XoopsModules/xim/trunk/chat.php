@@ -239,7 +239,7 @@ function sanitize($text) {
     $text = $myts->displayTarea($text,1,1,1,1);
     $text = str_replace("\n\r","\n",$text);
     $text = str_replace("\r\n","\n",$text);
-    $text = str_replace("\n","<br>",$text);
+    $text = str_replace("\n","<br />",$text);
     $text = str_replace("\"","'",$text);
 
     return $text;

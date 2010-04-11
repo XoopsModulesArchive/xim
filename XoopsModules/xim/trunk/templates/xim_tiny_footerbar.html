@@ -1,26 +1,33 @@
 <ul id="mainpanel">
-  <li id="chatpanel">
-    <a href="#" class="chat"><{$panel.lang_friends}> (<span id="total"></span>) </a><div style="height: 486px; display: none;" class="subpanel">
-    <h3><span> &#8211; </span><{$panel.lang_friends_online}><img class="xim_img_info" src="<{$xoops_url}>/modules/xim/images/info.png"></img></h3>
-<div id="xim_configDiv">
-	<span class="xim_configDiv_body">
-		<form method='post' id='config' action=''><{$panel.config_sound}>
-			<select name='sound'>
-			<{foreach key=key item=item from=$panel.sound_options}>
-				<option value="<{$key}>"><{$item}></option>
-			<{/foreach}>	
-			 </select><br /><br />
-			  <{$panel.config_status}>
-			  <select name='status'>
-			  <{foreach key=key item=item from=$panel.status_options}>
-				<option value="<{$key}>"><{$item}></option>
-			  <{/foreach}>
-				</select><br /><br /><center>
-	  		<input type='submit' value='<{$panel.config_save}>' name='submit' class='update_button'/></center></select>
-	 </form>
-		</span><div id='flash'></div>
-</div>
-    <ul id="userlist" style="height: 461px;">
-    </ul>
-  </li>
+	<li id="chatpanel">
+		<a href="#" class="chat" title="<{$panel.lang_friends}>"><{$panel.lang_friends}> (<span id="total"></span>) </a>
+		<div style="height: 486px; display: none;" class="subpanel">
+			<h3><span> &#8211; </span><{$panel.lang_friends_online}><img class="xim_img_info" src="<{$xoops_url}>/modules/xim/images/info.png" alt="Info" /></h3>
+			<div id="xim_configDiv">
+				<span class="xim_configDiv_body">
+					<form method="post" id="config" action=''><{$panel.config_sound}>
+						<select name="sound">
+							<{foreach key=key item=item from=$panel.sound_options}>
+								<option value="<{$key}>"><{$item}></option>
+							<{/foreach}>	
+							</select>
+							<br /><br />
+							<{$panel.config_status}>
+								<select name="status">
+									<{foreach key=key item=item from=$panel.status_options}>
+										<option value="<{$key}>"><{$item}></option>
+									<{/foreach}>
+								</select>
+								<br /><br />
+							<div style="text-align:center;">
+								<input type="submit" value="<{$panel.config_save}>" name="submit" class="update_button" title="<{$panel.config_save}>" />
+							</div>
+						</select>
+					</form>
+				</span>
+				<div id="flash"></div>
+			</div>
+			<ul id="userlist" style="height: 461px;">
+			</ul>
+	</li>
 </ul>
