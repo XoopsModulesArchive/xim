@@ -2,7 +2,7 @@
 	<li id="chatpanel">
 		<a href="#" class="chat" title="<{$panel.lang_friends}>"><{$panel.lang_friends}> (<span id="total"></span>) </a>
 		<div style="height: 486px; display: none;" class="subpanel">
-			<h3><span> &#8211; </span><{$panel.lang_friends_online}><img class="xim_img_info" src="<{$xoops_url}>/modules/xim/images/info.png" alt="Info" /></h3>
+			<h3><span> &#8211; </span><{$panel.lang_friends_online}><img class="xim_img_info" src="<{xoAppUrl modules/xim/images/info.png}>" alt="Options" title="Options"/></h3>
 			<div id="xim_configDiv">
 				<span class="xim_configDiv_body">
 					<form method="post" id="config" action=''><{$panel.config_sound}>
@@ -29,5 +29,6 @@
 			</div>
 			<ul id="userlist" style="height: 461px;">
 			</ul>
+		</div>
 	</li>
 </ul>

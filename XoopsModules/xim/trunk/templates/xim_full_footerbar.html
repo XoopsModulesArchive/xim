@@ -1,36 +1,40 @@
 <ul id="mainpanel">
 	<li>
-		<a href="<{$xoops_url}>" class="home" title="<{$panel.home}>"><{$panel.home}>
+		<a href="<{xoAppUrl }>" class="home" title="<{$panel.home}>"><{$panel.home}>
 			<small><{$panel.home}></small>
 		</a>
 	</li>
 	<li>
-		<a href="<{$xoops_url}>/user.php" class="profile" title="<{$panel.profile}>"><{$panel.profile}>
+		<a class="logout" href="<{xoAppUrl /user.php op=logout}>" title="<{$smarty.const._LOGOUT}>" ><{$smarty.const._LOGOUT}>
+			<small><{$smarty.const._LOGOUT}></small>
+		</a>
+	<li>
+		<a href="<{xoAppUrl user.php}>" class="profile" title="<{$panel.profile}>"><{$panel.profile}>
 			<small><{$panel.profile}></small>
 		</a>
 	</li>
 	<li>
-		<a href="<{$xoops_url}>/edituser.php" class="editprofile" title="<{$panel.editprofile}>"> <{$panel.editprofile}>
+		<a href="<{xoAppUrl edituser.php}>" class="editprofile" title="<{$panel.editprofile}>"> <{$panel.editprofile}>
 			<small><{$panel.editprofile}></small>
 		</a>
 	</li>
 	<li>
 		<{if $panel.new_messages > 0}>
-			<a class="messages" href="<{$xoops_url}>/viewpmsg.php" title="<{$panel.inbox}>"><{$panel.inbox}> 
+			<a class="messages" href="<{xoAppUrl viewpmsg.php}>" title="<{$panel.inbox}>"><{$panel.inbox}> 
 				<small><{$panel.inbox}> (<span style="color:#ff0000; font-weight: bold;"><{$panel.new_messages}></span>)</small>
 			</a>
 		<{else}>
-			<a class="nomessages" href="<{$xoops_url}>/viewpmsg.php" title="<{$panel.inbox}>"><{$panel.inbox}>
+			<a class="nomessages" href="<{xoAppUrl viewpmsg.php}>" title="<{$panel.inbox}>"><{$panel.inbox}>
 				<small><{$panel.inbox}></small>
 			</a>
 		<{/if}>    
 	</li>
 	<li>
-		<a href="<{$xoops_url}>/notifications.php" class="notifications" title="<{$panel.notifications}>"> <{$panel.notifications}>
+		<a href="<{xoAppUrl notifications.php}>" class="notifications" title="<{$panel.notifications}>"> <{$panel.notifications}>
 			<small><{$panel.notifications}></small>
 		</a>
 		<{if $panel.is_admin==1}>
-			<a href="<{$xoops_url}>/admin.php" class="admin" title="<{$panel.admin}>"> <{$panel.admin}>
+			<a href="<{xoAppUrl admin.php}>" class="admin" title="<{$panel.admin}>"> <{$panel.admin}>
 				<small><{$panel.admin}></small>
 			</a> 
 		<{/if}>
@@ -54,14 +58,14 @@
 	<li id="chatpanel">
 		<a href="#" class="chat" title="<{$panel.lang_friends}>"><{$panel.lang_friends}>(<span id="total"></span>)</a>
 		<div style="height: 486px; display: none;" class="subpanel">
-			<h3><span> &#8211; </span><{$panel.lang_friends_online}><img class="xim_img_info" src="<{$xoops_url}>/modules/xim/images/info.png" alt="Info" /></h3>
+			<h3><span> &#8211; </span><{$panel.lang_friends_online}><img class="xim_img_info" src="<{xoAppUrl modules/xim/images/info.png}>" alt="Options" title="Options"/></h3>
 			<div id="xim_configDiv">
 				<span class="xim_configDiv_body">
 					<form method="post" id="config" action=''><{$panel.config_sound}>
 						<select name="sound">
 							<{foreach key=key item=item from=$panel.sound_options}>
 								<option value="<{$key}>"><{$item}></option>
-							<{/foreach}>	
+							<{/foreach}>
 						</select>
 						<br /><br />
 						<{$panel.config_status}>
@@ -79,5 +83,6 @@
 				<div id="flash"></div>
 			</div>
 			<ul id="userlist" style="height: 461px;"></ul>
+		</div>
 	</li>
 </ul>

@@ -59,7 +59,7 @@ function chatHeartbeat() {
         $chat['message'] = sanitize($chat['message']);
 	$user = new XoopsUser($chat['from']);
 	// changed to show link to user info for user "from"
-	$uname = "<a href='".XOOPS_URL."/userinfo.php?uid=".$chat['from']."'>".$user->uname()."</a>";
+	$uname = "<a href='".XOOPS_URL."/userinfo.php?uid=".$chat['from']."' title='".$user->uname()."'>".$user->uname()."</a>";
 	
 	
 	

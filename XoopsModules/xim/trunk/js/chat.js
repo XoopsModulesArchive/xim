@@ -83,7 +83,7 @@ function createChatBox(chatboxID,chatboxname,minimizeChatBox) {
 
 	xoops_im(" <div />" ).attr("id","chatbox_"+chatboxID)
 	.addClass("chatbox")
-	.html('<div class="chatboxhead"><div class="chatboxtitle">'+chatboxname+'</div><div class="chatboxoptions"><a href="javascript:void(0)" onclick="javascript:toggleChatBoxGrowth(\''+chatboxID+'\')">-</a> <a href="javascript:void(0)" onclick="javascript:closeChatBox(\''+chatboxID+'\')">X</a></div><br clear="all"/></div><div class="chatboxcontent"></div><div class="chatboxinput"><textarea class="chatboxtextarea" onkeydown="javascript:return checkChatBoxInputKey(event,this,\''+chatboxID+'\');"></textarea></div>')
+	.html('<div class="chatboxhead"><div class="chatboxtitle">'+chatboxname+'</div><div class="chatboxoptions"><a href="javascript:void(0)" onclick="javascript:toggleChatBoxGrowth(\''+chatboxID+'\')" title="Mini">-</a> <a href="javascript:void(0)" onclick="javascript:closeChatBox(\''+chatboxID+'\')" title="Close">X</a></div><br clear="all"/></div><div class="chatboxcontent"></div><div class="chatboxinput"><textarea class="chatboxtextarea" onkeydown="javascript:return checkChatBoxInputKey(event,this,\''+chatboxID+'\');"></textarea></div>')
 	.appendTo(xoops_im( "body" ));
 			   
 	xoops_im("#chatbox_"+chatboxID).css('bottom', '30px');
@@ -230,7 +230,7 @@ function chatHeartbeat(){
 					soundManager.play(item.q, item.q);
 				}); // End soundmager call
 				
-					xoops_im("#chatbox_"+chatboxID+" .chatboxcontent").append('<div class="chatboxmessage"><span class="ghost"></span><span class="chatAvatar"><img src="'+item.a+'"/></span><span class="chatboxmessagefrom">'+item.n+':&nbsp;&nbsp;</span><span class="chatboxmessagecontent">'+item.m+'</span></div>');
+					xoops_im("#chatbox_"+chatboxID+" .chatboxcontent").append('<div class="chatboxmessage"><span class="ghost"></span><span class="chatAvatar"><img src="'+item.a+'" alt=""/></span><span class="chatboxmessagefrom">'+item.n+':&nbsp;&nbsp;</span><span class="chatboxmessagecontent">'+item.m+'</span></div>');
 				}
 
 				xoops_im("#chatbox_"+chatboxID+" .chatboxcontent").scrollTop(xoops_im("#chatbox_"+chatboxID+" .chatboxcontent")[0].scrollHeight);
@@ -316,7 +316,7 @@ function checkChatBoxInputKey(event,chatboxtextarea,chatboxID) {
 			xoops_im.post(xim_url+"chat.php?action=sendchat", {to: chatboxID, message: message} , function(data){
 				//message = message.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/\"/g,"&quot;");
 				message = data.message;
-				xoops_im("#chatbox_"+chatboxID+" .chatboxcontent").append('<div class="chatboxmessage"><span class="ghost"></span><span class="chatAvatar"><img src="'+userAvatar+'"/></span><span class="chatboxmessagefrom">'+username+':&nbsp;&nbsp;</span><span class="chatboxmessagecontent">'+message+'</span></div>');
+				xoops_im("#chatbox_"+chatboxID+" .chatboxcontent").append('<div class="chatboxmessage"><span class="ghost"></span><span class="chatAvatar"><img src="'+userAvatar+'" alt=""/></span><span class="chatboxmessagefrom">'+username+':&nbsp;&nbsp;</span><span class="chatboxmessagecontent">'+message+'</span></div>');
 				xoops_im("#chatbox_"+chatboxID+" .chatboxcontent").scrollTop(xoops_im("#chatbox_"+chatboxID+" .chatboxcontent")[0].scrollHeight);
 			}, "json");
 		}
@@ -370,7 +370,7 @@ function startChatSession(){
 				if (item.s == 2) {
 					xoops_im("#chatbox_"+chatboxID+" .chatboxcontent").append('<div class="chatboxmessage"><span class="chatboxinfo">'+item.m+'</span></div>');
 				} else {
-					xoops_im("#chatbox_"+chatboxID+" .chatboxcontent").append('<div class="chatboxmessage"><span class="ghost"></span><span class="chatAvatar"><img src="'+item.a+'"/></span><span class="chatboxmessagefrom">'+item.n+':&nbsp;&nbsp;</span><span class="chatboxmessagecontent">'+item.m+'</span></div>');
+					xoops_im("#chatbox_"+chatboxID+" .chatboxcontent").append('<div class="chatboxmessage"><span class="ghost"></span><span class="chatAvatar"><img src="'+item.a+'" alt=""/></span><span class="chatboxmessagefrom">'+item.n+':&nbsp;&nbsp;</span><span class="chatboxmessagecontent">'+item.m+'</span></div>');
 				}
 			}
 		});
@@ -532,7 +532,7 @@ function createFooterBar() {
 			alert('Please Give Valid Details');
 		} else {
 			xoops_im("#flash").show();
-			xoops_im("#flash").fadeIn(800).html('<img src="'+xim_url+'/images/ajaxloader.gif"/>Saved!');
+			xoops_im("#flash").fadeIn(800).html('<img src="'+xim_url+'/images/ajaxloader.gif" alt=""/>Saved!');
 			xoops_im.ajax({
 			type: "POST",
 			url: xim_url+"include/update_config.php",
@@ -576,7 +576,7 @@ function updateUserList() {
 				break;
 			    }
 				// fix strange ie bug  	<li><span>Family Members</span></li>
-				xoops_im("#userlist").append('<li><a href="javascript:void(0)" onclick="javascript:chatWith(\''+user.id+'\',\''+user.n+'\');"><img class="image" src="'+user.a+'">'+user.n+'<img class="status" src="'+userstatus+'"></a>');
+				xoops_im("#userlist").append('<li><a href="javascript:void(0)" onclick="javascript:chatWith(\''+user.id+'\',\''+user.n+'\');" title=""><img class="image" src="'+user.a+'" alt="">'+user.n+'<img class="status" src="'+userstatus+'" alt=""></a>');
 			}
 		});
 	}});

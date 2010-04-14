@@ -121,7 +121,7 @@ function b_instantmessenger() {
 		</select>
 		<br /><br />
 		<div style='text-align:center;'>
-			<input type='submit' value='"._MB_XIM_UPDATE."' name='submit' class='update_button'/>
+			<input type='submit' value='"._MB_XIM_UPDATE."' name='submit' class='update_button' title='"._MB_XIM_UPDATE."'/>
 		</div>
 	 </form>
 	</span>

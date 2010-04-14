@@ -35,12 +35,12 @@ $fpanel= <<<PANEL
 	border-top: 1px solid #fff; /*--Gives the bevel feel on the panel--*/
 	font-size: 1.1em;
 }
-#footpanel ul li{
+#footpanel ul li {
 	padding: 0; margin: 0;
 	float: left;
 	position: relative;
 }
-#footpanel ul li a{
+#footpanel ul li a {
 	padding: 5px;
 	float: left;
 	text-indent: -9999px;
@@ -49,7 +49,7 @@ $fpanel= <<<PANEL
 	color: #333;
 	position: relative;
 }
-html #footpanel ul li a:hover{	background-color: #fff; }
+html #footpanel ul li a:hover {	background-color: #fff; }
 html #footpanel ul li a.active { /*--Active state when subpanel is open--*/
 	background-color: #fff;
 	height: 17px;
@@ -60,8 +60,15 @@ html #footpanel ul li a.active { /*--Active state when subpanel is open--*/
 	position: relative;
 }
 
+#footpanel a.logout {	
+	background: url($xim_img_dir/logout.png) no-repeat 15px center;
+	width: 65px;
+	padding-left: 40px;
+	border-right: 1px solid #bbb;
+	text-indent: 0; /*--Reset text indent--*/
+}
 
-#footpanel a.home{	
+#footpanel a.home {	
 	background: url($xim_img_dir/home.png) no-repeat 15px center;
 	width: 50px;
 	padding-left: 40px;
@@ -69,17 +76,16 @@ html #footpanel ul li a.active { /*--Active state when subpanel is open--*/
 	text-indent: 0; /*--Reset text indent--*/
 }
 
-
-a.profile{	background: url($xim_img_dir/user.png) no-repeat center center;  }
-a.contacts{	background: url($xim_img_dir/address-book.png) no-repeat center center; }
-a.playlist{	background: url($xim_img_dir/document-music-playlist.png) no-repeat center center; }
-a.videos{	background: url($xim_img_dir/film.png) no-repeat center center; }
-a.nomessages{	background: url($xim_img_dir/inbox.png) no-repeat center center; }
-a.messages{	background: url($xim_img_dir/inbox-document.png) no-repeat center center; }
+a.profile {	background: url($xim_img_dir/user.png) no-repeat center center;  }
+a.contacts {	background: url($xim_img_dir/address-book.png) no-repeat center center; }
+a.playlist {	background: url($xim_img_dir/document-music-playlist.png) no-repeat center center; }
+a.videos {	background: url($xim_img_dir/film.png) no-repeat center center; }
+a.nomessages {	background: url($xim_img_dir/inbox.png) no-repeat center center; }
+a.messages {	background: url($xim_img_dir/inbox-document.png) no-repeat center center; }
 a.notifications {	background: url($xim_img_dir/sticky-note-pin.png) no-repeat center center; }
-a.editprofile{	background: url($xim_img_dir/user-edit.png) no-repeat center center; }
-a.admin{	background: url($xim_img_dir/wrench-screwdriver.png) no-repeat center center; }
-#footpanel a.chat{	
+a.editprofile {	background: url($xim_img_dir/user-edit.png) no-repeat center center; }
+a.admin {	background: url($xim_img_dir/wrench-screwdriver.png) no-repeat center center; }
+#footpanel a.chat {	
 	background: url($xim_img_dir/balloon.png) no-repeat 15px center;
 	width: 126px;
 	border-left: 1px solid #bbb;
@@ -87,7 +93,7 @@ a.admin{	background: url($xim_img_dir/wrench-screwdriver.png) no-repeat center c
 	padding-left: 40px;
 	text-indent: 0; /*--Reset text indent--*/
 }
-a.alerts{	background: url($xim_img_dir/newspaper.png) no-repeat center center;	 }
+a.alerts {	background: url($xim_img_dir/newspaper.png) no-repeat center center;	 }
 
 #footpanel li#chatpanel, #footpanel li#alertpanel {	float: right; }  /*--Right align the chat and alert panels--*/
 
@@ -101,7 +107,7 @@ a.alerts{	background: url($xim_img_dir/newspaper.png) no-repeat center center;	 
 	font-size: 1em;
 	text-indent: 0;
 }
-#footpanel a:hover small{
+#footpanel a:hover small {
 	display: block; /*--Show on hover--*/
 	position: absolute;
 	top: -35px; /*--Position tooltip 35px above the list item--*/
@@ -151,7 +157,7 @@ a.alerts{	background: url($xim_img_dir/newspaper.png) no-repeat center center;	 
 	width: 100%;
 	overflow: auto;
 }
-#footpanel .subpanel li{ 
+#footpanel .subpanel li { 
 	float: none; /*--Reset float--*/
 	display: block;
 	padding: 0; margin: 0;
@@ -180,7 +186,7 @@ position relative;
 margin: 0 10px 
 }
 
-#chatpanel .subpanel li a{
+#chatpanel .subpanel li a {
 	padding: 3px 0;	margin: 0;
 	line-height: 22px;
 	height: 22px;
@@ -199,7 +205,7 @@ margin: 0 10px
 	display: block;
 }
 #alertpanel .subpanel li p {padding: 5px 10px;}
-#alertpanel .subpanel li a.delete{
+#alertpanel .subpanel li a.delete {
 	background: url($xim_img_dir/delete_x.gif) no-repeat;
 	float: right;
 	width: 13px; height: 14px;
@@ -218,7 +224,7 @@ position:relative;
 left:37%;
 }
 
-.image{ width:25px; }
+.image { width:25px; }
 PANEL;
 
 header("Content-type: text/css"); 

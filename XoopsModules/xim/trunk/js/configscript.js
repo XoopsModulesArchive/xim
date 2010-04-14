@@ -38,7 +38,7 @@ alert('Please Give Valid Details');
 else
 {
 xoops_im("#flash").show();
-xoops_im("#flash").fadeIn(800).html('<img src="'+xim_url+'/images/ajaxloader.gif"/>Saved!');
+xoops_im("#flash").fadeIn(800).html('<img src="'+xim_url+'/images/ajaxloader.gif" alt=""/>Saved!');
 xoops_im.ajax({
 type: "POST",
 url: xim_url+"include/update_config.php",

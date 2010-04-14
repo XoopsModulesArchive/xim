@@ -1,15 +1,22 @@
-<span class="xim_configDiv_head"><img class="xim_img_info" src="<{$xoops_url}>/modules/xim/images/info.png"></img></span>
-		<span class="xim_configDiv_body">
-<{$block.config}>
-<div id="online_friends">
-    <ul>
-      <{foreach item=user from=$block.amigos}>
-	<li style="list-style-type:none;"><a href="javascript:void(0)" onclick="javascript:chatWith('<{$user.id}>','<{$user.nome}>')"><img src="<{$user.status}>" style="margin-bottom:-3px"><{$user.nome}></a></li>
-      <{/foreach}>
-    </ul>
-</div>
+<span class="xim_configDiv_head">
+	<img class="xim_img_info" src="<{$xoops_url}>/modules/xim/images/info.png" alt="Options" title="Options"></img>
+</span>
+<span class="xim_configDiv_body">
+	<{$block.config}>
+	<div id="online_friends">
+    	<ul>
+      		<{foreach item=user from=$block.amigos}>
+				<li style="list-style-type:none;">
+					<a href="javascript:void(0)" onclick="javascript:chatWith('<{$user.id}>','<{$user.nome}>')" title="<{$user.nome}>">
+						<img src="<{$user.status}>" style="margin-bottom:-3px" alt="<{$user.nome}>"><{$user.nome}>
+					</a>
+				</li>
+      		<{/foreach}>
+    	</ul>
+	</div>
+
 <script type="text/javascript">
-var refreshId = setInterval(function() {
-xoops_im('#online_friends').load(xim_url+'blocks/blockupdater.php');
-}, 5000);
+	var refreshId = setInterval(function() {
+	xoops_im('#online_friends').load(xim_url+'blocks/blockupdater.php');
+	}, 5000);
 </script>
