@@ -181,9 +181,9 @@ a.alerts {	background: url($xim_img_dir/newspaper.png) no-repeat center center;	
 }
 
 #chatpanel .subpanel .status { 
-float:right;
-position relative;
-margin: 0 10px 
+position:absolute;
+right:10px;
+margin: 0 10px;
 }
 
 #chatpanel .subpanel li a {
