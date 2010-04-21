@@ -87,7 +87,8 @@ function createChatBox(chatboxID,chatboxname,minimizeChatBox) {
 	.appendTo(xoops_im( "body" ));
 			   
 	xoops_im("#chatbox_"+chatboxID).css('bottom', '30px');
-	
+	xoops_im(".chatbox").easydrag();
+
 	chatBoxeslength = 0;
 
 	for (x in chatBoxes) {

@@ -5,10 +5,6 @@
 		</a>
 	</li>
 	<li>
-		<a class="logout" href="<{xoAppUrl /user.php op=logout}>" title="<{$smarty.const._LOGOUT}>" ><{$smarty.const._LOGOUT}>
-			<small><{$smarty.const._LOGOUT}></small>
-		</a>
-	<li>
 		<a href="<{xoAppUrl user.php}>" class="profile" title="<{$panel.profile}>"><{$panel.profile}>
 			<small><{$panel.profile}></small>
 		</a>
@@ -33,11 +29,19 @@
 		<a href="<{xoAppUrl notifications.php}>" class="notifications" title="<{$panel.notifications}>"> <{$panel.notifications}>
 			<small><{$panel.notifications}></small>
 		</a>
-		<{if $panel.is_admin==1}>
-			<a href="<{xoAppUrl admin.php}>" class="admin" title="<{$panel.admin}>"> <{$panel.admin}>
-				<small><{$panel.admin}></small>
-			</a> 
-		<{/if}>
+	</li>
+
+<{if $panel.is_admin==1}>
+	 <li>
+
+		<a href="<{xoAppUrl admin.php}>" class="admin" title="<{$panel.admin}>"> <{$panel.admin}>
+			<small><{$panel.admin}></small>
+		</a> 
+		
+	</li>
+<{/if}>
+	<li>
+		<a href="<{$xoops_url}>/user.php?op=logout" class="logout" title="<{$smarty.const._LOGOUT}>"> <{$smarty.const._LOGOUT}><small><{$smarty.const._LOGOUT}></small></a> 
 	</li>
    <!--     <li id="alertpanel">
         	<a href="#" class="alerts">Alerts</a>

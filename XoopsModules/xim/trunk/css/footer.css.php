@@ -60,14 +60,6 @@ html #footpanel ul li a.active { /*--Active state when subpanel is open--*/
 	position: relative;
 }
 
-#footpanel a.logout {	
-	background: url($xim_img_dir/logout.png) no-repeat 15px center;
-	width: 65px;
-	padding-left: 40px;
-	border-right: 1px solid #bbb;
-	text-indent: 0; /*--Reset text indent--*/
-}
-
 #footpanel a.home {	
 	background: url($xim_img_dir/home.png) no-repeat 15px center;
 	width: 50px;
@@ -85,6 +77,7 @@ a.messages {	background: url($xim_img_dir/inbox-document.png) no-repeat center c
 a.notifications {	background: url($xim_img_dir/sticky-note-pin.png) no-repeat center center; }
 a.editprofile {	background: url($xim_img_dir/user-edit.png) no-repeat center center; }
 a.admin {	background: url($xim_img_dir/wrench-screwdriver.png) no-repeat center center; }
+a.logout{	background: url($xim_img_dir/door-open-out.png) no-repeat center center; }
 #footpanel a.chat {	
 	background: url($xim_img_dir/balloon.png) no-repeat 15px center;
 	width: 126px;
@@ -104,7 +97,7 @@ a.alerts {	background: url($xim_img_dir/newspaper.png) no-repeat center center;	
 	padding: 5px 5px 11px;
 	display: none; /*--Hide by default--*/
 	color: #fff;
-	font-size: 1em;
+	font-size: 0.8em;
 	text-indent: 0;
 }
 #footpanel a:hover small {
@@ -181,9 +174,9 @@ a.alerts {	background: url($xim_img_dir/newspaper.png) no-repeat center center;	
 }
 
 #chatpanel .subpanel .status { 
-position:absolute;
-right:10px;
-margin: 0 10px;
+float:right;
+position relative;
+margin: 0 10px 
 }
 
 #chatpanel .subpanel li a {

@@ -51,6 +51,7 @@ SCRIPT;
 	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/configscript.js');
 	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/soundmanager2.js');
 	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/sm_default.js');
+	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/jquery.easydrag.js');
 	if ($showFooterBar!=0) {
 		$xoTheme->addStylesheet(XOOPS_URL.'/modules/xim/css/footer.css.php?style='.$footerBarStyle);
 	}
