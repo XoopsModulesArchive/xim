@@ -11,7 +11,7 @@ CREATE TABLE `xim_chat` (
 CREATE TABLE `xim_pers_conf` (
   `id` int(1) unsigned NOT NULL auto_increment,
   `username` text NOT NULL,
-  `sound` int(1) NOT NULL default '1',
+  `sound` int(1) NOT NULL default '8',
   `status` int(1) NOT NULL default '2',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
