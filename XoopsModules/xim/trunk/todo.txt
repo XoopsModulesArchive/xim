@@ -14,5 +14,5 @@ TODO: Mysql 4 & 5 compat. sql file					(?? 0%	done)
 TODO: Create buddylist 								(?? 0%  done)
 TODO: Send file through chat 						(?? 0%  done)
 TODO: Language defines to 'send at', 'writing..' 	(?? 0%  done)
-
+TODO: Work on drag 'n drop or other method			(?? 0%	done)
 
