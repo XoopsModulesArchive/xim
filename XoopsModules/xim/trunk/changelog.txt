@@ -7,6 +7,7 @@ Xoops Instant Messenger (XIM) Changelog
 - NEW: Added smilie and Xoops BBcode support (andrax)
 - NEW: Uploaded to /XoopsModules/xim/trunk as revision 4427 (culex)
 - BUG: Cleared up Jquery Conflict by renaming functions (Andrax)
+- BUG: Exchanged easydrag with jquery.event.drag-1.5.js as revision 4810 (culex)
 
 
 =================================
