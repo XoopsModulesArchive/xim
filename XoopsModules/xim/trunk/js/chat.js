@@ -87,7 +87,28 @@ function createChatBox(chatboxID,chatboxname,minimizeChatBox) {
 	.appendTo(xoops_im( "body" ));
 			   
 	xoops_im("#chatbox_"+chatboxID).css('bottom', '30px');
-	xoops_im(".chatbox").easydrag();
+	 //xoops_im(".chatbox").easydrag();
+	 xoops_im(".chatbox")
+        .bind('dragstart',function( event ){
+                if ( !xoops_im(event.target).is('.chatboxhead') ) return false;
+                return xoops_im( this ).css('opacity',.5)
+                        .clone().addClass('active')
+                        .insertAfter( this );
+                })
+        .bind('drag',function( event ){
+                xoops_im( event.dragProxy ).css({
+                        top: event.offsetY,
+                        left: event.offsetX
+                        });
+                })
+        .bind('dragend',function( event ){
+                xoops_im( event.dragProxy ).remove();
+                xoops_im( this ).animate({
+                        top: event.offsetY,
+                        left: event.offsetX,
+                        opacity: 1
+                        })
+                }); 
 
 	chatBoxeslength = 0;
 
