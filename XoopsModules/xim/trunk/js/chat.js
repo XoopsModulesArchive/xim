@@ -88,6 +88,9 @@ function createChatBox(chatboxID,chatboxname,minimizeChatBox) {
 			   
 	xoops_im("#chatbox_"+chatboxID).css('bottom', '30px');
 	 //xoops_im(".chatbox").easydrag();
+	 
+	 // jquery.event.drag-1.5.js solves the scroll area being disabled but not the proxy for being
+	 // forgotten when browsing.
 	 xoops_im(".chatbox")
         .bind('dragstart',function( event ){
                 if ( !xoops_im(event.target).is('.chatboxhead') ) return false;
