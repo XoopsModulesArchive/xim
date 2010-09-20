@@ -49,7 +49,6 @@ function restructureChatBoxes() {
 	align = 0;
 	for (x in chatBoxes) {
 		chatboxID = chatBoxes[x];
-
 		if (xoops_im("#chatbox_"+chatboxID).css('display') != 'none') {
 			if (align == 0) {
 				xoops_im("#chatbox_"+chatboxID).css('right', '20px');
@@ -85,8 +84,17 @@ function createChatBox(chatboxID,chatboxname,minimizeChatBox) {
 	.addClass("chatbox")
 	.html('<div class="chatboxhead"><div class="chatboxtitle">'+chatboxname+'</div><div class="chatboxoptions"><a href="javascript:void(0)" onclick="javascript:toggleChatBoxGrowth(\''+chatboxID+'\')" title="Mini">-</a> <a href="javascript:void(0)" onclick="javascript:closeChatBox(\''+chatboxID+'\')" title="Close">X</a></div><br clear="all"/></div><div class="chatboxcontent"></div><div class="chatboxinput"><textarea class="chatboxtextarea" onkeydown="javascript:return checkChatBoxInputKey(event,this,\''+chatboxID+'\');"></textarea></div>')
 	.appendTo(xoops_im( "body" ));
-			   
 	xoops_im("#chatbox_"+chatboxID).css('bottom', '30px');
+
+	// Using cookie to keep position of chatboxes /culex 
+	var left = xoops_im.cookie("posLeft_"+chatboxID);
+	if (left != null) {
+		xoops_im("#chatbox_"+chatboxID).css("left",left+"px");
+		}
+	var top = xoops_im.cookie("posBottom_"+chatboxID);
+	if (top != null) {
+		xoops_im("#chatbox_"+chatboxID).css("top",top+"px");
+	}
 	 //xoops_im(".chatbox").easydrag();
 	 
 	 // jquery.event.drag-1.5.js solves the scroll area being disabled but not the proxy for being
@@ -105,7 +113,10 @@ function createChatBox(chatboxID,chatboxname,minimizeChatBox) {
                         });
                 })
         .bind('dragend',function( event ){
-                xoops_im( event.dragProxy ).remove();
+				// Cookie to remember position of drag 'n drop (Culex)
+				xoops_im.cookie("posLeft_"+chatboxID, event.offsetX);
+				xoops_im.cookie("posBottom_"+chatboxID, event.offsetY); 
+				xoops_im( event.dragProxy ).remove();
                 xoops_im( this ).animate({
                         top: event.offsetY,
                         left: event.offsetX,
@@ -166,7 +177,6 @@ function createChatBox(chatboxID,chatboxname,minimizeChatBox) {
 			xoops_im("#chatbox_"+chatboxID+" .chatboxtextarea").focus();
 		}
 	});
-
 	xoops_im("#chatbox_"+chatboxID).show();
 }
 
@@ -285,7 +295,6 @@ function closeChatBox(chatboxID) {
 
 	xoops_im.post(xim_url+"chat.php?action=closechat", { chatbox: chatboxID} , function(data){	
 	});
-
 }
 
 function toggleChatBoxGrowth(chatboxID) {
@@ -376,14 +385,12 @@ function startChatSession(){
 	  cache: false,
 	  dataType: "json",
 	  success: function(data) {
- 
 		username = data.username;
 		userAvatar = data.avatar;
 		xoops_im.each(data.items, function(i,item){
 			if (item)	{ // fix strange ie bug
 
 				chatboxID = item.f;
-
 				if (xoops_im("#chatbox_"+chatboxID).length <= 0) {
 					createChatBox(chatboxID,item.n);
 				}
