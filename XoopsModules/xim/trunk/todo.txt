@@ -9,10 +9,13 @@ DONE: Add sounds to chat							(Culex)
 DONE: Add status display + configs					(Culex)
 DONE: Create footerbar like facebook 				(Andrax)
 DONE: " im" is replaced by "" in chats, jquery rn ?	(Culex)
+DONE: Work on drag 'n drop + cookie to kee position (Culex & Andrax)
+DONE: Mysql 4 & 5 compat. sql file					(Culex & Andrax)
 
-TODO: Mysql 4 & 5 compat. sql file					(?? 0%	done)
-TODO: Create buddylist 								(?? 0%  done)
-TODO: Send file through chat 						(?? 0%  done)
-TODO: Language defines to 'send at', 'writing..' 	(?? 0%  done)
-TODO: Work on drag 'n drop or other method			(?? 0%	done)
+TODO: Create buddylist 												(?? 0%  done)
+TODO: Send file through chat 										(?? 0%  done)
+TODO: Language defines to 'send at', 'writing..' 					(?? 0%  done)
+TODO: making hidden status available + no sound when busy 			(?? 0%  done)
+TODO: Clean up some minor css problems (long names and footerbar) 	(?? 0%  done)
+
 
