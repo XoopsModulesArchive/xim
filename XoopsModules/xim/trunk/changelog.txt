@@ -1,5 +1,11 @@
 Xoops Instant Messenger (XIM) Changelog
 
+
+=================================
+13/02/2010: Version 0.0.4
+=================================
+- BUG: Cleared the cookie problem with chatwindows not keeping position when browsing or refreshing page as revision: 5357 (culex)
+
 =================================
 13/02/2010: Version 0.0.3
 =================================
