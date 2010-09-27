@@ -17,6 +17,7 @@ define("_MB_XIM_HIDDEN","Away");
 define("_MB_XIM_BUSY","busy"); 
 define("_MB_XIM_ONLINE","Online"); 
 define("_MB_XIM_UPDATE","Update"); 
+define("_MB_XIM_OFFLINE","Offline");
 
 
 ?>
