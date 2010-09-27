@@ -87,10 +87,12 @@ function b_instantmessenger() {
 					 if ($status == '0') {$image = XOOPS_URL."/modules/xim/images/Absent-blue16.png";}
 					 if ($status == '1') {$image = XOOPS_URL."/modules/xim/images/busy-blue16.png";}
 					 if ($status == '2') {$image = XOOPS_URL."/modules/xim/images/messenger-blue16.png";}
+					 if ($status == '3') {$image = XOOPS_URL."/modules/xim/images/blank.png";}
 				} else {
 					 if ($status == '0') {$image = XOOPS_URL."/modules/xim/images/na.png";}
 					 if ($status == '1') {$image = XOOPS_URL."/modules/xim/images/busy.png";}
 					 if ($status == '2') {$image = XOOPS_URL."/modules/xim/images/online.png";}
+					 if ($status == '3') {$image = XOOPS_URL."/modules/xim/images/blank.png";}
 				  }
 				 $block['amigos'][] = array('id'=> $onlines[$i]['online_uid'], 'nome' => $onlines[$i]['online_uname'], 'status' => $image);	
 				// print_r($block);
@@ -118,6 +120,7 @@ function b_instantmessenger() {
 			<option value='0'>"._MB_XIM_HIDDEN."</option>
 			<option value='1'>"._MB_XIM_BUSY."</option>
 			<option value='2'>"._MB_XIM_ONLINE."</option>
+			<option value='3'>"._MB_XIM_OFFLINE."</option>
 		</select>
 		<br /><br />
 		<div style='text-align:center;'>
