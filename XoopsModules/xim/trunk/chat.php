@@ -84,7 +84,12 @@ function chatHeartbeat() {
 		if ($config['sound'] == '8') {$soundUrl = XOOPS_URL.'/modules/xim/media/8.mp3';}
 		if ($config['sound'] == '9') {$soundUrl = XOOPS_URL.'/modules/xim/media/9.mp3';}
 		if ($config['sound'] == '10') {$soundUrl = XOOPS_URL.'/modules/xim/media/10.mp3';}
-	
+		
+		// check status to mute un-mute sound
+		if ($config['status'] == '0') {$soundUrl = XOOPS_URL.'/modules/xim/media/0.mp3';}
+		if ($config['status'] == '1') {$soundUrl = XOOPS_URL.'/modules/xim/media/0.mp3';}
+		if ($config['status'] == '3') {$soundUrl = XOOPS_URL.'/modules/xim/media/0.mp3';}
+		
         $items .= <<<EOD
 {"s":"0","n":"{$uname}","a":"$avatarURL","f":"{$chat['from']}","m":"{$chat['message']}","q":"$soundUrl","p":"$status"},
 
@@ -109,7 +114,7 @@ EOD;
                 $now = time()-strtotime($time);
                 $time = date('g:iA M dS', strtotime($time));
                 
-                $message = "Sent at $time";
+                $message = _XIM_SENTATTIME." $time";
                 if ($now > 180) {
                     $items .= <<<EOD
 {"s":"2","f":"$chatbox","m":"{$message}"},
@@ -189,10 +194,14 @@ function sendChat() {
     global $xoopsDB, $xoopsUser;
 	$from = $_SESSION['xoopsUserId'];
     $to = $_POST['to'];
+	xoops_xim_checkStatus ($to, $from);
     $message = $_POST['message'];
     $user = new XoopsUser($from);
     $uname = $user->uname();
 	$avatar =$user->user_avatar();
+	
+	
+	
 	if ($avatar!='blank.gif') {
 	    $avatarURL = XOOPS_URL."/uploads/".$avatar;
 	} else {
@@ -203,7 +212,7 @@ function sendChat() {
 	$config = im_Getconfig($user);
 	$soundUrl = XOOPS_URL.'/modules/xim/media/0.mp3';
 	$status = $config['status'];
-    
+	
     $messagesan = sanitize($message);
     header('Content-type: application/json');
     echo '{"message":"'.$messagesan.'"}'; 
@@ -219,9 +228,9 @@ EOD;
     unset($_SESSION['tsChatBoxes'][$_POST['to']]);
     
     $sql = "insert into ".$xoopsDB->prefix(xim_chat)." (".$xoopsDB->prefix(xim_chat).".from,".$xoopsDB->prefix(xim_chat).".to,message,sent) values ('".mysql_real_escape_string($from)."', '".mysql_real_escape_string($to)."','".mysql_real_escape_string($message)."',NOW())";
-    $query = $xoopsDB->query($sql);
+    $query = $xoopsDB->queryF($sql);
     //echo "1";
-    exit(0);
+	exit(0);
 }
 
 function closeChat() {
@@ -230,6 +239,44 @@ function closeChat() {
     
     echo "1";
     exit(0);
+}
+
+function xoops_xim_checkStatus ($to, $from) {
+	global $xoopsDB, $XoopsUser;
+	$user_to = new XoopsUser($to);
+	$user_from = new XoopsUser($from);
+	
+	$recieverName = $user_to->uname();
+	$senderName = $user_from->uname();
+	
+	$sql = "SELECT * FROM ".$xoopsDB->prefix('xim_pers_conf')." WHERE username = '".$recieverName."'";
+	$result = $xoopsDB->query($sql);
+	 while ($myrow=$xoopsDB->fetchArray($result)) {
+		$id = $myrow['id'];
+		$username = $myrow['username'];
+		$status = $myrow['status'];
+		$sound = $myrow['sound'];
+	 }
+	 
+	 if ($status == '0') {
+		// User is away
+		$sysmessage = _XIM_SYSTEM_AWAY;
+		 $sql = "insert into ".$xoopsDB->prefix(xim_chat)." (".$xoopsDB->prefix(xim_chat).".from,".$xoopsDB->prefix(xim_chat).".to,message,sent) values ('".mysql_real_escape_string($to)."', '".mysql_real_escape_string($from)."','".mysql_real_escape_string($sysmessage)."',NOW())";
+		 $query = $xoopsDB->queryF($sql);
+	 }
+	 if ($status == '1') {
+		// User is busy
+		$sysmessage = _XIM_SYSTEM_BUSY;
+		 $sql = "insert into ".$xoopsDB->prefix(xim_chat)." (".$xoopsDB->prefix(xim_chat).".from,".$xoopsDB->prefix(xim_chat).".to,message,sent) values ('".mysql_real_escape_string($to)."', '".mysql_real_escape_string($from)."','".mysql_real_escape_string($sysmessage)."',NOW())";
+		 $query = $xoopsDB->queryF($sql);
+	 }
+	 if ($status == '3') {
+		// User is offline
+		$sysmessage = _XIM_SYSTEM_OFFLINE;
+		 $sql = "insert into ".$xoopsDB->prefix(xim_chat)." (".$xoopsDB->prefix(xim_chat).".from,".$xoopsDB->prefix(xim_chat).".to,message,sent) values ('".mysql_real_escape_string($to)."', '".mysql_real_escape_string($from)."','".mysql_real_escape_string($sysmessage)."',NOW())";
+		 $query = $xoopsDB->queryF($sql);
+	 }
+	 //return $sysmessage;
 }
 
 function sanitize($text) {
