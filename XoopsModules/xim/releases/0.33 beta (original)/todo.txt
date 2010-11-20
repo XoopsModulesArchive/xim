@@ -1,0 +1,21 @@
+				Xoops Instant Messenger (XIM) TODO list
+				----------------------------------------
+DONE: Merge xim and instant messenger to one. 		(andrax)
+DONE: Add link to info from chatname 				(culex)
+DONE: Clear Jquery conflicts						(Andrax)
+DONE: Smilie & Xoops BBcode							(Andrax)
+DONE: Show avatar in chat							(Andrax)
+DONE: Add sounds to chat							(Culex)
+DONE: Add status display + configs					(Culex)
+DONE: Create footerbar like facebook 				(Andrax)
+DONE: " im" is replaced by "" in chats, jquery rn ?	(Culex)
+DONE: Work on drag 'n drop + cookie to kee position (Culex & Andrax)
+DONE: Mysql 4 & 5 compat. sql file					(Culex & Andrax)
+
+TODO: Create buddylist 												(?? 0%  done)
+TODO: Send file through chat 										(?? 0%  done)
+TODO: Language defines to 'send at', 'writing..' 					(?? 0%  done)
+TODO: making hidden status available + no sound when busy 			(?? 0%  done)
+TODO: Clean up some minor css problems (long names and footerbar) 	(?? 0%  done)
+
+
