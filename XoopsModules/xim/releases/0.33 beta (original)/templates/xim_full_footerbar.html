@@ -1,0 +1,92 @@
+<ul id="mainpanel">
+	<li>
+		<a href="<{xoAppUrl }>" class="home" title="<{$panel.home}>"><{$panel.home}>
+			<small><{$panel.home}></small>
+		</a>
+	</li>
+	<li>
+		<a href="<{xoAppUrl user.php}>" class="profile" title="<{$panel.profile}>"><{$panel.profile}>
+			<small><{$panel.profile}></small>
+		</a>
+	</li>
+	<li>
+		<a href="<{xoAppUrl edituser.php}>" class="editprofile" title="<{$panel.editprofile}>"> <{$panel.editprofile}>
+			<small><{$panel.editprofile}></small>
+		</a>
+	</li>
+	<li>
+		<{if $panel.new_messages > 0}>
+			<a class="messages" href="<{xoAppUrl viewpmsg.php}>" title="<{$panel.inbox}>"><{$panel.inbox}> 
+				<small><{$panel.inbox}> (<span style="color:#ff0000; font-weight: bold;"><{$panel.new_messages}></span>)</small>
+			</a>
+		<{else}>
+			<a class="nomessages" href="<{xoAppUrl viewpmsg.php}>" title="<{$panel.inbox}>"><{$panel.inbox}>
+				<small><{$panel.inbox}></small>
+			</a>
+		<{/if}>    
+	</li>
+	<li>
+		<a href="<{xoAppUrl notifications.php}>" class="notifications" title="<{$panel.notifications}>"> <{$panel.notifications}>
+			<small><{$panel.notifications}></small>
+		</a>
+	</li>
+
+<{if $panel.is_admin==1}>
+	 <li>
+
+		<a href="<{xoAppUrl admin.php}>" class="admin" title="<{$panel.admin}>"> <{$panel.admin}>
+			<small><{$panel.admin}></small>
+		</a> 
+		
+	</li>
+<{/if}>
+	<li>
+		<a href="<{$xoops_url}>/user.php?op=logout" class="logout" title="<{$smarty.const._LOGOUT}>"> <{$smarty.const._LOGOUT}><small><{$smarty.const._LOGOUT}></small></a> 
+	</li>
+   <!--     <li id="alertpanel">
+        	<a href="#" class="alerts">Alerts</a>
+            <div style="height: auto; display: none;" class="subpanel">
+            <h3><span> &#8211; </span>Notifications</h3>
+            <ul style="height: auto;">
+            	<li class="view"><a class="" href="#">View All</a></li>
+            	<li><a href="#" class="delete">X</a><p><a class="" href="#">Antehabeo</a> abico quod duis odio tation luctus eu ad <a class="" href="#">lobortis facilisis</a>.</p></li>
+                <li><a href="#" class="delete">X</a><p><a class="" href="#">Et voco </a> Duis vel quis at metuo obruo, turpis quadrum nostrud <a class="" href="#">lobortis facilisis</a>.</p></li>
+                <li><a href="#" class="delete">X</a><p><a class="" href="#">Tego</a> nulla eum probo metuo nullus indoles os consequat commoveo os<a class="" href="#">lobortis facilisis</a>.</p></li>
+                <li><a href="#" class="delete">X</a><p><a class="" href="#">Antehabeo</a> abico quod duis odio tation luctus eu ad <a class="" href="#">lobortis facilisis</a>.</p></li>
+                <li><a href="#" class="delete">X</a><p><a class="" href="#">Nonummy</a> nulla eum probo metuo nullus indoles os consequat commoveo <a class="" href="#">lobortis facilisis</a>.</p></li>
+                <li><a href="#" class="delete">X</a><p><a class="" href="#">Tego</a> minim autem aptent et jumentum metuo uxor nibh euismod si <a class="" href="#">lobortis facilisis</a>.</p></li>
+                <li><a href="#" class="delete">X</a><p><a class="" href="#">Antehabeo</a> abico quod duis odio tation luctus eu ad <a class="" href="#">lobortis facilisis</a>.</p></li>
+            </ul>
+            </div>
+        </li> -->
+	<li id="chatpanel">
+		<a href="#" class="chat" title="<{$panel.lang_friends}>"><{$panel.lang_friends}>(<span id="total"></span>)</a>
+		<div style="height: 486px; display: none;" class="subpanel">
+			<h3><span> &#8211; </span><{$panel.lang_friends_online}><img class="xim_img_info" src="<{xoAppUrl modules/xim/images/info.png}>" alt="Options" title="Options"/></h3>
+			<div id="xim_configDiv">
+				<span class="xim_configDiv_body">
+					<form method="post" id="config" action=''><{$panel.config_sound}>
+						<select name="sound">
+							<{foreach key=key item=item from=$panel.sound_options}>
+								<option value="<{$key}>"><{$item}></option>
+							<{/foreach}>
+						</select>
+						<br /><br />
+						<{$panel.config_status}>
+						<select name="status">
+							<{foreach key=key item=item from=$panel.status_options}>
+								<option value="<{$key}>"><{$item}></option>
+							<{/foreach}>
+						</select>
+						<br /><br />
+						<div style="text-align: center;">
+							<input type="submit" value="<{$panel.config_save}>" name="submit" class="update_button" title="<{$panel.config_save}>"/>
+						</div>
+					</form>
+				</span>
+				<div id="flash"></div>
+			</div>
+			<ul id="userlist" style="height: 461px;"></ul>
+		</div>
+	</li>
+</ul>
