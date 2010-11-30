@@ -90,6 +90,12 @@ define('_AM_XIM_UPDATE_SERVER_FILE','Du kan downloade den nye udgave her');
 define('_AM_XIM_UPDATE_YOUHAVENEWESTVERSION','Du har allerede den nyeste udgave af Xim');
 define('_AM_XIM_HELP','Hjælp');
 
+// Send to all
+define('_AM_XIM_POSTTOALL_TITLE','Send din besked');
+define('_AM_XIM_POSTTOALL_DESC','Send besked til alle som bruger XIM');
+define('_AM_XIM_POSTTOALL_COUNT','Besked (Tegn ');
+define('_AM_XIM_POSTTOALL_SUBMIT','Send');
+
 //Help section
 
 define('_AM_XIM_HELP_ABOUT','Om Xim');
