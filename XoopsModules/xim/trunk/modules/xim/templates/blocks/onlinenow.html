@@ -1,0 +1,18 @@
+﻿		<{if $block.set >= 1}>
+		<ul>
+			<{foreach item=user from=$block.amigos}>
+				<li style="text-align:left;list-style-type:none;">
+					<a href="javascript:void(0)" onclick="javascript:chatWith('<{$user.id}>','<{$user.nome}>')" title="<{$user.nome}>">
+						<img src="<{$user.status}>" style="margin-bottom:-3px" title="<{$user.nome}>" /> <{$user.nome}>
+					</a>
+				</li>
+      		<{/foreach}>
+		</ul>
+			<{/if}>
+			<{if $block.set < 1}>
+			<ul>
+				<li style="text-align:center;list-style-type:none;font-weight:bold;">
+				<{$block.onlyyou}>
+				</li>
+			</ul>
+			<{/if}>
