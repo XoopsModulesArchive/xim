@@ -109,6 +109,12 @@ $admindropdown = $admin->DoDropDown();
 	$xoopsTpl->assign('lang_db_old',_AM_XIM_DBHASOLDPOSTS);
 	$xoopsTpl->assign('lang_help',_AM_XIM_HELP);
 	
+	// Post to all message
+	$xoopsTpl->assign('lang_adminposttoallmessage',_AM_XIM_POSTTOALL_TITLE);
+	$xoopsTpl->assign('lang_adminposttoallmessagedesc',_AM_XIM_POSTTOALL_DESC);
+	$xoopsTpl->assign('lang_posttoallcount',_AM_XIM_POSTTOALL_COUNT);
+	$xoopsTpl->assign('lang_posttoallsubmit',_AM_XIM_POSTTOALL_SUBMIT);
+	
 	// help file from admin
 	$xoopsTpl->assign('lang_hlp_about',_AM_XIM_HELP_ABOUT);
 	$xoopsTpl->assign('lang_hlp_preface',_AM_XIM_HELP_PREFACE);
@@ -150,12 +156,14 @@ $admindropdown = $admin->DoDropDown();
 	$xoopsTpl->display('db:xim_admin.html');
 	
 	global $xoTheme; 
+	
 	$xoTheme->addStyleSheet('modules/xim/css/ximAdmin.css');
 	$xoTheme->addScript(XOOPS_URL . '/browse.php?Frameworks/jquery/jquery.js');
 	$xoTheme->addScript(XOOPS_URL . '/browse.php?Frameworks/jquery/plugins/jquery.ui.js');
 	$xoTheme->addScript(XOOPS_URL . '/browse.php?Frameworks/jquery/plugins/jquery.form.js');
 	$xoTheme->addScript('modules/xim/js/xim_tabs.js');
 	$xoTheme->addScript('modules/xim/js/adminddselector.js');
+	$xoTheme->addScript(XOOPS_URL . '/modules/xim/js/jquery.form.js');
 	
 xoops_cp_footer();
 ?>
