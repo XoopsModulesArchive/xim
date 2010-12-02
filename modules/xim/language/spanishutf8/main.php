@@ -20,7 +20,7 @@
 * @since           2.4.0
 * @author          Andrax - homepage.: http://guxbrasil.org & email.: lcbc@ig.com.br
 * @author          Culex  - homepage.: http://culex.dk		& email.: culex@culex.dk
-* Spanish Translation  Oswaldo Valladres - http://www.xoopsdemo.tk
+* Spanish Translation  Oswaldo Valladares - http://www.xoopsdemo.tk
 **/
 
 // added v0.4
