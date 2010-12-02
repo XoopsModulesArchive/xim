@@ -20,7 +20,7 @@
 * @since           2.4.0
 * @author          Andrax - homepage.: http://guxbrasil.org & email.: lcbc@ig.com.br
 * @author          Culex  - homepage.: http://culex.dk		& email.: culex@culex.dk
-* Spanish Translation  Oswaldo Valladres - http://www.xoopsdemo.tk
+* Spanish Translation  Oswaldo Valladares - http://www.xoopsdemo.tk
 **/
 
 
@@ -56,6 +56,12 @@ define('_AM_XIM_LASTADMINMESSAGE_WASREAD', 'El último mensaje del administrador 
 define('_AM_XIM_LASTADMINMESSAGE_USERS', 'usuarios');
 define('_AM_XIM_NOADMINMESSAGEYET', 'No has enviado ningún mensaje de administración para todos los usuarios todavía ;-)');
 define('_AM_XIM_NOADMINMESSAGEYET_DATE', 'øøøhh!');
+
+// Send to all
+define('_AM_XIM_POSTTOALL_TITLE','Envíe su Mensaje');
+define('_AM_XIM_POSTTOALL_DESC','Envie un mensaje a todos los miembros usando XIM');
+define('_AM_XIM_POSTTOALL_COUNT','Mensaje (Caracteres ');
+define('_AM_XIM_POSTTOALL_SUBMIT','Enviar');
 
 // tab three in admin section
 define('_AM_XIM_LOGS_TITLE', 'Información de Registros');
