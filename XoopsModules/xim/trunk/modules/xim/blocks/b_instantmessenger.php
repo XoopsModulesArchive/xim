@@ -33,6 +33,7 @@ function b_instantmessenger() {
 	$xoopsLogger->activated = false;
 	$online_handler =& xoops_gethandler('online');
     mt_srand((double)microtime()*1000000);
+	$block = array();
     // set gc probabillity to 10% for now..
     if (mt_rand(1, 100) < 11) {
         $online_handler->gc(300);
@@ -48,7 +49,6 @@ function b_instantmessenger() {
         $uname = '';
     }
 
-    $block = array();
 	$lang = xim_GetModuleOption('language');
 	if (!defined('_MB_XIM_ONLYYOU')) { 
 		  
