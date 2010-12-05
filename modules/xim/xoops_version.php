@@ -27,7 +27,7 @@ if (!defined('XOOPS_ROOT_PATH')) {
 }
 $modversion['dirname'] = basename(dirname(__FILE__));
 $modversion['name'] = _MI_XIM_MODULE_NAME;
-$modversion['version'] = 0.991;
+$modversion['version'] = 1.00;
 $modversion['description'] = _MI_XIM_MODULE_DESC;
 $modversion['author'] = "Andrax & Culex";
 $modversion['credits'] = _XIM_CREDIT;
