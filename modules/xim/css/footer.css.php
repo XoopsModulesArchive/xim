@@ -204,7 +204,8 @@ margin: 0 10px
 }
 
 #chatpanel .subpanel li a {
-	padding: 3px 0;	margin: 0;
+	padding: 3px 0;	
+	margin: 0;
 	line-height: 22px;
 	height: 22px;
 	background: #fff;
@@ -236,10 +237,10 @@ margin: 0 10px
 	padding: 5px 10px 5px 0;
 }
 
-#chatpanel .xim_img_info {
+/* #chatpanel .xim_img_info {
 position:relative;
 left:37%;
-}
+} */
 
 .image { width:25px; }
 PANEL;
