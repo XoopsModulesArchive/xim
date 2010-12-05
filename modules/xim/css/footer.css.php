@@ -151,7 +151,7 @@ a.alerts {	background: url($xim_img_dir/newspaper.png) no-repeat center center;	
 	width: 198px;
 	border: 1px solid #555;
 	background: #fff;
-	overflow: hidden;
+	//overflow: hidden;
 	padding-bottom: 2px;
 }
 #footpanel h3 {
