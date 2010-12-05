@@ -65,7 +65,14 @@ $xoopsLogger->activated = false;
 		} else {
 			$avatarURL = XOOPS_URL."/modules/xim/images/default_avatar.png";
 		}
-
+		
+		// testing if avatar really exists physically on server
+		if (file_exists("../../uploads/".$avatar)) {
+		} else {
+			$avatarURL = XOOPS_URL."/modules/xim/images/default_avatar.png";
+		}
+		
+		
 		$config = im_Getconfig($onlines[$i]['online_uname']);
 		$status = $config['status'];
 		$userid=$onlines[$i]['online_uid'];
