@@ -108,6 +108,10 @@ $admindropdown = $admin->DoDropDown();
 	$xoopsTpl->assign('lang_db_posts',_AM_XIM_DBHASPOSTS);
 	$xoopsTpl->assign('lang_db_old',_AM_XIM_DBHASOLDPOSTS);
 	$xoopsTpl->assign('lang_help',_AM_XIM_HELP);
+	$xoopsTpl->assign('lang_prefs',_MI_SYSTEM_ADMENU6);
+	$xoopsTpl->assign('lang_prefslink',"<a href='../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod="
+		.$xoopsModule ->getVar('mid')."'>"._MI_SYSTEM_ADMENU6."</a>");
+
 	
 	// Post to all message
 	$xoopsTpl->assign('lang_adminposttoallmessage',_AM_XIM_POSTTOALL_TITLE);

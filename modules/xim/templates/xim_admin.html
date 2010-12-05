@@ -5,6 +5,7 @@
 	<li><a href="#ximadmin_tab3" title="<{$lang_adminmessagesend}>"><{$lang_adminmessagesend}></a></li>
 	<li><a href="#ximadmin_tab4" title="<{$lang_logsmaintnance}>"><{$lang_logsmaintnance}></a></li>
 	<li><a href="#ximadmin_tab5" title="<{$lang_help}>"><{$lang_help}></a></li>
+	<li><a href="#ximadmin_tab6" title="<{$lang_prefs}>"><{$lang_prefs}></a></li>
 </ul>
 
 <div class="ximadmin_tab_container">
@@ -61,11 +62,11 @@
 			<p class="ximadmin">
 				<div id="ximAdminForm" class="ximForm">
 					<form id="ximFrm" name="ximFrm" action="javascript:void(0);" method="post">
-						<h1>Post your message</h1>
-						<p id="xim_admin_error">Send message to all members using Xim</p>
-						<label>Message (Character count: <span id="xim_admin_count">0</span>)</label>
+						<h1><{$lang_adminposttoallmessage}></h1>
+						<p id="xim_admin_error"><{$lang_adminposttoallmessagedesc}></p>
+						<label><{$lang_posttoallcount}><span id="xim_admin_count">0</span>)</label>
 						<textarea name="xim_admin_message" id="xim_admin_message"></textarea>
-						<button type="submit" class="xim_admin_button">Submit</button>
+						<button type="submit" class="xim_admin_button"><{$lang_posttoallsubmit}></button>
 						<div class="ximAdminSpacer"></div>
 					</form>
 				</div>
@@ -134,4 +135,11 @@
 		</fieldset>
 	</div>
 </div>
+
+	<div id="ximadmin_tab6" class="ximadmin_tab_content">
+		<fieldset>
+			<legend class="ximadmin_legend"><{$lang_prefs}></legend> 
+			<p class="ximadmin"><{$lang_prefslink}></p>
+		</fieldset>
+	</div>
 <!-- end XIM Admin -->
