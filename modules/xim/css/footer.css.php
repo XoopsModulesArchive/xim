@@ -148,7 +148,7 @@ a.alerts {	background: url($xim_img_dir/newspaper.png) no-repeat center center;	
 	position: absolute;
 	left: 0; bottom: 27px;
 	display: none;	/*--Hide by default--*/
-	width: 198px;
+	width: 100%;
 	border: 1px solid #555;
 	background: #fff;
 	//overflow: hidden;
