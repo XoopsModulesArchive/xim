@@ -26,7 +26,7 @@ defined('XOOPS_ROOT_PATH') or die('Restricted access');
 class XimCorePreload extends XoopsPreloadItem{
 
     function eventCoreHeaderAddmeta(){
-	global $xoTheme;
+	global $xoTheme,$xoopsUser;
 // 	$style = 0;
 	$module_handler =& xoops_gethandler('module');
 	$module = $module_handler->getByDirname('xim');
@@ -108,11 +108,11 @@ SCRIPT;
 	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/soundmanager2.js');
 	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/sm_default.js');
 
-
-	if ($showFooterBar!=0) {
-		$xoTheme->addStylesheet(XOOPS_URL.'/modules/xim/css/footer.css.php?style='.$footerBarStyle);
+	if ($xoopsUser) {
+		if ($showFooterBar!=0) {
+			$xoTheme->addStylesheet(XOOPS_URL.'/modules/xim/css/footer.css.php?style='.$footerBarStyle);
+		}
+		}
 	}
-    }
-
 }
 ?>
