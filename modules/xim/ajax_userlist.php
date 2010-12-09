@@ -28,7 +28,7 @@ global $xoopsLogger;
 $xoopsLogger->activated = false;
 
     global $xoopsUser, $xoopsModule;
-//$xoopsLogger->activated = false;
+	$xoopsLogger->activated = false;
 	$online_handler =& xoops_gethandler('online');
     mt_srand((double)microtime()*1000000);
     // set gc probabillity to 10% for now..
