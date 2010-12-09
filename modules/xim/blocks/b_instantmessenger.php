@@ -29,7 +29,7 @@
 function b_instantmessenger() {
     include XOOPS_ROOT_PATH.'/class/xoopsformloader.php';
     require_once XOOPS_ROOT_PATH.'/modules/xim/include/functions.php';
-	global $xoopsUser, $xoopsModule,$xoopsTpl;
+	global $xoopsUser, $xoopsModule,$xoopsTpl,$xoopsConfig;
 	$xoopsLogger->activated = false;
 	$online_handler =& xoops_gethandler('online');
     mt_srand((double)microtime()*1000000);
@@ -49,7 +49,7 @@ function b_instantmessenger() {
         $uname = '';
     }
 
-	$lang = xim_GetModuleOption('language');
+	$lang = $xoopsConfig['language'];
 	if (!defined('_MB_XIM_ONLYYOU')) { 
 		  
 	// chek if language defines from jquery call is properly defined. If not include them
