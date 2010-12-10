@@ -26,7 +26,9 @@
 	var xim_RandNumGenerate = Math.floor(Math.random()*101);
 	// make last know config selected:selected (culex)
 	xoops_im("select[name=sound] option[value=<{$block.my_sound}>]").attr("selected", true);
+	xoops_im("select[name=sound]").val('<{$block.my_sound}>');
 	xoops_im("select[name=status] option[value=<{$block.my_status}>]").attr("selected", true);
+	xoops_im("select[name=status]").val('<{$block.my_status}>');
 	var refreshId = setInterval(function() {
 	xoops_im('#online_friends').load(xim_url+'blocks/blockupdater.php?chk='+xim_RandNumGenerate);
 	xoops_im('#online_friends').show();
