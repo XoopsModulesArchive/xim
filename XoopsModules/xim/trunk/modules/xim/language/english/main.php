@@ -57,7 +57,7 @@ define("_XIM_SYSTEM_OFFLINE","[color=990000][size=small]I'm OFFLINE.\nMessage wi
 define("_XIM_SYSTEMNAME", "System");
 
 /*define("_XIM_USER_SEARCH",'Search users');
-define("_XIM_SEARCH",'Serach');*/
+define("_XIM_SEARCH",'Search');*/
 
 
 ?> 
