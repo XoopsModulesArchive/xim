@@ -411,7 +411,10 @@
       container.attr("t",container.css("top"));
       container.attr("l",container.css("left"));
       container.resizable("disable");
-      var l=0;
+      // Culex hack otherwise error in IE with footerbar and iconized chats
+	  var l=0;
+	  $('myelement').css({top: '', left: ''}); 
+	  $("#"+container.attr("dock")).offset.left = 0;
       var t= container.css("top");
       var dockPlace= container;
       if (container.attr("dock")){
