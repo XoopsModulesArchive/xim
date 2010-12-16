@@ -324,7 +324,11 @@ function startChatSession(){
 			if (item)	{ // fix strange ie bug
 				chatboxID = item.f;
 				if (xoops_im("#MBchatbox_"+chatboxID).length <= 0) {
+				
+				// Strange Opera, IE error gives wrong title, FF ignores error	
+				 if (item.s <= 0) {
 					createChatBox(chatboxID,item.n);
+				 }
 				}
 				if (item.s == 1) {
 					item.f = username;
