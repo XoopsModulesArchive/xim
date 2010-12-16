@@ -158,8 +158,7 @@ EOD;
         $items = substr($items, 0, -1);
     }
     header('Content-type: application/json');
-    echo "{\"items\":[
-$items]}";
+    echo "{\"items\":[$items]}";
     exit(0);
 }
 
