@@ -411,17 +411,17 @@
       container.attr("t",container.css("top"));
       container.attr("l",container.css("left"));
       container.resizable("disable");
-	  // culex (changed repeatetly offset.left() to syntax offsetLeft and offsetTop)
+      // Culex hack otherwise error in IE with footerbar and iconized chats
 	  var l=0;
-	  $("#"+container.attr("dock")).css({top: '0px', left: '0px'}); 
-	  $("#"+container.attr("dock")).offsetLeft = 0;
+	  $('myelement').css({top: '', left: ''}); 
+	  $("#"+container.attr("dock")).offset.left = 0;
       var t= container.css("top");
       var dockPlace= container;
       if (container.attr("dock")){
         dockPlace = $("#"+container.attr("dock"));
         var icns= dockPlace.find("img:visible").size();
-        l=$("#"+container.attr("dock")).offsetLeft+(opt.dockedIconDim*icns);
-        t=$("#"+container.attr("dock")).offsetTop+(opt.dockedIconDim/2);
+        l=$("#"+container.attr("dock")).offset().left+(opt.dockedIconDim*icns);
+        t=$("#"+container.attr("dock")).offset().top+(opt.dockedIconDim/2);
       }
       /*
        ICONIZING CONTAINER
