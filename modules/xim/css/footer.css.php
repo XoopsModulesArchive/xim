@@ -111,7 +111,7 @@ a.logout{	background: url($xim_img_dir/door-open-out.png) no-repeat center cente
 }
 a.alerts {	background: url($xim_img_dir/newspaper.png) no-repeat center center;	 }
 
-#footpanel li#dock { margin-right: 10px; }
+#footpanel li#dock { margin-right: 10px; height:50px;}
 #footpanel li#chatpanel, #footpanel li#alertpanel, #footpanel li#dock { float: right; }  /*--Right align the chat and alert panels--*/
 
 #footpanel a small {  /*--panel tool tip styles--*/
