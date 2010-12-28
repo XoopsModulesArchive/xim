@@ -27,6 +27,7 @@ var maxChatHeartbeat = 33000;
 var chatHeartbeatTime = minChatHeartbeat;
 var originalTitle;
 var blinkOrder = 0;
+var un;
 
 var chatboxFocus = new Array();
 var newMessages = new Array();
@@ -70,7 +71,7 @@ function createChatBox(containerId,chatBoxName){
 		return;
 	}
 
-	var html = '<div id="MBchatbox_'+containerId+'" class="containerPlus draggable resizable {buttons:\'m,i,c\', icon:\'browser.png\', skin:\''+cws+'\',iconized:\'false\',dock:\'dock\', width:\'250\', height:\'300\',rememberMe:\'true\', minWidth:\'250\', minHeight:\'300\'}" style="position:fixed;top:100px;left:100px"></div>';
+	var html = '<div id="MBchatbox_'+containerId+'" class="containerPlus draggable resizable {buttons:\'m,i,c\', icon:\'browser.png\', skin:\''+cws+'\',iconized:\'false\',dock:\'dock\', width:\'250\', height:\'300\',rememberMe:\'true\', minWidth:\'250\', grid:\'5\', minHeight:\'300\'}" style="position:absolute;top:100px;left:100px"></div>';
 	
 	if (containerId != '-1') {
 	var content ='<div class="no"><div class="ne"><div class="n">'+chatBoxName+'</div></div><div class="o"><div class="e"><div class="c"><div class="mbcontainercontent"></div><div class="chatboxtextarea"><textarea  onkeydown="javascript:return checkChatBoxInputKey(event,this,\''+containerId+'\');"></textarea></div></div></div></div><div class="so"><div class="se"><div class="s"></div></div></div>';
@@ -212,7 +213,13 @@ function chatHeartbeat(){
 				}
 				if (xoops_im("#MBchatbox_"+chatboxID).mb_getState('closed')) {
 					xoops_im("#MBchatbox_"+chatboxID).mb_open();
+					doBounce (chatboxID,1,un);
 				}
+				// if iconized do bounce in dock
+				if (xoops_im("#MBchatbox_"+chatboxID).mb_getState('iconized')) {
+					un = xoops_im(item.n).attr('title');
+					doBounce (chatboxID,0,un);
+				}				
 				if (item.s == 1) {
 					item.f = username;
 				}
@@ -238,7 +245,8 @@ function chatHeartbeat(){
 					// Play item.q (ie sound selected in options)
 					soundManager.play(userSound, userSound);
 				}); // End soundmager call
-
+					// bounce chat window
+					doBounce (chatboxID,1,un);
 				}
 				xoops_im("#MBchatbox_"+chatboxID+" .mbcontainercontent").scrollTop(xoops_im("#MBchatbox_"+chatboxID+" .mbcontainercontent")[0].scrollHeight);
 				itemsfound += 1;
@@ -324,11 +332,9 @@ function startChatSession(){
 			if (item)	{ // fix strange ie bug
 				chatboxID = item.f;
 				if (xoops_im("#MBchatbox_"+chatboxID).length <= 0) {
-				
-				// Strange Opera, IE error gives wrong title, FF ignores error	
-				 if (item.s <= 0) {
+					if (item.s <= 0) {
 					createChatBox(chatboxID,item.n);
-				 }
+					}
 				}
 				if (item.s == 1) {
 					item.f = username;
@@ -506,4 +512,41 @@ function keepDivs (divname,divname2,height, id) {
 			// Keeping the container fixed in position when scrolling
 			xoops_im("#MBchatbox_"+id).css("position","fixed");
 			xoops_im("#MBchatbox_"+id+" "+divname2).scrollTop(xoops_im("#MBchatbox_"+id+" "+divname2)[0].scrollHeight);
+}
+
+	// Function to bounce box or iconized when recieving new message
+	// Id = id of box
+	// state: 0=iconized or 1=opened
+	// name: name to check for in conttitle atribute for img
+	// culex dec 28-2010
+function doBounce (chatboxID,state,name) {
+	//If opened window
+	if (state==1) {
+	$(function() {
+	  // shake window 
+	  xoops_im("#MBchatbox_"+chatboxID).fadeIn(100).animate({top:"-=20px"},100).animate({top:"+=20px"},100).animate({top:"-=20px"},100)
+	  .animate({top:"+=20px"},100).animate({top:"-=20px"},100).animate({top:"+=20px"},100);
+	  return;
+	});
+	}
+	// if iconized
+	if (state==0) {
+		$(function() {
+			xoops_im("img:[conttitle]").each(function() {
+				if(xoops_im(this).attr("conttitle") == un) { 
+					// max loops is 1000. Click icon to stop before
+					var x = 0;
+					do {
+						xoops_im(this).animate({top: "0px"}, 2000 ).fadeOut(200).fadeIn(200).fadeOut(200).fadeIn(200).fadeOut(200).fadeIn(200).fadeOut(200).fadeIn(200);
+							x++;
+							if (xoops_im(this).click(function(){
+								x = 1000;
+								xoops_im(this).stop().show();
+								return;
+							}));
+					} while (x <= 1000);
+				} else {return;}
+			});
+		});
+	} 
 }
