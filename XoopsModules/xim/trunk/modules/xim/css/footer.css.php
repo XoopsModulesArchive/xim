@@ -151,7 +151,7 @@ a.alerts {	background: url($xim_img_dir/newspaper.png) no-repeat center center;	
 	width: 100%;
 	border: 1px solid #555;
 	background: #fff;
-	//overflow: hidden;
+	/*overflow: hidden;*/
 	padding-bottom: 2px;
 }
 #footpanel h3 {
@@ -199,7 +199,7 @@ a.alerts {	background: url($xim_img_dir/newspaper.png) no-repeat center center;	
 
 #chatpanel .subpanel .status { 
 float:right;
-position relative;
+position: relative;
 margin: 0 10px 
 }
 
