@@ -318,7 +318,7 @@ function checkChatBoxInputKey(event,chatboxtextarea,chatboxID) {
 function startChatSession(){  
 	  if (showFooterBar==1) {
 		createFooterBar();
-		setTimeout('updateUserList();',200);
+		setTimeout('updateUserList()',200);
 	  }
 	xoops_im.ajax({
 	  url: xim_url+"chat.php?action=startchatsession",
