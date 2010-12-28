@@ -11,7 +11,7 @@
 
 /*
  * Name:jquery.mb.containerPlus
- * Version: 2.5.3
+ * Version: 2.5.5
  * dependencies: UI.core.js, UI.draggable.js, UI.resizable.js
  */
 
@@ -51,15 +51,10 @@
         }
       });
 
-      $(document).scroll(function(){
-          $.doOnScroll(el);
-      });
-
       container.attr("inited","true");
       container.attr("iconized","false");
       container.attr("collapsed","false");
       container.attr("closed","false");
-
       container.attr("options",this.options);
 
       if (!container.css("position")=="absolute")
@@ -70,37 +65,6 @@
         $.each(container.metadata(), function(key, data){
           container.attr(key,data)
         });
-
-        if (container.metadata().skin) container.attr("skin",container.metadata().skin);
-        if (container.metadata().collapsed) container.attr("collapsed",container.metadata().collapsed);
-        if (container.metadata().iconized) container.attr("iconized",container.metadata().iconized);
-        if (container.metadata().icon) container.attr("icon",container.metadata().icon);
-        if (container.metadata().buttons) container.attr("buttons",container.metadata().buttons);
-        if (container.metadata().content) container.attr("content",container.metadata().content); //ajax
-        if (container.metadata().data) container.attr("data",container.metadata().data); //ajax
-        if (container.metadata().aspectRatio) container.attr("aspectRatio",container.metadata().aspectRatio); //ui.resize
-        if (container.metadata().title) container.attr("title",container.metadata().title); 
-
-        if (container.metadata().grid) container.attr("grid",container.metadata().grid); //ui.grid DRAG
-        if (container.metadata().gridx) container.attr("gridx",container.metadata().gridx); //ui.grid DRAG
-        if (container.metadata().gridy) container.attr("gridy",container.metadata().gridy); //ui.grid DRAG
-
-        if (container.metadata().resizeGrid) container.attr("resizeGrid",container.metadata().resizeGrid); //ui.grid RESIZE
-        if (container.metadata().resizeGridx) container.attr("resizeGridx",container.metadata().resizeGridx); //ui.grid RESIZE
-        if (container.metadata().resizeGridy) container.attr("resizeGridy",container.metadata().resizeGridy); //ui.grid RESIZE
-
-        if (container.metadata().handles) container.attr("handles",container.metadata().handles); //ui.resize
-        if (container.metadata().dock) container.attr("dock",container.metadata().dock);
-        if (container.metadata().closed) container.attr("closed",container.metadata().closed);
-        if (container.metadata().rememberMe) container.attr("rememberMe",container.metadata().rememberMe);
-        if (container.metadata().isModal) container.attr("isModal",container.metadata().isModal)
-        if (container.metadata().width) container.attr("width",container.metadata().width);
-        if (container.metadata().height) container.attr("height",container.metadata().height);
-        if (container.metadata().containment) container.attr("containment",container.metadata().containment);
-        if (container.metadata().minWidth) container.attr("minWidth",container.metadata().minWidth);
-        if (container.metadata().minHeight) container.attr("minHeight",container.metadata().minHeight);
-
-
         if (container.attr("alwaysOnTop")) container.css("z-index",100000).addClass("alwaysOnTop");
       }
 
@@ -184,6 +148,7 @@
             }
           }
         });
+        if($.iPhone) container.find(".n:first").addTouch();
         if (container.attr("grid") || (container.attr("gridx") && container.attr("gridy"))){
           var grid= container.attr("grid")? [container.attr("grid"),container.attr("grid")]:[container.attr("gridx"),container.attr("gridy")];
           container.draggable('option', 'grid', grid);
@@ -385,6 +350,7 @@
                   opt.effectDuration,function(){
             container.find(".icon:first").show();
             container.css({height:""});
+            container.setContainment();
           });
         }
         if (container.hasClass("resizable")) container.resizable("enable");
@@ -410,17 +376,16 @@
       container.attr("w",container.attr("width") && container.attr("width")>0 ? (!container.hasClass("resizable")? container.attr("width"):container.width()):!container.attr("handles")?"99.9%":container.width());
       container.attr("t",container.css("top"));
       container.attr("l",container.css("left"));
-      container.resizable("disable");
-      // Culex hack otherwise error in IE with footerbar and iconized chats
-	  var l=0;
-	  $('myelement').css({top: '', left: ''}); 
-	  $("#"+container.attr("dock")).offset.left = 0;
+       if(container.hasClass("resizable")) container.resizable("disable");
+      var l=container.css("left");
       var t= container.css("top");
       var dockPlace= container;
       if (container.attr("dock")){
         dockPlace = $("#"+container.attr("dock"));
         var icns= dockPlace.find("img:visible").size();
-        l=$("#"+container.attr("dock")).offset().left+(opt.dockedIconDim*icns);
+       //Culex hack preventing the jquery from making offset errors and break script with hiddent objects
+		$("#"+container.attr("dock")).show();
+		l=$("#"+container.attr("dock")).offset().left+(opt.dockedIconDim*icns);
         t=$("#"+container.attr("dock")).offset().top+(opt.dockedIconDim/2);
       }
       /*
@@ -438,7 +403,6 @@
         else
           container.css({left:"auto",top:"auto"});
         container.show();
-
         if (!$.browser.msie) {
           container.find(".no:first").fadeIn("fast");
           if(container.attr("collapsed")=="false"){
@@ -453,6 +417,7 @@
                 container.mb_bringToFront(opt.zIndexContext);
               }
               container.css({height:""});
+              if(opt.onRestore) opt.onRestore(container);
             });
           }else
             container.animate({height:"60px", width:container.attr("w"), left:container.attr("l"),top:container.attr("t")},opt.effectDuration);
@@ -465,13 +430,13 @@
           }
           else
             container.css({height:"60px", width:container.attr("w"),left:container.attr("l"),top:container.attr("t")},opt.effectDuration);
+          if(opt.onRestore) opt.onRestore(container);
         }
         if (container.hasClass("resizable") && container.attr("collapsed")=="false") container.resizable("enable");
         $(this).remove();
         if(container.hasClass("draggable")) container.mb_bringToFront(opt.zIndexContext);
         $(".iconLabel").remove();
         container.attr("restored", true);
-        if(opt.onRestore) opt.onRestore(container);
         if (container.attr("rememberMe")){
           container.mb_setCookie("restored",container.mb_getState("restored"));
           container.mb_setCookie("closed", false);
@@ -697,11 +662,12 @@
     var container=$(this);
     var nww=$(window).width();
     var nwh=$(window).height();
-    var ow=container.outerWidth();
-    var oh= container.outerHeight();
+    var ow=container.attr("w")?container.attr("w"):container.outerWidth();
+    var oh= container.attr("h")?container.attr("h"):container.outerHeight();
     var l= (nww-ow)/2;
     var t= ((nwh-oh)/2)>0?(nwh-oh)/2:10;
     if (container.css("position")!="fixed"){
+      $(this).css("position","absolute");
       l=l+$(window).scrollLeft();
       t=t+$(window).scrollTop();
     }
@@ -719,6 +685,8 @@
         container.mb_setCookie("y",$(this).css("top"));
       }
     }
+    container.attr("t",t);
+    container.attr("l",l);
     return container;
   };
 
@@ -802,42 +770,6 @@
     });
   };
 
-  //MANAGE WINDOWS POSITION ONSCROLL
-  $.doOnScroll=function(el){
-    clearTimeout(el.doRes);
-    el.doRes=setTimeout(function(){
-      $(el).cScroll();
-    },400);
-  };
-
-  $.fn.cScroll= function(margin){
-    var container=$(this);
-    var opt=container.attr("options");
-    if (!opt.mantainOnWindow) return;
-    if(!margin) margin=25;
-    var nww=$(window).width()+$(window).scrollLeft();
-    var nwh=$(window).height()+$(window).scrollTop();
-    this.each(function(){
-      var left=container.offset().left, top=container.offset().top;
-      if ((left+container.outerWidth())>nww || top+container.outerHeight()>nwh || left<0 || top<0){
-        var l=(container.offset().left+container.outerWidth())>nww ? nww-container.outerWidth()-margin: container.offset().left<0? margin: container.offset().left;
-        var t= (container.offset().top+container.outerHeight())>nwh ? nwh-container.outerHeight()-margin: container.offset().top<0 ?margin: container.offset().top;
-        container.animate({left:l, top:t},550,function(){
-          container.setContainment();
-        });
-      }
-      if ((top+container.outerHeight())<$(document).scrollTop()){
-        var l=(container.offset().left+container.outerWidth())>nww ? nww-container.outerWidth()-margin: container.offset().left<0? margin: container.offset().left;
-        var t= (container.offset().top+container.outerHeight())<$(window).scrollTop() ? $(window).scrollTop(): container.offset().top<0 ?margin: container.offset().top;
-        container.animate({left:l, top:t},550,function(){
-          container.setContainment();
-        });
-      }
-
-      container.setContainment();
-    });
-  };
-
   //COOKIES
   jQuery.fn.mb_setCookie = function(name,value,days) {
     var id=$(this).attr("id");
@@ -867,3 +799,4 @@
   };
 
 })(jQuery);
+
