@@ -27,16 +27,16 @@
 
 // tab titles
 	define('_AM_XIM_ADMINMESSAGESEND','Post to all'); 
-	define('_AM_XIM_LOGSMAINTNANCE','Database maintnance'); 
+	define('_AM_XIM_LOGSMAINTNANCE','Database maintenance'); 
 
 // tab one in admin section
 define('_AM_XIM_MODULEINSTALL','Module version installed');
-define('_AM_XIM_INSTALLDATE','Module installed on date');
-define('_AM_XIM_DATEOFFIRSTMESSAGE','Date of oldest message');
+define('_AM_XIM_INSTALLDATE','Module installed on');
+define('_AM_XIM_DATEOFFIRSTMESSAGE','Date of the oldest message');
 define('_AM_XIM_TOTALUSERS','Total members using Xim');
 define('_AM_XIM_AVERAGEMSGPERDAY','Average messages per day');
 define('_AM_XIM_TOPCHATTERS','Most active chatters overall');
-define('_AM_XIM_TOPCHATTERS_TODAY','Most active users last 24 hours');
+define('_AM_XIM_TOPCHATTERS_TODAY','Most active users in last 24 hours');
 define('_AM_XIM_STATISTICS_TITLE','XIM Statistics'); 
 define('_AM_XIM_MODULEINFO','Module info'); 
 define('_AM_XIM_USERSTATS','User stats');
@@ -54,7 +54,7 @@ define('_AM_XIM_LASTADMINMESSAGE_MSG','Message');
 define('_AM_XIM_LASTADMINMESSAGE_DATE','Date sent');
 define('_AM_XIM_LASTADMINMESSAGE_WASREAD','Last admin message is read by ');
 define('_AM_XIM_LASTADMINMESSAGE_USERS','users');
-define('_AM_XIM_NOADMINMESSAGEYET','You havent sent any admin message to all users yet ;-) ');
+define('_AM_XIM_NOADMINMESSAGEYET','You haven\'t sent any admin message to all users yet ;-) ');
 define('_AM_XIM_NOADMINMESSAGEYET_DATE','Duh!!');
 
 // tab three in admin section
@@ -100,7 +100,7 @@ define('_AM_XIM_POSTTOALL_SUBMIT','Send');
 //Help section
 
 define('_AM_XIM_HELP_ABOUT','About Xim');
-define('_AM_XIM_HELP_PREFACE','Xim is a messenger system. Inspired of the jquery facebook chat example written by anant garg and the facebook messenger. The base system has been re-qritten, adapted, and heavily expanded to Xoops by Culex & Andrax.<br/>The chat is one-on-one and fully supported by Xoops since version 2.4.0.<br/>XIM is released under the terms of the <a href="http://www.gnu.org/copyleft/gpl.html" target="_blank">GNU General Public License (GPL)</a> and is free to use and modify. It is free to redistribute as long as you abide by the distribution terms of the GPL.');
+define('_AM_XIM_HELP_PREFACE','Xim is a Messenger system. Inspired by the jQuery Facebook chat example written by Anant Garg and the Facebook Messenger. The base system has been re-written, adapted, and heavily expanded for XOOPS by Culex & Andrax.<br/>The chat is one-on-one and fully supported by XOOPS version 2.4.0 and higher.<br/>XIM is released under the terms of the <a href="http://www.gnu.org/copyleft/gpl.html" target="_blank">GNU General Public License (GPL)</a> and is free to use and modify. It is free to redistribute as long as you abide by the distribution terms of the GPL.');
 define('_AM_XIM_HELP_HEADER_REQUIREMENTS','Requirements');
 define('_AM_XIM_HELP_REQUIREMENTS','<ul class="help">
 										<li>WWW Server (<a href="http://www.apache.org/" target="_blank">Apache</a>, IIS, Roxen, etc)</li>
@@ -110,7 +110,7 @@ define('_AM_XIM_HELP_REQUIREMENTS','<ul class="help">
 									</ul>');
 define('_AM_XIM_HELP_HEADER_RECOMMENDED','Recommended for testing XIM');
 define('_AM_XIM_HELP_RECOMMENDED','<ul class="help">
-									<li>Browser <a href="http://www.mozilla.com" target"_blank">Firefox</a> and the Firefox plugin <a href="https://addons.mozilla.org/en-US/firefox/downloads/latest/1843/addon-1843-latest.xpi" target="_blank">FireBug plugin (latest version)</a></li>
+									<li>Browser <a href="http://www.mozilla.com" target"_blank">Firefox</a> and the Firefox plugin <a href="https://addons.mozilla.org/en-US/firefox/downloads/latest/1843/addon-1843-latest.xpi" target="_blank">FireBug plugin (latest version)</a></li> 
 								  </ul>');
 define('_AM_XIM_HELP_HEADER_INSTALLATION','How to install');
 define('_AM_XIM_HELP_FIRSTTIMEINSTALL','<ul class="help">
@@ -120,7 +120,7 @@ define('_AM_XIM_HELP_FIRSTTIMEINSTALL','<ul class="help">
 										
 define('_AM_XIM_HELP_HEADER_HOSTED_PLATFORM','Installing on a hosted platform');
 define('_AM_XIM_HELP_HOSTED_PLATFORM','<ul class="help">
-										<li>Upload the unzipped folder xim to your module direcotry.</li>
+										<li>Upload the unzipped folder xim to your module directory.</li>
 										<li>Install using XOOPS module install as any other module installation.</li>
 										<li>Make the block visible for the user groups you want to see the block (admin/moderators etc etc).</li>
 									</ul>');
@@ -134,20 +134,20 @@ define('_AM_XIM_HELP_HEADER_FAQ','Problem solving');
 define('_AM_XIM_HELP_HEADER_COMMENPROBLEMS1','I get blank page, can\'t click username, The block does not show.......');
 define('_AM_XIM_HELP_COMMENPROBLEMS1','<ul class="help">
 										<li>Make sure your block is visible on "All pages" and not only frontpage.</li>
-										<li>Make sure your Xoops version is > 2.4.0. Xoops versions before this does not use preloads.</li>
+										<li>Make sure your Xoops version is > 2.4.0. Older versions of Xoops don\'t have preloads, which are required.</li>
 										<li>Turn on debug and check to see if any errors emerge.</li>
 										<li>Using FireFox, right click on the screen, choose inspect element, choose console in the tabs and check to see if chat heartbeat is running<br/>
 										"GET http://www.yoursite.com/modules/xim/chat.php?action=chatheartbeat&_=XXXXXXXXXXXX xxx OK xxx MS"</li>
-										<li>If no errors, use Firebug (Right click->inspect element->console) and see if any Jquery errors.</li>
-										<li>If no jquery errors. Clean caches-> module update xim, system modules.</li>
-										<li>If still blank page. Go to your protector module -> settings and write xim in the form "Modules out of Dos / Crawler checker".</li>
-										<li>Check if your theme is including more than one version of Jquery. Usually in the head of your theme.html file.<br/>
-										Normally this is no problem as long as the other including jquery > 1.3.2</li>
+										<li>If no errors, use Firebug (Right click->inspect element->console) and see if there are any jQuery errors.</li>
+										<li>If there are no jQuery errors. Clean caches-> module update xim, system modules.</li>
+										<li>If the page is still blank, Go to your protector module -> settings and write xim in the form "Modules out of Dos / Crawler checker".</li>
+										<li>Check if your theme is including more than one version of jQuery. Usually in the head of your theme.html file.<br/>
+										Normally this is no problem as long as the other including jQuery > 1.3.2</li>
 									</ul>');
-define('_AM_XIM_HELP_HEADER_SOUNDPROBLEMS','I choose messagesound but I get no audio');
+define('_AM_XIM_HELP_HEADER_SOUNDPROBLEMS','I selected message sound but I get no audio');
 define('_AM_XIM_HELP_SOUNDPROBLEMS','<ul class="help">
 										<li>Check to see if your speakers are turned on and your volume is turned up</li>
-										<li>XIM sound uses the framework soundmanager2. This uses a small utility in flash to play sounds. If you support flash in your browser it should work</li>
+										<li>XIM sound uses the framework soundmanager2. This uses a small utility in flash to play sounds. If you support Flash in your browser it should work</li>
 									</ul>');
 define('_AM_XIM_HELP_HEADER_CONTACTS','Ask question');
 define('_AM_XIM_HELP_OTHERHELP','<ul class="help">
