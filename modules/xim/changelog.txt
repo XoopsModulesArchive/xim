@@ -11,7 +11,7 @@ Xoops Instant Messenger (XIM) Changelog
 
 
 =================================
-??/??/2010: Version 1.0.0
+05/12/2010: Version 1.0.0
 =================================
 - NEW: Added show userinfo link to chat names Revision: 4428 (culex)
 - NEW: Showing user avatar in chat Revision 4446: (Andrax)
@@ -34,5 +34,26 @@ Xoops Instant Messenger (XIM) Changelog
 - BUG: True declaring script include in admin section (Kris_fr)
 - BUG: Fixed form to keep last config on pageload (culex)
 - Proposed: Keeping jquery and UI inside xoops_lib / frameworks (Kris_fr)
+
+=================================
+29/12/2010: Version 1.0.1
+=================================
+- BUG: Css missing value making mbcontainer bug out contaners iconized in IE. FF simply ignores without error (culex rev 5915)
+- BUG: Had to add a special check due to IE error in title of chats. (culex rev 5842)
+- BUG: Adding direct dom manipulation to read last know config to status, sound form. 99% successfull (culex rev 5808)
+- BUG: Strange error where "No friends online" changes to english from default language with blockupdate. (culex rev 5805)
+- BUG: Hiding footerbar from users with no permission to view block (culex rev 5804)
+
+- NEW: original MBcontainer icon for customization (culex rev 5923)
+- NEW: update french translation for xim module (Kris_fr rev 5809)
+- NEW: Added dock to tinyfooterbar and ajusted icons to stay inside div (culex rev 5919)
+- NEW: Added dobounce functio to iterate through chatwindows and bounce if opened or shake if iconized. 
+		Also added security to keep iconized opened and chat windows open with correct username and not userID (culex rev 5916)
+- BUG: default browser icon to xim browser icon (culex rev 5922)
+- BUG: Corrected a few minor issues. no real bugs (culex rev 5921)
+- BUG: Upgraded mbcontainer with elements from 2.5.5 trunk version + additional hack to show hidden elements to offset() (culex rev 5920)
+- BUG: Changed malformed setTimeout() in updateUserList (culex rev 5918)
+- BUG: Version 1.01 RC and added credits (culex rev 5924)
+- BUG: Ajusted json in chatsession start. No errors but better to be safe :-) (culex rev 5841)
 
 
