@@ -27,12 +27,12 @@ if (!defined('XOOPS_ROOT_PATH')) {
 }
 $modversion['dirname'] = basename(dirname(__FILE__));
 $modversion['name'] = _MI_XIM_MODULE_NAME;
-$modversion['version'] = 1.00;
+$modversion['version'] = 1.01;
 $modversion['description'] = _MI_XIM_MODULE_DESC;
 $modversion['author'] = "Andrax & Culex";
 $modversion['credits'] = _XIM_CREDIT;
 $modversion['help'] = "Html/css.: Kris_fr";
-$modversion['Testers'] = "ArtsGeral, Edison, Izzy, Rmarx, Mazarin, btesec, Kriss_fr, Runeher";
+$modversion['Testers'] = "ArtsGeral, Edison, Izzy, Rmarx, Mazarin, btesec, Kriss_fr, Runeher, Stance";
 $modversion['license'] = "GPL see LICENSE";
 $modversion['official'] = 0;
 $modversion['image'] = "images/xim.png";
