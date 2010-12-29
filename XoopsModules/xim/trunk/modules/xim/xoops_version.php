@@ -31,7 +31,6 @@ $modversion['version'] = 1.01;
 $modversion['description'] = _MI_XIM_MODULE_DESC;
 $modversion['author'] = "Andrax & Culex";
 $modversion['credits'] = _XIM_CREDIT;
-$modversion['help'] = "Html/css.: Kris_fr";
 $modversion['Testers'] = "ArtsGeral, Edison, Izzy, Rmarx, Mazarin, btesec, Kris_fr, Runeher, Stance";
 $modversion['license'] = "GPL see LICENSE";
 $modversion['official'] = 0;
@@ -39,6 +38,9 @@ $modversion['image'] = "images/xim.png";
 
 // Menu
 $modversion['hasMain'] = 1;
+
+// System Menu
+$modversion['system_menu'] = 1;
 
 // Admin
 $modversion['hasAdmin'] = 1;
