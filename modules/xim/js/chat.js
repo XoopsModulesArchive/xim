@@ -522,7 +522,7 @@ function keepDivs (divname,divname2,height, id) {
 function doBounce (chatboxID,state,name) {
 	//If opened window
 	if (state==1) {
-	$(function() {
+	xoops_im(function() {
 	  // shake window 
 	  xoops_im("#MBchatbox_"+chatboxID).fadeIn(100).animate({top:"-=20px"},100).animate({top:"+=20px"},100).animate({top:"-=20px"},100)
 	  .animate({top:"+=20px"},100).animate({top:"-=20px"},100).animate({top:"+=20px"},100);
@@ -531,7 +531,7 @@ function doBounce (chatboxID,state,name) {
 	}
 	// if iconized
 	if (state==0) {
-		$(function() {
+		xoops_im(function() {
 			xoops_im("img:[conttitle]").each(function() {
 				if(xoops_im(this).attr("conttitle") == un) { 
 					// max loops is 1000. Click icon to stop before
