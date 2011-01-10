@@ -103,7 +103,7 @@ var cws = '$cws';
 SCRIPT;
 	$xoTheme->addScript('','',$script);
 	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/chat.js');
-	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/configdiv.js');
+//	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/configdiv.js');
 	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/configscript.js');
 	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/soundmanager2.js');
 	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/sm_default.js');

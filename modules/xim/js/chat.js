@@ -36,6 +36,10 @@ var newMessagesUser = new Array();
 var chatBoxes = new Array();
 document.containers= new Object();
 
+	var refreshId = setInterval(function() {
+	xoops_im('#online_friends').load(xim_url+'blocks/blockupdater.php');
+	}, 5000);
+
 xoops_im(document).ready(function(){
 	// if exists zetagenesis toolbar do hide it to not overlap 2 toolbars
 	xoops_im('#xo-footerstatic').hide();
@@ -54,11 +58,12 @@ function chatWith(userId, chatusername) {
 		xoops_im(".subpanel").hide(); //hide subpanel
 		xoops_im("#footpanel li a").removeClass('active'); //remove active class on subpanel 
 	}
-	createChatBox(userId, chatusername);
+	avatar = getAvatar(userId)
+	createChatBox(userId, chatusername, avatar);
 	xoops_im("#MBchatbox_"+userId+" .chatboxtextarea").focus();;
 }
 
-function createChatBox(containerId,chatBoxName){
+function createChatBox(containerId,chatBoxName,avatar){
 	if (xoops_im("#MBchatbox_"+containerId).length > 0) {
 		 if (xoops_im("#MBchatbox_"+containerId).mb_getState('iconized')) {
 			xoops_im("#MBchatbox_"+containerId).mb_iconize();
@@ -71,7 +76,7 @@ function createChatBox(containerId,chatBoxName){
 		return;
 	}
 
-	var html = '<div id="MBchatbox_'+containerId+'" class="containerPlus draggable resizable {buttons:\'m,i,c\', icon:\'browser.png\', skin:\''+cws+'\',iconized:\'false\',dock:\'dock\', width:\'250\', height:\'300\',rememberMe:\'true\', minWidth:\'250\', grid:\'5\', minHeight:\'300\'}" style="position:absolute;top:100px;left:100px"></div>';
+	var html = '<div id="MBchatbox_'+containerId+'" class="containerPlus draggable resizable {buttons:\'m,i,c\', icon:\'browser.png\', dckicon:\''+avatar+'\', skin:\''+cws+'\',iconized:\'false\',dock:\'dock\', width:\'250\', height:\'300\',rememberMe:\'true\', minWidth:\'250\', grid:\'5\', minHeight:\'300\'}" style="position:absolute;top:100px;left:100px"></div>';
 	
 	if (containerId != '-1') {
 	var content ='<div class="no"><div class="ne"><div class="n">'+chatBoxName+'</div></div><div class="o"><div class="e"><div class="c"><div class="mbcontainercontent"></div><div class="chatboxtextarea"><textarea  onkeydown="javascript:return checkChatBoxInputKey(event,this,\''+containerId+'\');"></textarea></div></div></div></div><div class="so"><div class="se"><div class="s"></div></div></div>';
@@ -209,7 +214,7 @@ function chatHeartbeat(){
 				chatboxID = item.f;
 				userSound = item.q;
 				if (xoops_im("#MBchatbox_"+chatboxID).length <= 0) {
-					createChatBox(chatboxID,item.n);
+					createChatBox(chatboxID,item.n, item.a);
 				}
 				if (xoops_im("#MBchatbox_"+chatboxID).mb_getState('closed')) {
 					xoops_im("#MBchatbox_"+chatboxID).mb_open();
@@ -333,7 +338,7 @@ function startChatSession(){
 				chatboxID = item.f;
 				if (xoops_im("#MBchatbox_"+chatboxID).length <= 0) {
 					if (item.s <= 0) {
-					createChatBox(chatboxID,item.n);
+					createChatBox(chatboxID,item.n,item.a);
 					}
 				}
 				if (item.s == 1) {
@@ -499,6 +504,18 @@ function stripHTML(oldString) {
    }
    return newString;
 }
+
+function getAvatar(uid){
+	xoops_im.ajax({
+	  url: xim_url+"chat.php?action=avatar",
+	  cache: false,
+	  data: "uid="+uid,
+	  dataType: "json",
+	  success: function(data) {
+		return data.a;		   
+   }
+ });
+};
 
 function keepDivs (divname,divname2,height, id) {
 			// Added these repetative lines to prevent textarea popping out main div in IE (culex)

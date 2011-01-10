@@ -48,6 +48,7 @@ if ($_GET['action'] == "chatheartbeat") { chatHeartbeat(); }
 if ($_GET['action'] == "sendchat") { sendChat(); } 
 if ($_GET['action'] == "closechat") { closeChat(); } 
 if ($_GET['action'] == "startchatsession") { startChatSession(); } 
+if ($_GET['action'] == "avatar") { getAvatar(); } 
 
 if (!isset($_SESSION['chatHistory'])) {
     $_SESSION['chatHistory'] = array();	
@@ -303,6 +304,20 @@ function xoops_xim_checkStatus ($to, $from) {
 	 }
 	 //return $sysmessage;
 }
+
+function getAvatar(){
+	$user = new XoopsUser($_GET['uid']);
+	$avatar =$user->user_avatar();
+	if ($avatar!='blank.gif') {
+	    $avatarURL = XOOPS_URL."/uploads/".$avatar;
+	} else {
+	    $avatarURL = XOOPS_URL."/modules/xim/images/default_avatar.png";
+	}
+	header('Content-type: application/json');
+    echo "{\"a\":\"{$avatarURL}\"}";
+    exit(0);
+}
+
 function sanitize($text) {
     $text = htmlspecialchars($text, ENT_QUOTES);
     //$text = preg_replace('/([^\s]{10})(?=[^\s])/m', '$1<br />', $text); 
