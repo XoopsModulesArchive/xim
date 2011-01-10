@@ -62,24 +62,6 @@ $modversion['templates'][1]['description'] = '';
 
 //Module Configs
 $i=0;
-// $modversion['config'][$i]['name'] = 'chatstyle';
-// $modversion['config'][$i]['title'] = '_XIM_STYLE';
-// $modversion['config'][$i]['description'] = '_XIM_STYLE_DESC';
-// $modversion['config'][$i]['formtype'] = 'select';
-// $modversion['config'][$i]['valuetype'] = 'int';
-// $modversion['config'][$i]['default'] = 0;
-// $modversion['config'][$i]['options'] = array( '_XIM_DEFAULT' => 0, '_XIM_CULEX' => 1);
-
-// $i++;
-// $modversion['config'][$i]['name'] = 'chatstyle2';
-// $modversion['config'][$i]['title'] = '_XIM_STYLE';
-// $modversion['config'][$i]['description'] = '_XIM_STYLE_DESC';
-// $modversion['config'][$i]['formtype'] = 'select';
-// $modversion['config'][$i]['valuetype'] = 'int';
-// $modversion['config'][$i]['default'] = 0;
-// $modversion['config'][$i]['options'] = array( '_XIM_DEFAULT' => 0, '_XIM_CULEX' => 1);
-
-$i++;
 $modversion['config'][$i]['name'] = 'showfooterbar';
 $modversion['config'][$i]['title'] = '_XIM_SHOW_FOOTER_BAR';
 $modversion['config'][$i]['description'] = '_XIM_SHOW_FOOTER_BAR_DESC';
