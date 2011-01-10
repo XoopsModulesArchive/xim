@@ -391,7 +391,7 @@
       /*
        ICONIZING CONTAINER
        */
-      this.dockIcon= $("<img src='"+opt.elementsPath+"icons/"+(container.attr("icon")?container.attr("icon"):"restore.png")+"' class='restoreContainer' width='"+opt.dockedIconDim+"'/>").appendTo(dockPlace)
+      this.dockIcon= $("<img src='"+container.attr("dckicon")+"' class='restoreContainer' width='"+opt.dockedIconDim+"'/>").appendTo(dockPlace)
               .css("cursor","pointer")
               .hide()
               .attr("contTitle",container.find(".n:first").text())

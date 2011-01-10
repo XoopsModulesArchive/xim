@@ -21,31 +21,38 @@
 * @author          Culex  - homepage.: http://culex.dk		& email.: culex@culex.dk
 */
 
+xoops_im(document).ready(function() {
+	//hide the all of the element with class msg_body
+	xoops_im(".xim_configDiv_body").hide();
+
+	//toggle the componenet with class msg_body
+	xoops_im(".xim_configDiv_head").click(function() {
+    	xoops_im(".xim_configDiv_body").slideToggle(2500);
+	});
+});
 
 xoops_im(function() {
-xoops_im(".update_button").click(function()
-{
-var sound = xoops_im("#sound").val();
-var status = xoops_im("#status").val();
-dataString = xoops_im("#config").serialize();
-//var dataString = 'sound='+ sound + '&status=' + status;
-if(status=='' || sound=='')
-{
-alert('Please Give Valid Details');
-}
-else
-{
-xoops_im("#flash").show();
-xoops_im("#flash").fadeIn(800).html('<img src="'+xim_url+'/images/ajaxloader.gif" alt=""/>Saved!');
-xoops_im.ajax({
-type: "POST",
-url: xim_url+"include/update_config.php",
-data: dataString,
-cache: false,
-success: function(html){
-xoops_im("#flash").hide(2000);
-xoops_im(".xim_configDiv_body").hide(6000);
-}
+	xoops_im(".update_button").click(function(){
+		var sound = xoops_im("#sound").val();
+		var status = xoops_im("#status").val();
+		dataString = xoops_im("#config").serialize();
+		//var dataString = 'sound='+ sound + '&status=' + status;
+		if(status=='' || sound==''){
+			alert('Please Give Valid Details');}
+		else{
+			xoops_im("#flash").show();
+			xoops_im("#flash").fadeIn(800).html('<img src="'+xim_url+'/images/ajaxloader.gif" alt=""/>Saved!');
+			xoops_im.ajax({
+				type: "POST",
+				url: xim_url+"include/update_config.php",
+				data: dataString,
+				cache: false,
+				success: function(html){
+					xoops_im("#flash").hide(2000);
+					xoops_im(".xim_configDiv_body").hide(6000);
+				}
+			});
+		}
+		return false;
+	}); 
 });
-}return false;
-}); });

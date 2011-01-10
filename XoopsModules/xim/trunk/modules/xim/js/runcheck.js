@@ -20,6 +20,6 @@
 * @author          Andrax - homepage.: http://guxbrasil.org & email.: lcbc@ig.com.br
 * @author          Culex  - homepage.: http://culex.dk		& email.: culex@culex.dk
 */
-	var refreshId = setInterval(function() {
+var refreshId = setInterval(function() {
 	xoops_im('#online_friends').load(xim_url+'blocks/blockupdater.php');
-	}, 5000);
+}, 5000);
