@@ -33,7 +33,7 @@ $modversion['author'] = "Andrax & Culex";
 $modversion['credits'] = _XIM_CREDIT;
 $modversion['Testers'] = "ArtsGeral, Edison, Izzy, Rmarx, Mazarin, btesec, Kris_fr, Runeher, Stance";
 $modversion['license'] = "GPL see LICENSE";
-$modversion['official'] = 0;
+$modversion['official'] = 1;
 $modversion['image'] = "images/xim.png";
 
 // Menu
