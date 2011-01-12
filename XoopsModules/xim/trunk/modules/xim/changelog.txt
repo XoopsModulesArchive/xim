@@ -56,4 +56,13 @@ Xoops Instant Messenger (XIM) Changelog
 - BUG: Version 1.01 RC and added credits (culex rev 5924)
 - BUG: Ajusted json in chatsession start. No errors but better to be safe :-) (culex rev 5841)
 
-
+=================================
+12/01/2011: Version 1.0.2
+=================================
+- Change: Added a little mor reading space for changelog_text in admin (culex rev 6036)
+- Change: Removed obsolete code (old chat style) (Andrax rev 6029)
+- Change: Added functionality to show user avatar in dock bar, when minimizing the message box;
+		  Some adjustments in CSS and javascript files;
+		  Removing unnecessary javascript files; (Andrax rev 6028)
+- NEW: New ChatBox Logo (andrax rev 6026)
+- BUG: Fix problem with  "doBounce"  funtion (Andrax rev 6018)
