@@ -25,9 +25,13 @@
 require_once 'admin_header.php'; 
 $xoopsLogger->activated = false;
 if(isset($_POST['xim_admin_message'])) {
-$message = mysql_real_escape_string($_POST['xim_admin_message']);
-ximAdminFindall ($message);
-} else {return false;}
+	$message = mysql_real_escape_string($_POST['xim_admin_message']);
+	ximAdminFindall ($message);
+} else {
+		return false;
+  }
+  
+// Function to collect all users in database and pass through ximSenToAll ()
 function ximAdminFindall ($message) {
 	global $xoopsDB;
 	//$sql = "SELECT * FROM ".$xoopsDB->prefix('xim_chat')."";
@@ -39,18 +43,18 @@ function ximAdminFindall ($message) {
 		 $counter++;
 		}
 		$users = array_unique(flatten($user));
-		foreach ($users as $key => $value)
-		{
-		ximSendToAll ($value, $message);
+		foreach ($users as $key => $value) {
+			ximSendToAll ($value, $message);
 		}
 		return true;
 }
 
+// Function to sendt to user in database.
 function ximSendToAll ($user, $message) {
-global $xoopsDB;
-$sql = "insert into ".$xoopsDB->prefix('xim_chat')." (`from`,`to`,`message`,`sent`,`sys`,`recd`) values ('".mysql_real_escape_string('-1')."', '".mysql_real_escape_string($user)."','".mysql_real_escape_string($message)."',NOW(),'-1','0')";
-$query = $xoopsDB->queryF($sql);
-return true;
+	global $xoopsDB;
+	$sql = "insert into ".$xoopsDB->prefix('xim_chat')." (`from`,`to`,`message`,`sent`,`sys`,`recd`) values ('".mysql_real_escape_string('-1')."', '".mysql_real_escape_string($user)."','".mysql_real_escape_string($message)."',NOW(),'-1','0')";
+	$query = $xoopsDB->queryF($sql);
+	return true;
 }
 
 // flatten multidimentional arrays to one dimentional
