@@ -1,0 +1,227 @@
+/**
+* You may not change or alter any portion of this comment or credits
+* of supporting developers from this source code or any supporting source code
+* which is considered copyrighted (c) material of the original comment or credit authors.
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+*
+* XIM - Xoops Instant Messenger
+*
+* A one-on-one messenger written for xoops. Inspired by Anant Garg's -(anantgarg.com | inscripts.com)-
+* 2009 tutorial on jquery messenger & by the original facebook messenger and a few more. This module has
+* been adapted, written, re-written and extended heavily by Andrax & Culex.
+*
+* @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
+* @license         http://www.fsf.org/copyleft/gpl.html GNU public license
+* @package         modules
+* @subpackage      xim
+* @since           2.4.0
+* @author          Andrax - homepage.: http://guxbrasil.org & email.: lcbc@ig.com.br
+* @author          Culex  - homepage.: http://culex.dk		& email.: culex@culex.dk
+**/
+
+ul.ximadmin_tabs {
+	margin: 0;
+	padding: 0;
+	float: left;
+	list-style: none;
+	height: 32px; /*--Set height of tabs--*/
+	border-bottom: 1px solid #999;
+	border-left: 1px solid #999;
+	width: 100%;
+}
+ul.ximadmin_tabs li {
+	float: left;
+	margin: 0;
+	padding: 0;
+	height: 31px; /*--Subtract 1px from the height of the unordered list--*/
+	line-height: 31px; /*--Vertically aligns the text within the tab--*/
+	border: 1px solid #999;
+	border-left: none;
+	margin-bottom: -1px; /*--Pull the list item down 1px--*/
+	overflow: hidden;
+	position: relative;
+	background-color: #e0e0e0;
+	list-style: none;
+}
+ul.ximadmin_tabs li a {
+	text-decoration: none;
+	color: #000;
+	display: block;
+	font-size: 1.2em;
+	padding: 0 20px;
+	border: 1px solid #fff; /*--Gives the bevel look with a 1px white border inside the list item--*/
+	outline: none;
+}
+ul.ximadmin_tabs li a:hover { background-color: #ccc;}
+html ul.ximadmin_tabs li.active, html ul.ximadmin_tabs li.active a:hover  { /*--Makes sure that the active tab does not listen to the hover properties--*/
+	background-color: #fff;
+	border-bottom: 1px solid #fff; /*--Makes the active tab look like it's connected with its content--*/
+}
+
+.ximadmin_tab_container {
+	border: 1px solid #999;
+	border-top: 0 !important;
+	overflow: hidden;
+	clear: both;
+	/*float: left;*/
+	width: 100%;
+	background-color: #fff;
+}
+.ximadmin_tab_content {	padding: 20px;	font-size: 1.2em;}
+p.ximadmin {	font-size:11px; margin : 8px; line-height : 15px;}
+
+p.ximadmin a, p.ximadmin a:hover, p.ximadmin a:visited { color: #0000FF;	font-size: 11px;}
+
+table.ximadmin {
+	position:relative;
+	left:20px;
+	width: 200px;
+	padding: 0;
+	margin: 0;
+}
+
+td.ximadmin {	font-size:10px;	line-height:70%;}
+
+
+.ximadmin_legend {	font-weight:bold; font-size: 16px;	color:#FF0000;}
+.ximadmin_tab_container fieldset { border-radius: 7px;  -moz-border-radius:7px; -webkit-border-radius: 7px;}
+.ximadmin_tab_container legend { font-size: 14px; text-shadow: 1px 1px 2px #ccc;}
+ximFrm, xim_admin_button {border:0; margin:0; padding:0;}
+.ximAdminSpacer {clear:both; height:1px;}
+/* ----------- My Form ----------- */
+.ximForm{	margin:35px 20px; width:400px;	padding:14px;}
+
+/* ----------- ximAdminForm ----------- */
+#ximAdminForm{
+	border:solid 2px #b7ddf2;
+	background-color:#ebf4fb;
+	float: left;
+}
+#ximAdminForm h1 {font-size:14px;	font-weight:bold;margin-bottom:8px;}
+#ximAdminForm p {
+	font-size:11px;
+	margin-bottom:20px;
+	border-bottom:solid 1px #b7ddf2;
+	padding-bottom:10px;
+}
+#ximAdminForm label {
+	display:block;
+	font-size:10px;
+	font-weight:bold;
+	text-align:right;
+	width:140px;
+	float:left;
+}
+#ximAdminForm .small {
+	color:#666;
+	display:block;
+	font-size:11px;
+	font-weight:normal;
+	text-align:right;
+	width:140px;
+}
+#ximAdminForm input, #ximAdminForm textarea {
+	float:left;
+	font-size:12px;
+	padding:4px 2px;
+	border:solid 1px #aacfe4;
+	width:200px;
+	margin:2px 0 20px 10px;
+}
+#cap {
+	float:left;
+	padding:4px 2px;
+	margin:2px 0 20px 10px;
+	border: 0;
+}
+#ximAdminForm a img { border: 0;}
+#ximAdminForm xim_admin_button{
+	clear:both;
+	margin-left:150px;
+	width:91px;
+	height:32px;
+	background:#666/*rl(images/submit.png) no-repeat*/;
+	text-align:center;
+	line-height:32px;
+	color: transparent;
+	text-transform: capitalize;
+}
+.xim_admin_error {	font-weight: bold; color:red;}
+.success {	font-weight: bold; color:green;}
+.xim_admin_button-link a {
+	border-style: solid;
+	border: 0;
+	text-decoration : none;
+	padding : 5px 14px;
+	background-color: #F1630E;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+
+.xim_error_start {
+	border-bottom:1px solid #B7DDF2;
+	color:black;
+	font-size:11px;
+	margin-bottom:20px;
+	padding-bottom:10px;
+}
+.xim_admin_button-link a:hover {	background-color: #C85304;}
+.xim_update_header { font-size:14px;}
+.xim_upd_img {
+	width:22px;
+	height:22px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+.xim_update {
+	color:black;
+	font-weight:bold;
+	font-size:11px;
+	padding: 0;
+	margin: 0;
+}
+.xim_update a, .xim_update a:hover, .xim_update a:visited {
+	color:blue;
+	text-decoration: underline;
+	font-size:11px;
+}
+
+.xim_update_changelog {
+	background-color: #fff;
+	overflow:auto;
+	font-size:10px;
+	height: 150px; 
+	width: 300px;
+}
+#ximadmin_tab5 h2 { font-size: 14px; margin: 1em 0 .5em 0;}
+ul.help { 
+	margin: 8px;
+	padding: 8px;
+	list-style-type: none;
+	border: 0;
+	background: transparent;
+	background-image: none;
+} 
+
+ul.help li {
+	/*list-style-position: inside; 
+	list-style-image: url(../images/ul-breaker.png);*/
+	padding-left:               15px;
+	padding-top:                1px;
+	padding-bottom:             2px;
+	background:                 url(../images/ul-breaker.png) no-repeat left center;
+	list-style: none;
+	font-size:11px;
+	text-decoration: bold;
+	line-height: 17px;
+}
+
+ul.help li a {
+	text-decoration: bold;
+	color: #0000FF;
+	font-size: 11px;
+	outline: none;
+}
+li.help a:hover { background-color: #0000FF;}
