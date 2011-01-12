@@ -1,0 +1,68 @@
+Xoops Instant Messenger (XIM) Changelog
+
+=================================
+13/02/2010: Version 0.0.3
+=================================
+- NEW: Andrax XIM and Culex Xoops Instant Messenger merged as XIM (Andrax)
+- NEW: Added smilie and Xoops BBcode support (andrax)
+- NEW: Uploaded to /XoopsModules/xim/trunk as revision 4427 (culex)
+- BUG: Cleared up Jquery Conflict by renaming functions (Andrax)
+- BUG: Exchanged easydrag with jquery.event.drag-1.5.js as revision 4810 (culex)
+
+
+=================================
+05/12/2010: Version 1.0.0
+=================================
+- NEW: Added show userinfo link to chat names Revision: 4428 (culex)
+- NEW: Showing user avatar in chat Revision 4446: (Andrax)
+- NEW: Added sound library + 10 sounds to chat Revision 4512: (culex)
+- NEW: Added change, show config for status Revision 4512: (Culex)
+- NEW: Added the merged footerbar Revision 4638: (Andrax)
+- NEW: Added install.html with installation/error faq Revision 4647 (culex)
+- NEW: Added admin system with statistics, module infor /update check and send all users message(culex)
+- NEW: Block always showing but if no users other than yourself online "no frinds online" showing (culex)
+- NEW: Removed docs with hardcoded html instruction / help file and incorporated in tab in admin insted (culex)
+
+- BUG: Fix problem with minimized chat, cookie problem Revision 4638: (Andrax)
+- BUG: Fixed malformed JSON document Revision: 4641 (andrax)
+- BUG: Jquery noconflict rename im() to xoops_im() to avoid "im " being blank in chats Revision: 4674 (culex)
+- BUG: Changed "Messages" hardcoded -> language define _XIM_BAR_MESSAGE in footer_bar.php and main.php Revisio: 4682 (culex)
+- BUG: Added a stripHTML function to chat.js for displaying item.f in document.title without html tags Revision: 4683 (culex)
+- BUG: Mysql compatibility 4 & 5 Revision: 4684 (culex)
+- BUG: Fixed block not showing breaking updating userlist (culex)
+- BUG: Fixed styling and dirty html / css (Kris_fr)
+- BUG: True declaring script include in admin section (Kris_fr)
+- BUG: Fixed form to keep last config on pageload (culex)
+- Proposed: Keeping jquery and UI inside xoops_lib / frameworks (Kris_fr)
+
+=================================
+29/12/2010: Version 1.0.1
+=================================
+- BUG: Css missing value making mbcontainer bug out contaners iconized in IE. FF simply ignores without error (culex rev 5915)
+- BUG: Had to add a special check due to IE error in title of chats. (culex rev 5842)
+- BUG: Adding direct dom manipulation to read last know config to status, sound form. 99% successfull (culex rev 5808)
+- BUG: Strange error where "No friends online" changes to english from default language with blockupdate. (culex rev 5805)
+- BUG: Hiding footerbar from users with no permission to view block (culex rev 5804)
+
+- NEW: original MBcontainer icon for customization (culex rev 5923)
+- NEW: update french translation for xim module (Kris_fr rev 5809)
+- NEW: Added dock to tinyfooterbar and ajusted icons to stay inside div (culex rev 5919)
+- NEW: Added dobounce functio to iterate through chatwindows and bounce if opened or shake if iconized. 
+		Also added security to keep iconized opened and chat windows open with correct username and not userID (culex rev 5916)
+- BUG: default browser icon to xim browser icon (culex rev 5922)
+- BUG: Corrected a few minor issues. no real bugs (culex rev 5921)
+- BUG: Upgraded mbcontainer with elements from 2.5.5 trunk version + additional hack to show hidden elements to offset() (culex rev 5920)
+- BUG: Changed malformed setTimeout() in updateUserList (culex rev 5918)
+- BUG: Version 1.01 RC and added credits (culex rev 5924)
+- BUG: Ajusted json in chatsession start. No errors but better to be safe :-) (culex rev 5841)
+
+=================================
+12/01/2011: Version 1.0.2
+=================================
+- Change: Added a little mor reading space for changelog_text in admin (culex rev 6036)
+- Change: Removed obsolete code (old chat style) (Andrax rev 6029)
+- Change: Added functionality to show user avatar in dock bar, when minimizing the message box;
+		  Some adjustments in CSS and javascript files;
+		  Removing unnecessary javascript files; (Andrax rev 6028)
+- NEW: New ChatBox Logo (andrax rev 6026)
+- BUG: Fix problem with  "doBounce"  funtion (Andrax rev 6018)
