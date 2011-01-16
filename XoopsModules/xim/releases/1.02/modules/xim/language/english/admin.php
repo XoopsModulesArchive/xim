@@ -98,9 +98,8 @@ define('_AM_XIM_POSTTOALL_SUBMIT','Send');
 
 
 //Help section
-
 define('_AM_XIM_HELP_ABOUT','About Xim');
-define('_AM_XIM_HELP_PREFACE','Xim is a Messenger system. Inspired by the jQuery Facebook chat example written by Anant Garg and the Facebook Messenger. The base system has been re-written, adapted, and heavily expanded for XOOPS by Culex & Andrax.<br/>The chat is one-on-one and fully supported by XOOPS version 2.4.0 and higher.<br/>XIM is released under the terms of the <a href="http://www.gnu.org/copyleft/gpl.html" target="_blank">GNU General Public License (GPL)</a> and is free to use and modify. It is free to redistribute as long as you abide by the distribution terms of the GPL.');
+define('_AM_XIM_HELP_PREFACE','Xim is a Messenger system. Inspired by the jQuery Gmail/Facebook chat example written by Anant Garg and the Gmail/Facebook Messenger. The base system has been re-written, adapted, and heavily expanded for XOOPS by Culex & Andrax.<br/>The chat is one-on-one and fully supported by XOOPS version 2.4.0 and higher.<br/>XIM is released under the terms of the <a href="http://www.gnu.org/copyleft/gpl.html" target="_blank">GNU General Public License (GPL)</a> and is free to use and modify. It is free to redistribute as long as you abide by the distribution terms of the GPL.');
 define('_AM_XIM_HELP_HEADER_REQUIREMENTS','Requirements');
 define('_AM_XIM_HELP_REQUIREMENTS','<ul class="help">
 										<li>WWW Server (<a href="http://www.apache.org/" target="_blank">Apache</a>, IIS, Roxen, etc)</li>
@@ -128,7 +127,7 @@ define('_AM_XIM_HELP_HEADER_UPGRADING','Upgrading from a previous version');
 define('_AM_XIM_HELP_UPGRADING','<ul class="help">
 									<li>Make sure you are using newest version</li>
 									<li>Read the readme.txt in archieve</li>
-									<li>Maybe do a backup of you tables</li>
+									<li>Maybe do a backup of your tables</li>
 								</ul>');
 define('_AM_XIM_HELP_HEADER_FAQ','Problem solving');
 define('_AM_XIM_HELP_HEADER_COMMENPROBLEMS1','I get blank page, can\'t click username, The block does not show.......');

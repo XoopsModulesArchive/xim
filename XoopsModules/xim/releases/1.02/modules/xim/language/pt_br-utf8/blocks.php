@@ -21,27 +21,24 @@
 * @author          Andrax - homepage.: http://guxbrasil.org & email.: lcbc@ig.com.br
 * @author          Culex  - homepage.: http://culex.dk		& email.: culex@culex.dk
 **/
-
-define('_MI_XIM_MODULE_NAME','XIM');
-define('_MI_XIM_ADMENU','Administration');
-define('_MI_XIM_MODULE_DESC', 'A block to show currently online users. Press name to open chat window');
-define("_MB_XIM_BLOCK","IM");
-define('_XIM_CREDIT','Original script by Anant Garg (anantgarg.com)');
-define('_XIM_SHOW_FOOTER_BAR','Show footer bar?');
-define('_XIM_FOOTER_BAR_STYLE','Footer bar style');
-define('_XIM_FOOTER_FULL','Full');
-define('_XIM_FOOTER_TINY','Tiny');
-
-//styling for chat windows
-define('_XIM_CHATWINDOWSTYLE_STYLE','Chat window skin');
-define('_XIM_CHATWINDOWSTYLE_DESC','Choose here the style for your chat windows');
-define('_XIM_CHATWINDOWSTYLE_DEFAULT','Default');
-define('_XIM_CHATWINDOWSTYLE_WHITE','White');
-define('_XIM_CHATWINDOWSTYLE_BLACK','Black');
-define('_XIM_CHATWINDOWSTYLE_STIKY','Stiky');
-define('_XIM_CHATWINDOWSTYLE_ALERT','Alert');
-
-// about logs
-define('_XIM_CHATDELETE_LOGS','Delete messages..');
-define('_XIM_CHATDELETE_LOGS_DESC','Never delete = 0. <br/>Set a number for deleting recieved messages older than X minutes.<br/>A number bigger than 60 is adviceable.');
+// added v0.4
+define("_MB_XIM_USESOUND","Som.:"); 
+define("_MB_XIM_NOSOUND","Nenhum"); 
+define("_MB_XIM_SOUND1","Cerveja"); 
+define("_MB_XIM_SOUND2","Galo"); 
+define("_MB_XIM_SOUND3","Icq"); 
+define("_MB_XIM_SOUND4","Gota"); 
+define("_MB_XIM_SOUND5","Laser"); 
+define("_MB_XIM_SOUND6","Rede Celular"); 
+define("_MB_XIM_SOUND7","Espada"); 
+define("_MB_XIM_SOUND8","Clique"); 
+define("_MB_XIM_SOUND9","Lobo"); 
+define("_MB_XIM_SOUND10","Sinal"); 
+define("_MB_XIM_STATUS","Seu Status ?"); 
+define("_MB_XIM_HIDDEN","Fora"); 
+define("_MB_XIM_BUSY","Ocupado"); 
+define("_MB_XIM_ONLINE","Online");
+define("_MB_XIM_OFFLINE","Offline"); 
+define("_MB_XIM_UPDATE","Atualizar"); 
+define("_MB_XIM_ONLYYOU","Nenhum Amigo online");
 ?>

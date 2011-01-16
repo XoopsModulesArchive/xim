@@ -20,29 +20,28 @@
 * @since           2.4.0
 * @author          Andrax - homepage.: http://guxbrasil.org & email.: lcbc@ig.com.br
 * @author          Culex  - homepage.: http://culex.dk		& email.: culex@culex.dk
-* @Spanish Translator Oswaldo Valladares http://www.xoopsdemo.tk
 **/
 
 define('_MI_XIM_MODULE_NAME','XIM');
-define('_MI_XIM_ADMENU','Administración');
-define('_MI_XIM_MODULE_DESC', 'Un bloque para mostrar a los usuarios actualmente en línea. Pulse sobre el nombre para abrir ventana de chat');
-define('_MB_XIM_BLOCK', 'IM');
-define('_XIM_CREDIT', 'Script Original de Anant Garg (anantgarg.com)');
-define('_XIM_SHOW_FOOTER_BAR', 'Mostrar barra de pie de página?');
-define('_XIM_FOOTER_BAR_STYLE', 'Estilo de Barra de pie de Página');
-define('_XIM_FOOTER_FULL', 'Completa');
-define('_XIM_FOOTER_TINY', 'Pequeña');
+define('_MI_XIM_ADMENU','AdministraÃ§Ã£o');
+define('_MI_XIM_MODULE_DESC', 'Um bloco para mostrar os usuarios online no momento. Clique no nome para abrir a janela do chat');
+define('_MB_XIM_BLOCK','IM');
+define('_XIM_CREDIT','Script original por Anant Garg (anantgarg.com)');
+define('_XIM_SHOW_FOOTER_BAR','Exibir a barra no rodapÃ© da pÃ¡gina?');
+define('_XIM_FOOTER_BAR_STYLE','Estilo da barra no rodapÃ©');
+define('_XIM_FOOTER_FULL','Completo');
+define('_XIM_FOOTER_TINY','Mini');
 
 //styling for chat windows
-define('_XIM_CHATWINDOWSTYLE_STYLE', 'Tema de la ventana del Chat');
-define('_XIM_CHATWINDOWSTYLE_DESC', 'Elija aquí el estilo de sus ventanas de chat');
-define('_XIM_CHATWINDOWSTYLE_DEFAULT', 'Predeterminada');
-define('_XIM_CHATWINDOWSTYLE_WHITE', 'Blanco');
-define('_XIM_CHATWINDOWSTYLE_BLACK', 'Negro');
-define('_XIM_CHATWINDOWSTYLE_STIKY', 'Stiky');
-define('_XIM_CHATWINDOWSTYLE_ALERT', 'Alerta');
+define('_XIM_CHATWINDOWSTYLE_STYLE','Tema da janela de Chat');
+define('_XIM_CHATWINDOWSTYLE_DESC','Escolha aqui o tema das suas janelas de chat');
+define('_XIM_CHATWINDOWSTYLE_DEFAULT','PadrÃ£o');
+define('_XIM_CHATWINDOWSTYLE_WHITE','Branco');
+define('_XIM_CHATWINDOWSTYLE_BLACK','Preto');
+define('_XIM_CHATWINDOWSTYLE_STIKY','Stiky');
+define('_XIM_CHATWINDOWSTYLE_ALERT','Alerta');
 
 // about logs
-define('_XIM_CHATDELETE_LOGS', 'Eliminar mensajes ..');
-define('_XIM_CHATDELETE_LOGS_DESC', 'Nunca eliminar = 0. <br/> Establezca un número para borrar los mensajes recibidos de más de X minutos. <br/> Es recomendable un número mayor de 60.');
+define('_XIM_CHATDELETE_LOGS','Apagando mensagens..');
+define('_XIM_CHATDELETE_LOGS_DESC','Nunca apagar = 0. <br/>Defina um nÃºmero para apagar as mensagens recebidas com mais de X minutos.<br/>Ã‰ recomendado um numero maior que 60.');
 ?>
