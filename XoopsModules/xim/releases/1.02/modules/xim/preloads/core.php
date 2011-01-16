@@ -65,7 +65,8 @@ class XimCorePreload extends XoopsPreloadItem{
 			}
 		
 	}
-
+// Only add scripts and Css if User is xoopsUSer
+if ($xoopsUser) {
 $xoTheme->addStylesheet(XOOPS_URL.'/modules/xim/css/xim.css');
 $xoTheme->addStylesheet(XOOPS_URL.'/modules/xim/css/mbContainer.css');
 $xoTheme->addScript(XOOPS_URL.'/browse.php?Frameworks/jquery/jquery.js');
@@ -89,7 +90,7 @@ SCRIPT;
 	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/configscript.js');
 	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/soundmanager2.js');
 	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/sm_default.js');
-
+}
 	if ($xoopsUser) {
 		if ($showFooterBar!=0) {
 			$xoTheme->addStylesheet(XOOPS_URL.'/modules/xim/css/footer.css.php?style='.$footerBarStyle);
