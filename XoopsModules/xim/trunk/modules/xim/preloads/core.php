@@ -117,5 +117,11 @@ SCRIPT;
 		}
 		}
 	}
+	function isActive()
+	{
+		$module_handler =& xoops_getHandler('module');
+		$module = $module_handler->getByDirname('xim');
+		return ($module && $module->getVar('isactive')) ? true : false;
+	}
 }
 ?>
