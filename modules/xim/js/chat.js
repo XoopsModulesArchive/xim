@@ -58,9 +58,9 @@ function chatWith(userId, chatusername) {
 		xoops_im(".subpanel").hide(); //hide subpanel
 		xoops_im("#footpanel li a").removeClass('active'); //remove active class on subpanel 
 	}
-	avatar = getAvatar(userId)
+	avatar = getAvatar(userId);
 	createChatBox(userId, chatusername, avatar);
-	xoops_im("#MBchatbox_"+userId+" .chatboxtextarea").focus();;
+	xoops_im("#MBchatbox_"+userId+" .chatboxtextarea").focus();
 }
 
 function createChatBox(containerId,chatBoxName,avatar){
@@ -75,7 +75,6 @@ function createChatBox(containerId,chatBoxName,avatar){
 		}
 		return;
 	}
-
 	var html = '<div id="MBchatbox_'+containerId+'" class="containerPlus draggable resizable {buttons:\'m,i,c\', icon:\'browser.png\', dckicon:\''+avatar+'\', skin:\''+cws+'\',iconized:\'false\',dock:\'dock\', width:\'250\', height:\'300\',rememberMe:\'true\', minWidth:\'250\', grid:\'5\', minHeight:\'300\'}" style="position:absolute;top:100px;left:100px"></div>';
 	
 	if (containerId != '-1') {
@@ -108,6 +107,7 @@ function createChatBox(containerId,chatBoxName,avatar){
             }
           });
       chatBoxes.push(containerId);
+
       //xoops_im("#MBchatbox_"+containerId).mb_switchFixedPosition();
       //xoops_im("#MBchatbox_"+containerId).adjastPos();
       //xoops_im.doOnWindowResize("#MBchatbox_"+containerId);
@@ -337,7 +337,7 @@ function startChatSession(){
 			if (item)	{ // fix strange ie bug
 				chatboxID = item.f;
 				if (xoops_im("#MBchatbox_"+chatboxID).length <= 0) {
-					if (item.s <= 0) {
+					if (item.s <= 1) {
 					createChatBox(chatboxID,item.n,item.a);
 					}
 				}
@@ -504,6 +504,7 @@ function stripHTML(oldString) {
    }
    return newString;
 }
+
 
 function getAvatar(uid){
 	xoops_im.ajax({
