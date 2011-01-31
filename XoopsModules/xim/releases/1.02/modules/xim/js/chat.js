@@ -58,11 +58,12 @@ function chatWith(userId, chatusername) {
 		xoops_im(".subpanel").hide(); //hide subpanel
 		xoops_im("#footpanel li a").removeClass('active'); //remove active class on subpanel 
 	}
-	createChatBox(userId, chatusername);
+	avatar = getAvatar(userId);
+	createChatBox(userId, chatusername, avatar);
 	xoops_im("#MBchatbox_"+userId+" .chatboxtextarea").focus();
 }
 
-function createChatBox(containerId,chatBoxName){
+function createChatBox(containerId,chatBoxName,avatar){
 	if (xoops_im("#MBchatbox_"+containerId).length > 0) {
 		 if (xoops_im("#MBchatbox_"+containerId).mb_getState('iconized')) {
 			xoops_im("#MBchatbox_"+containerId).mb_iconize();
@@ -74,43 +75,38 @@ function createChatBox(containerId,chatBoxName){
 		}
 		return;
 	}
-	xoops_im.ajax({
-	  url: xim_url+"chat.php?action=avatar",
-	  cache: false,
-	  data: "uid="+containerId,
-	  dataType: "json",
-	  success: function(data) {
-		var html = '<div id="MBchatbox_'+containerId+'" class="containerPlus draggable resizable {buttons:\'m,i,c\', icon:\'browser.png\', dckicon:\''+data.a+'\', skin:\''+cws+'\',iconized:\'false\',dock:\'dock\', width:\'250\', height:\'300\',rememberMe:\'true\', minWidth:\'250\', grid:\'5\', minHeight:\'300\'}" style="position:absolute;top:100px;left:100px"></div>';
+	var html = '<div id="MBchatbox_'+containerId+'" class="containerPlus draggable resizable {buttons:\'m,i,c\', icon:\'browser.png\', dckicon:\''+avatar+'\', skin:\''+cws+'\',iconized:\'false\',dock:\'dock\', width:\'250\', height:\'300\',rememberMe:\'true\', minWidth:\'250\', grid:\'5\', minHeight:\'300\'}" style="position:absolute;top:100px;left:100px"></div>';
 	
-		if (containerId != '-1') {
-		var content ='<div class="no"><div class="ne"><div class="n">'+chatBoxName+'</div></div><div class="o"><div class="e"><div class="c"><div class="mbcontainercontent"></div><div class="chatboxtextarea"><textarea  onkeydown="javascript:return checkChatBoxInputKey(event,this,\''+containerId+'\');"></textarea></div></div></div></div><div class="so"><div class="se"><div class="s"></div></div></div>';
-		}	else {
-		var content ='<div class="no"><div class="ne"><div class="n">'+chatBoxName+'</div></div><div class="o"><div class="e"><div class="c"><div class="mbcontainercontent"></div><div>No reply possible with system messages</div></div></div></div><div class="so"><div class="se"><div class="s"></div></div></div>';
+	if (containerId != '-1') {
+	var content ='<div class="no"><div class="ne"><div class="n">'+chatBoxName+'</div></div><div class="o"><div class="e"><div class="c"><div class="mbcontainercontent"></div><div class="chatboxtextarea"><textarea  onkeydown="javascript:return checkChatBoxInputKey(event,this,\''+containerId+'\');"></textarea></div></div></div></div><div class="so"><div class="se"><div class="s"></div></div></div>';
+	}	else {
+	var content ='<div class="no"><div class="ne"><div class="n">'+chatBoxName+'</div></div><div class="o"><div class="e"><div class="c"><div class="mbcontainercontent"></div><div>No reply possible with system messages</div></div></div></div><div class="so"><div class="se"><div class="s"></div></div></div>';
 		}
-		xoops_im("body").append(html);
-		xoops_im("#MBchatbox_"+containerId).append(content);
-		xoops_im("#MBchatbox_"+containerId).buildContainers({
-			containment:"document",
-			elementsPath:xim_url+"images/elements/",
-			dockedIconDim:20,
-			effectDuration:200,
-			onRestore:function(o){},
-			onIconize:function(o){},
-			onResize:function(o){},
-			onLoad:function(o){  document.containers[o.attr("id")]=1;  },
-			onClose:function(o){
-				o.mb_removeCookie("closed");
-				o.mb_removeCookie("iconized");
-				o.mb_removeCookie("collapsed");
-				o.mb_removeCookie("restored");
-				xoops_im.post(xim_url+"chat.php?action=closechat", { chatbox: containerId } , function(data){ });
-				chatBoxes = xoops_im.grep(chatBoxes, function(value) {  return value != containerId; });
-				document.containers[o.attr("id")]=null;
-			}
-		});
-		chatBoxes.push(containerId);
-	}
-});
+	
+          xoops_im("body").append(html);
+	  xoops_im("#MBchatbox_"+containerId).append(content);
+          xoops_im("#MBchatbox_"+containerId).buildContainers({
+            containment:"document",
+            elementsPath:xim_url+"images/elements/",
+	    dockedIconDim:20,
+            effectDuration:200,
+	    onRestore:function(o){},
+	    onIconize:function(o){},
+		onResize:function(o){},
+            onLoad:function(o){
+              document.containers[o.attr("id")]=1;
+            },
+            onClose:function(o){
+              o.mb_removeCookie("closed");
+			  o.mb_removeCookie("iconized");
+			  o.mb_removeCookie("collapsed");
+			  o.mb_removeCookie("restored");
+	      xoops_im.post(xim_url+"chat.php?action=closechat", { chatbox: containerId } , function(data){ });
+	      chatBoxes = xoops_im.grep(chatBoxes, function(value) {  return value != containerId; });
+              document.containers[o.attr("id")]=null;
+            }
+          });
+      chatBoxes.push(containerId);
 
       //xoops_im("#MBchatbox_"+containerId).mb_switchFixedPosition();
       //xoops_im("#MBchatbox_"+containerId).adjastPos();
@@ -341,7 +337,7 @@ function startChatSession(){
 			if (item)	{ // fix strange ie bug
 				chatboxID = item.f;
 				if (xoops_im("#MBchatbox_"+chatboxID).length <= 0) {
-					if (item.s <= 0) {
+					if (item.s <= 1) {
 					createChatBox(chatboxID,item.n,item.a);
 					}
 				}
@@ -508,6 +504,19 @@ function stripHTML(oldString) {
    }
    return newString;
 }
+
+
+function getAvatar(uid){
+	xoops_im.ajax({
+	  url: xim_url+"chat.php?action=avatar",
+	  cache: false,
+	  data: "uid="+uid,
+	  dataType: "json",
+	  success: function(data) {
+		return data.a;		   
+   }
+ });
+};
 
 function keepDivs (divname,divname2,height, id) {
 			// Added these repetative lines to prevent textarea popping out main div in IE (culex)
