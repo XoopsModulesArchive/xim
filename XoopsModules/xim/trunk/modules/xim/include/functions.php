@@ -100,7 +100,7 @@ function xim_setPersonalConfig () {
 		 $result = $xoopsDB->query($checkconfig);
 		  if ($xoopsDB->getRowsNum($result) < 1) {
 		   // If none set, insert defaults
-		    $default = "INSERT INTO ".$xoopsDB->prefix('xim_pers_conf')." (id, username, sound, status) VALUES ('', '$username', '1', 'online')";
+		    $default = "INSERT INTO ".$xoopsDB->prefix('xim_pers_conf')." (username, sound, status) VALUES ('$username', 1, 2)";
 			 $result = $xoopsDB->queryF($default);
 		  } 
 		   else {
