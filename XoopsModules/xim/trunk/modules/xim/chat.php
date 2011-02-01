@@ -115,6 +115,7 @@ function chatHeartbeat() {
         $items .= <<<EOD
 {"s":"0","n":"{$uname}","a":"$avatarURL","f":"{$chat['from']}","m":"{$chat['message']}","p":"$status","q":"$soundUrl"},
 EOD;
+      //  $historycount = count($_SESSION['chatHistory'][$chat['from']]));
         if (!isset($_SESSION['chatHistory'][$chat['from']])) {
             $_SESSION['chatHistory'][$chat['from']] = '';
         }

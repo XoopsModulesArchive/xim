@@ -54,9 +54,31 @@ function adicionaAmigo($id) {
 	$sql .= ' WHERE (uid='.$xoopsUser->getVar('uid').')';
     }
 	$result = $xoopsDB->query($sql);
+  //echo $result;
+
 }
 
+function removeAmigo($id) {
+
+echo 'removendo usuário de' . $id;
+//     global $xoopsDB, $xoopsUser;
+//     $sql = 'SELECT amigosList FROM '.$xoopsDB->prefix('xim_amigos');
+//     $sql .= ' WHERE (uid='.$xoopsUser->getVar('uid').')';
+//     $result = $xoopsDB->query($sql);
+// 
+//     if (!$result) {
+//         return '';
+//     }
+// //var_dump($_SESSION);
+//     $result = mysql_fetch_assoc($result);
+// return $result;
+}
 // Get last saved configs from Db for user
+/*
+** $culex	.: culex@culex.dk
+** $username.: The username used in the chat
+** $value	.: Eigher status or sound to be returned
+*/
 function im_Getconfig ($username) {
  global $xoopsUser, $xoopsDB;
  $persc = array();
