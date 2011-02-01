@@ -152,4 +152,4 @@
 .containerPlus .chatboxtextarea{width:100%; margin: 0 0 0 -5px; /*position:relative;*/}
 .chatboxtextarea textarea {width:100%; height: 44px; padding:0 5px;position:relative;}
 #dock{ display:block; height:20px; float:right; }
-#dock img { padding:3px 5px }
+#dock img { padding:2px }

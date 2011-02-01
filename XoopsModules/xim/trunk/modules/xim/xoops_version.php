@@ -27,13 +27,13 @@ if (!defined('XOOPS_ROOT_PATH')) {
 }
 $modversion['dirname'] = basename(dirname(__FILE__));
 $modversion['name'] = _MI_XIM_MODULE_NAME;
-$modversion['version'] = 1.01;
+$modversion['version'] = 1.02;
 $modversion['description'] = _MI_XIM_MODULE_DESC;
 $modversion['author'] = "Andrax & Culex";
 $modversion['credits'] = _XIM_CREDIT;
 $modversion['Testers'] = "ArtsGeral, Edison, Izzy, Rmarx, Mazarin, btesec, Kris_fr, Runeher, Stance";
 $modversion['license'] = "GPL see LICENSE";
-$modversion['official'] = 0;
+$modversion['official'] = 1;
 $modversion['image'] = "images/xim.png";
 
 // Menu
@@ -93,23 +93,6 @@ $modversion['config'][$i]['options'] = array(
 									'_XIM_CHATWINDOWSTYLE_ALERT'	=>	4
 									);
 									
-/* $i++;
-$modversion['config'][$i]['name'] = 'ximdeletelogs';
-$modversion['config'][$i]['title'] = '_XIM_CHATDELETE_LOGS';
-$modversion['config'][$i]['description'] = '_XIM_CHATDELETE_LOGS_DESC';
-$modversion['config'][$i]['formtype'] = 'textbox';
-$modversion['config'][$i]['valuetype'] = 'int';
-$modversion['config'][$i]['default'] = '0';
-$modversion['config'][$i]['options'] = array(); */
-
-// $i++;
-// $modversion['config'][$i]['name'] = 'user_limit';
-// $modversion['config'][$i]['title'] = 'Limit';
-// $modversion['config'][$i]['description'] = 'Limit';
-// $modversion['config'][$i]['formtype'] = 'textbox';
-// $modversion['config'][$i]['valuetype'] = 'int';
-// $modversion['config'][$i]['default'] = 10;
-
 // Blocks
 $i=0;
 $modversion['blocks'][$i]['file'] = "b_instantmessenger.php";

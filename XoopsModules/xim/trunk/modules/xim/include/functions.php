@@ -32,7 +32,6 @@ function getAmigos() {
     if (!$result) {
         return '';
     }
-//var_dump($_SESSION);
     $result = mysql_fetch_assoc($result);
 return $result;
 }
@@ -55,31 +54,9 @@ function adicionaAmigo($id) {
 	$sql .= ' WHERE (uid='.$xoopsUser->getVar('uid').')';
     }
 	$result = $xoopsDB->query($sql);
-  //echo $result;
-
 }
 
-function removeAmigo($id) {
-
-echo 'removendo usuário de' . $id;
-//     global $xoopsDB, $xoopsUser;
-//     $sql = 'SELECT amigosList FROM '.$xoopsDB->prefix('xim_amigos');
-//     $sql .= ' WHERE (uid='.$xoopsUser->getVar('uid').')';
-//     $result = $xoopsDB->query($sql);
-// 
-//     if (!$result) {
-//         return '';
-//     }
-// //var_dump($_SESSION);
-//     $result = mysql_fetch_assoc($result);
-// return $result;
-}
-
-/*
-** $culex	.: culex@culex.dk
-** $username.: The username used in the chat
-** $value	.: Eigher status or sound to be returned
-*/
+// Get last saved configs from Db for user
 function im_Getconfig ($username) {
  global $xoopsUser, $xoopsDB;
  $persc = array();
@@ -92,6 +69,7 @@ function im_Getconfig ($username) {
 return $persc;
 }
 
+// Save config to database
 function xim_setPersonalConfig () {
 	global $xoopsDB, $xoopsTpl, $xoopsModule,$xoopsUser;
 	 $username = $xoopsUser->getVar('uname');
