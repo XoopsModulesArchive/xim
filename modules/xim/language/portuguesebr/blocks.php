@@ -21,13 +21,24 @@
 * @author          Andrax - homepage.: http://guxbrasil.org & email.: lcbc@ig.com.br
 * @author          Culex  - homepage.: http://culex.dk		& email.: culex@culex.dk
 **/
-
-include_once("../../mainfile.php");
-
-$xoopsOption['template_main'] = 'xim_index.html';
-include_once("class/buddy.php");
-include_once(XOOPS_ROOT_PATH."/header.php");
-global $xoopsUser, $xoTheme;;
-// Content here
-include(XOOPS_ROOT_PATH."/footer.php");
+// added v0.4
+define("_MB_XIM_USESOUND","Som.:"); 
+define("_MB_XIM_NOSOUND","Nenhum"); 
+define("_MB_XIM_SOUND1","Cerveja"); 
+define("_MB_XIM_SOUND2","Galo"); 
+define("_MB_XIM_SOUND3","Icq"); 
+define("_MB_XIM_SOUND4","Gota"); 
+define("_MB_XIM_SOUND5","Laser"); 
+define("_MB_XIM_SOUND6","Rede Celular"); 
+define("_MB_XIM_SOUND7","Espada"); 
+define("_MB_XIM_SOUND8","Clique"); 
+define("_MB_XIM_SOUND9","Lobo"); 
+define("_MB_XIM_SOUND10","Sinal"); 
+define("_MB_XIM_STATUS","Seu Status ?"); 
+define("_MB_XIM_HIDDEN","Fora"); 
+define("_MB_XIM_BUSY","Ocupado"); 
+define("_MB_XIM_ONLINE","Online");
+define("_MB_XIM_OFFLINE","Offline"); 
+define("_MB_XIM_UPDATE","Atualizar"); 
+define("_MB_XIM_ONLYYOU","Nenhum Amigo online");
 ?>

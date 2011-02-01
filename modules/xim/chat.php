@@ -58,6 +58,7 @@ if (!isset($_SESSION['openChatBoxes'])) {
     $_SESSION['openChatBoxes'] = array();	
 }
 
+// Function to be used in setInterval. This function do all the essential
 function chatHeartbeat() {
     global $xoopsDB, $xoopsUser,$soundUrl;
 	$sql = "select * from ".$xoopsDB->prefix('xim_chat')." where (".$xoopsDB->prefix(xim_chat).".to = '".mysql_real_escape_string($_SESSION['xoopsUserId'])."' AND recd = 0) order by id ASC";
@@ -114,7 +115,6 @@ function chatHeartbeat() {
         $items .= <<<EOD
 {"s":"0","n":"{$uname}","a":"$avatarURL","f":"{$chat['from']}","m":"{$chat['message']}","p":"$status","q":"$soundUrl"},
 EOD;
-      //  $historycount = count($_SESSION['chatHistory'][$chat['from']]));
         if (!isset($_SESSION['chatHistory'][$chat['from']])) {
             $_SESSION['chatHistory'][$chat['from']] = '';
         }
@@ -163,14 +163,11 @@ EOD;
     exit(0);
 }
 
-function chatBoxSession($chatbox) {
-    
-    $items = '';
-    
+function chatBoxSession($chatbox) { 
+    $items = '';   
     if (isset($_SESSION['chatHistory'][$chatbox])) {
         $items = $_SESSION['chatHistory'][$chatbox];
-    }
-    
+    }    
     return $items;
 }
 
@@ -181,9 +178,7 @@ function startChatSession() {
         foreach ($_SESSION['openChatBoxes'] as $chatbox => $void) {
             $items .= chatBoxSession($chatbox);
         }
-    }
-    
-    
+    }    
     if ($items != '') {
         $items = substr($items, 0, -1);
     }
@@ -255,14 +250,11 @@ EOD;
     
     $sql = "insert into ".$xoopsDB->prefix(xim_chat)." (".$xoopsDB->prefix(xim_chat).".from,".$xoopsDB->prefix(xim_chat).".to,message,sent) values ('".mysql_real_escape_string($from)."', '".mysql_real_escape_string($to)."','".mysql_real_escape_string($message)."',NOW())";
     $query = $xoopsDB->queryF($sql);
-    //echo "1";
     exit(0);
 }
 
 function closeChat() {
-    
     unset($_SESSION['openChatBoxes'][$_POST['chatbox']]);
-    
     echo "1";
     exit(0);
 }
@@ -302,7 +294,6 @@ function xoops_xim_checkStatus ($to, $from) {
 		 $sql = "insert into ".$xoopsDB->prefix(xim_chat)." (".$xoopsDB->prefix(xim_chat).".from,".$xoopsDB->prefix(xim_chat).".to,message,sent) values ('".mysql_real_escape_string($to)."', '".mysql_real_escape_string($from)."','".mysql_real_escape_string($sysmessage)."',NOW())";
 		 $query = $xoopsDB->queryF($sql);
 	 }
-	 //return $sysmessage;
 }
 
 function getAvatar(){
@@ -320,7 +311,6 @@ function getAvatar(){
 
 function sanitize($text) {
     $text = htmlspecialchars($text, ENT_QUOTES);
-    //$text = preg_replace('/([^\s]{10})(?=[^\s])/m', '$1<br />', $text); 
     $myts = MyTextSanitizer::getInstance();
     $text = $myts->displayTarea($text,1,1,1,1);
     $text = str_replace("\n\r","\n",$text);
