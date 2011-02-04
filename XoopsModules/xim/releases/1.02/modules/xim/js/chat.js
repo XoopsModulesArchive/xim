@@ -95,6 +95,7 @@ function createChatBox(containerId,chatBoxName,avatar){
 		onResize:function(o){},
             onLoad:function(o){
               document.containers[o.attr("id")]=1;
+			  keepInWindow (containerId);
             },
             onClose:function(o){
               o.mb_removeCookie("closed");
@@ -567,4 +568,14 @@ function doBounce (chatboxID,state,name) {
 			});
 		});
 	} 
+}
+
+// Function to keep container in window view when scrolling
+function keepInWindow (containerId) {
+		var scrollingDiv = xoops_im("#MBchatbox_"+containerId);
+ 		xoops_im(window).scroll(function(){			
+			scrollingDiv
+				.stop()
+				.animate({"marginTop": (xoops_im(window).scrollTop() + 30) + "px"}, "slow" );	
+		});
 }
