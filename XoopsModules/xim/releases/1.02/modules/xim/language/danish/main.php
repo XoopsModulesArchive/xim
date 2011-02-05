@@ -42,6 +42,7 @@ define("_XIM_HIDDEN","Væk");
 define("_XIM_BUSY","Optaget"); 
 define("_XIM_ONLINE","Online"); 
 define("_XIM_UPDATE","Opdater"); 
+define("_XIM_OFFLINE","Offline"); 
 
 define("_XIM_FRIENDS","Ven(ner)");
 define("_XIM_FRIENDS_ONLINE","Venner Online");  
