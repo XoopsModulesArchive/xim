@@ -78,3 +78,14 @@ Xoops Instant Messenger (XIM) Changelog
 - FIX: Changes from andrax. (Andrax rev 6139)
 - FIX: Missing index.html files (culex rev 6140)
 
+========================================
+14/02/2011: Version 1.02 Critical Update
+========================================
+- BUG	:	missing define("_XIM_OFFLINE","Offline"); in Danish as Revision: 6150 (culex)
+- BUG	:	Javascript function to keep chat windows in screenview as Revision: 6149 (culex)
+- Change:	Removed a little redundent comments. They are still kept in trunk as revision 6159 (culex)
+- NEW	:	Ajax file called getmystats used by javascript function to make dropdowns show current status. Set when toogle config in footer and in block as Revision: 6158 (culex)
+			* Cloned config css to be used by footer as Revision: 6157 (culex)
+			* Added footer sending data to update configurations as Revision: 6156 (culex)
+			* Changed classes and spans to reflect footer is being used and not block forms as Revision: 6155 (culex)
+- NEW	:	Added a function to retrieve status and sound ad refresh dropdowns. Fixed sending jSon from footer as Revision: 6153 (culex)
