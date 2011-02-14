@@ -94,3 +94,24 @@ ol.timeline li:first-child {
 	display:block;
 	margin: 10px auto 0px auto;
 }
+
+/*ConfigDiv Footer */
+.xim_configDiv_headf {
+	padding: 5px 10px;
+	cursor: pointer;
+	margin:1px;
+	font-size: 10px;
+}
+.xim_configDiv_bodyf {
+	padding: 5px 10px 15px;
+	font-size: 10px;
+	text-align:left;
+}
+.xim_img_infof {
+	float:right;
+}
+#xim_configDivf {
+	position:relative;
+	display:block;
+	margin: 10px auto 0px auto;
+}
