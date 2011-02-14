@@ -22,31 +22,31 @@
 * @author          Culex  - homepage.: http://culex.dk		& email.: culex@culex.dk
 **/
 
+// Get sound and config from DB to make current dropdown reflect latest changes.
+// Kind of backwards way to do it, but all other atemps has failed..
+// Uid = current user (ie YOU)
+// Uname = Your name
 
-include('../../../mainfile.php');
-global $xoopsDB,$xoopsLogger,$xoopsUser;
- $xoopsLogger->activated = false;
-if (is_object($xoopsUser)){
-	if($_POST) {
-		if ($_POST['sound'] != '') {
-			 $sound=$_POST['sound'];
-			  $sound=mysql_real_escape_string($sound);
-			 
-			 $status=$_POST['status'];
-			  $status=mysql_real_escape_string($status);
-		}
-		if ($_POST['soundf'] != '') {
-			 $sound=$_POST['soundf'];
-			  $sound=mysql_real_escape_string($sound);
-			 
-			 $status=$_POST['statusf'];
-			  $status=mysql_real_escape_string($status);		  
-		}
-		
-	 $username = $xoopsUser->uname(); 
-		$sql = "UPDATE ".$xoopsDB->prefix('xim_pers_conf')." SET sound='".intval($sound)."', status='".intval($status)."' WHERE username='".addslashes($username)."'";
-		 $result = $xoopsDB->queryF($sql);
+include 'header.php';
+global $xoopsLogger;
+$xoopsLogger->activated = false;
+
+    global $xoopsUser, $xoopsModule;
+	$xoopsLogger->activated = false;
+    if (is_object($xoopsUser)) {
+        $uid = $xoopsUser->getVar('uid');
+        $uname = $xoopsUser->getVar('uname');
+		$_SESSION['username'] = $uname;
 	}
-}
+	$sql = "SELECT * FROM ".$xoopsDB->prefix('xim_pers_conf')." WHERE username = '".$uname."'";
+	$result = $xoopsDB->query($sql);
+	 while ($myrow=$xoopsDB->fetchArray($result)) {
+		$id = $myrow['id'];
+		$username = $myrow['username'];
+		$status = $myrow['status'];
+		$sound = $myrow['sound'];
+	 }
+    header('Content-type: application/json');
+    echo "{\"myid\":$uid, \"uso\":$sound, \"uss\":$status}";
+
 ?>
-<span>Saved!</span>
