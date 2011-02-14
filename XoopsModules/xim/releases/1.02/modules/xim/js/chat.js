@@ -108,60 +108,6 @@ function createChatBox(containerId,chatBoxName,avatar){
             }
           });
       chatBoxes.push(containerId);
-
-      //xoops_im("#MBchatbox_"+containerId).mb_switchFixedPosition();
-      //xoops_im("#MBchatbox_"+containerId).adjastPos();
-      //xoops_im.doOnWindowResize("#MBchatbox_"+containerId);
-      //xoops_im.fn.mb_centerOnWindow('true');
-
-	//xoops_im("#MBchatbox_"+containerId).animate({'bottom':'30px'});
-	 
-// 	chatBoxeslength = 0;
-// 
-// 	for (x in chatBoxes) {
-// 		if (xoops_im("#chatbox_"+chatBoxes[x]).css('display') != 'none') {
-// 			chatBoxeslength++;
-// 		}
-// 	}
-
-// 	if (chatBoxeslength == 0) {
-// 		xoops_im("#chatbox_"+chatboxID).css('right', '20px');
-// 	} else {
-// 		width = (chatBoxeslength)*(225+7)+20;
-// 		xoops_im("#chatbox_"+chatboxID).css('right', width+'px');
-// 		xoops_im("MBchatbox_"+chatboxID).css('right', width+'px');
-// 	}
-	
-//       if (xoops_im.cookie("#chatbox_"+chatboxID)) {
-// 	    
-//             var coordsTwo = xoops_im.cookie("#chatbox_"+chatboxID).split(',');
-//             xoops_im("#chatbox_"+chatboxID).css({top:coordsTwo[0],left:coordsTwo[1]});   
-// //alert("#chatbox_"+chatboxID +","+ coordsTwo[0] +","+coordsTwo[1])
-//       }
-
-// 	chatboxFocus[chatboxID] = false;
-// 
-// 	xoops_im("#chatbox_"+chatboxID+" .chatboxtextarea").blur(function(){
-// 		chatboxFocus[chatboxID] = false;
-// 		xoops_im("#chatbox_"+chatboxID+" .chatboxtextarea").removeClass('chatboxtextareaselected');
-// 	}).focus(function(){
-// 		chatboxFocus[chatboxID] = true;
-// 		newMessages[chatboxID] = false;
-// 		xoops_im('#chatbox_'+chatboxID+' .chatboxhead').removeClass('chatboxblink');
-// 		xoops_im("#chatbox_"+chatboxID+" .chatboxtextarea").addClass('chatboxtextareaselected');
-// 	});
-// 
-// 	xoops_im("#chatbox_"+chatboxID).click(function() {
-// 		if (xoops_im('#chatbox_'+chatboxID+' .chatboxcontent').css('display') != 'none') {
-// 			xoops_im("#chatbox_"+chatboxID+" .chatboxtextarea").focus();
-// 		}
-// 	});
-// 
-// 	xoops_im("#chatbox_"+chatboxID).show();
-		
-		// Added these repetative lines to prevent textarea popping out main div in IE (culex)
-		//keepDivs (".chatboxtextarea",".mbcontainercontent:first","44px", containerId);
-//if ($.browser.msie) { xoops_im(".containerPlus textarea").css('margin','0 0 0 -25px'); }
 }
 
 function chatHeartbeat(){
@@ -304,21 +250,9 @@ function checkChatBoxInputKey(event,chatboxtextarea,chatboxID) {
 	var adjustedHeight = chatboxtextarea.clientHeight;
 	var maxHeight = 94;
 
- 	if (maxHeight > adjustedHeight) {
-/* 		adjustedHeight = Math.max(chatboxtextarea.scrollHeight, adjustedHeight);
- 		if (maxHeight)
- 			adjustedHeight = Math.min(maxHeight, adjustedHeight);
- 		if (adjustedHeight > chatboxtextarea.clientHeight){
- 			xoops_im("#MBchatbox_"+chatboxID).find(".mbcontainercontent:first").css('height',conteinerheight-14 +'px');
- 			xoops_im(chatboxtextarea).css('height',adjustedHeight+8 +'px');
- 		}
- 		*/
- 		
+ 	if (maxHeight > adjustedHeight) {	
  		xoops_im(chatboxtextarea).css('overflow','auto');
- 	}/* else {
-		xoops_im(chatboxtextarea).css('overflow','auto');
-	}*/
-
+ 	}
 }
 
 function startChatSession(){  
