@@ -322,8 +322,8 @@ function checkChatBoxInputKey(event,chatboxtextarea,chatboxID) {
 }
 
 function startChatSession(){  
+	  reSetConf();
 	  if (showFooterBar==1) {
-		createFooterBar();
 		setTimeout('updateUserList()',200);
 	  }
 	xoops_im.ajax({
@@ -357,9 +357,9 @@ function startChatSession(){
 			xoops_im("#MBchatbox_"+chatboxID+" .mbcontainercontent").scrollTop(xoops_im("#MBchatbox_"+chatboxID+" .mbcontainercontent")[0].scrollHeight);
 			setTimeout('xoops_im("#MBchatbox_"+chatboxID+" .mbcontainercontent").scrollTop(xoops_im("#MBchatbox_"+chatboxID+" .mbcontainercontent")[0].scrollHeight);', 100); // yet another strange ie bug
 		}
-	setTimeout('chatHeartbeat();',chatHeartbeatTime);
-		
+	setTimeout('chatHeartbeat();',chatHeartbeatTime);		
 	}});
+	createFooterBar();
 }
 
 function createFooterBar() {
@@ -421,32 +421,33 @@ function createFooterBar() {
 	});
 	
 	//Config Panel
-	xoops_im(".xim_configDiv_body").hide();
-	xoops_im(".xim_img_info").click(function() {
-	      xoops_im(".xim_configDiv_body").slideToggle(2500);
+	xoops_im(".xim_configDiv_bodyf").hide();
+	xoops_im(".xim_img_infof").click(function() {
+	reSetConf();
+	      xoops_im(".xim_configDiv_bodyf").slideToggle(2500);
 	      return false;
 	});
-	xoops_im(".xim_configDiv_body").click(function() {
+	xoops_im(".xim_configDiv_bodyf").click(function() {
 	      return false;
 	});
-	xoops_im(".update_button").click(function() {
-		var sound = xoops_im("#sound").val();
-		var status = xoops_im("#status").val();
-		dataString = xoops_im("#config").serialize();
-		//var dataString = 'sound='+ sound + '&status=' + status;
-		if(status=='' || sound=='') {
+	xoops_im(".update_buttonf").click(function() {
+		var soundf = xoops_im("#soundf").val();
+		var statusf = xoops_im("#statusf").val();
+		var dataStringf = xoops_im("#configf").serialize();
+		//var dataString = 'soundf='+ soundf + '&statusf=' + statusf;
+		if(statusf=='' || soundf=='') {
 			alert('Please Give Valid Details');
 		} else {
-			xoops_im("#flash").show();
-			xoops_im("#flash").fadeIn(800).html('<img src="'+xim_url+'/images/ajaxloader.gif" alt=""/>Saved!');
+			xoops_im("#flashf").show();
+			xoops_im("#flashf").fadeIn(800).html('<img src="'+xim_url+'/images/ajaxloader.gif" alt=""/>Saved!');
 			xoops_im.ajax({
 			type: "POST",
 			url: xim_url+"include/update_config.php",
-			data: dataString,
+			data: dataStringf,
 			cache: false,
 			success: function(html){
-			xoops_im("#flash").hide(2000);
-			xoops_im(".xim_configDiv_body").hide(6000);
+			xoops_im("#flashf").hide(2000);
+			xoops_im(".xim_configDiv_bodyf").hide(6000);
 		}
 		});
 		}return false;
@@ -578,4 +579,21 @@ function keepInWindow (containerId) {
 				.stop()
 				.animate({"marginTop": (xoops_im(window).scrollTop() + 30) + "px"}, "slow" );	
 		});
+}
+
+// Function to reset sound & Status select:Selected in forms after send and in pagerefresh
+function reSetConf() {
+	var data;
+	xoops_im.ajax({
+	  url: xim_url+"getmystats.php",
+	  cache: false,
+	  dataType: "json",
+	  success: function(data) {
+		xoops_im("select[name=sound] option[value="+data.uso+"]").attr("selected", true);
+		xoops_im("select[name=status] option[value="+data.uss+"]").attr("selected", true);
+		xoops_im("select[name=soundf] option[value="+data.uso+"]").attr("selected", true);
+		xoops_im("select[name=statusf] option[value="+data.uss+"]").attr("selected", true);
+			}
+		});
+	return;
 }

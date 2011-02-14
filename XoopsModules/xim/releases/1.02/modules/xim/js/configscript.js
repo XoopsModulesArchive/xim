@@ -27,6 +27,7 @@ xoops_im(document).ready(function() {
 
 	//toggle the componenet with class msg_body
 	xoops_im(".xim_configDiv_head").click(function() {
+		reSetConf();
     	xoops_im(".xim_configDiv_body").slideToggle(2500);
 	});
 });
