@@ -28,12 +28,21 @@ global $xoopsDB,$xoopsLogger,$xoopsUser;
  $xoopsLogger->activated = false;
 if (is_object($xoopsUser)){
 	if($_POST) {
-	 $sound=$_POST['sound'];
-	  $sound=mysql_real_escape_string($sound);
-	 
-	 $status=$_POST['status'];
-	  $status=mysql_real_escape_string($status);
-	 
+		if ($_POST['sound'] != '') {
+			 $sound=$_POST['sound'];
+			  $sound=mysql_real_escape_string($sound);
+			 
+			 $status=$_POST['status'];
+			  $status=mysql_real_escape_string($status);
+		}
+		if ($_POST['soundf'] != '') {
+			 $sound=$_POST['soundf'];
+			  $sound=mysql_real_escape_string($sound);
+			 
+			 $status=$_POST['statusf'];
+			  $status=mysql_real_escape_string($status);		  
+		}
+		
 	 $username = $xoopsUser->uname(); 
 		$sql = "UPDATE ".$xoopsDB->prefix('xim_pers_conf')." SET sound='".intval($sound)."', status='".intval($status)."' WHERE username='".addslashes($username)."'";
 		 $result = $xoopsDB->queryF($sql);
