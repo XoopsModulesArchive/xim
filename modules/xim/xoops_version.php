@@ -37,7 +37,7 @@ $modversion['official'] = 1;
 $modversion['image'] = "images/xim.png";
 
 // Menu
-$modversion['hasMain'] = 0;
+$modversion['hasMain'] = 1;
 
 // System Menu
 $modversion['system_menu'] = 1;
