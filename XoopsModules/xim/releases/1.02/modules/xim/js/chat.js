@@ -41,6 +41,7 @@ document.containers= new Object();
 	}, 5000);
 
 xoops_im(document).ready(function(){
+createFooterBar();
 	// if exists zetagenesis toolbar do hide it to not overlap 2 toolbars
 	xoops_im('#xo-footerstatic').hide();
 	originalTitle = document.title;
@@ -293,7 +294,7 @@ function startChatSession(){
 		}
 	setTimeout('chatHeartbeat();',chatHeartbeatTime);		
 	}});
-	createFooterBar();
+	
 }
 
 function createFooterBar() {
