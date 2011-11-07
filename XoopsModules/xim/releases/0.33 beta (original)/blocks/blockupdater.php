@@ -1,5 +1,5 @@
 <?php
-// $Id: blockupdater.php,v 1.oo (alpha 1) 08/02/2010 20:00:00 culex $
+// $Id$
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                  Copyright (c) 2000-2010 XOOPS.org                        //

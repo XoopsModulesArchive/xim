@@ -1,5 +1,5 @@
 <?php
-// $Id: b_instantmessenger.php,v 1.oo (alpha 1) 08/02/2010 20:00:00 culex $
+// $Id$
 // Inspired and referenced by Anant Garg (anantgar.com (c) 2009
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
