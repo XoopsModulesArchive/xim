@@ -21,18 +21,18 @@
 * @author          Culex  - homepage.: http://culex.dk		& email.: culex@culex.dk
 */
 
-xoops_imAdmin(document).ready(function(){
+$(document).ready(function(){
   
-  xoops_imAdmin('#xim_admin_message').val("");
-  xoops_imAdmin("#xim_admin_message").keyup(function() {
+  $('#xim_admin_message').val("");
+  $("#xim_admin_message").keyup(function() {
      limitChars(300);
   });
   
-   xoops_imAdmin(".xim_admin_button").click(function() {
-	     if(xoops_imAdmin('#xim_admin_message').val()==''){
-        xoops_imAdmin('#xim_admin_error').html("Message cannot be empty").addClass('xim_admin_error').hide().fadeIn("slow");
+   $(".xim_admin_button").click(function() {
+	     if($('#xim_admin_message').val()==''){
+        $('#xim_admin_error').html("Message cannot be empty").addClass('xim_admin_error').hide().fadeIn("slow");
 			setTimeout(function() { 
-				xoops_imAdmin('#xim_admin_error').html("<br>").hide().fadeIn("fast");
+				$('#xim_admin_error').html("<br>").hide().fadeIn("fast");
 			}, 2000);	 
         return false; 
 	 } else {
@@ -40,27 +40,27 @@ xoops_imAdmin(document).ready(function(){
 		}
 		 });
 		 
-	 if(xoops_imAdmin('#xim_admin_message').val().length>300){
-	 xoops_imAdmin('#xim_admin_error').html("Message must not exceed 300 characters.").addClass('xim_admin_error').hide().fadeIn("slow");
+	 if($('#xim_admin_message').val().length>300){
+	 $('#xim_admin_error').html("Message must not exceed 300 characters.").addClass('xim_admin_error').hide().fadeIn("slow");
 	 		setTimeout(function() { 
-			xoops_imAdmin('#xim_admin_error').html("<br>").hide().fadeIn("fast");
+			$('#xim_admin_error').html("<br>").hide().fadeIn("fast");
 		}, 2000);	
 	 return false; 
 	 };
 
 	 
 	 if(postData()){
-	 xoops_imAdmin('#xim_admin_error').html("Processing.....").removeClass('xim_admin_error').hide().fadeIn("slow");
-	 xoops_imAdmin.timer(10000,function(){
-	 xoops_imAdmin('#xim_admin_error').html("Message inserted!").addClass('success').hide().fadeIn("slow");
+	 $('#xim_admin_error').html("Processing.....").removeClass('xim_admin_error').hide().fadeIn("slow");
+	 $.timer(10000,function(){
+	 $('#xim_admin_error').html("Message inserted!").addClass('success').hide().fadeIn("slow");
 	  setTimeout(function() { 
-		xoops_imAdmin('#xim_admin_count').html('0');
-		xoops_imAdmin('#xim_admin_error').html("<br>").hide().fadeIn("fast");
+		$('#xim_admin_count').html('0');
+		$('#xim_admin_error').html("<br>").hide().fadeIn("fast");
 	  }, 2000);	 
-		xoops_imAdmin('#xim_admin_message').val("");
+		$('#xim_admin_message').val("");
 	 });
 	 }else{
-	 //xoops_imAdmin('#xim_admin_error').html("Database Error.").fadeIn("slow");
+	 //$('#xim_admin_error').html("Database Error.").fadeIn("slow");
 	 return false; 
 	 }
 	 return false;
@@ -69,17 +69,17 @@ xoops_imAdmin(document).ready(function(){
 
 function limitChars(limit){
 
-	var text = xoops_imAdmin('#xim_admin_message').val(); 
+	var text = $('#xim_admin_message').val(); 
 	var textlength = text.length;
 
-	xoops_imAdmin('#xim_admin_count').html(textlength);
-	//xoops_imAdmin('#xim_admin_error').hide();
+	$('#xim_admin_count').html(textlength);
+	//$('#xim_admin_error').hide();
 
 	if(textlength > limit){
 		
-	 xoops_imAdmin('#xim_admin_error').html("Message must not exceed 300 characters.").addClass('xim_admin_error').hide().fadeIn("slow");
+	 $('#xim_admin_error').html("Message must not exceed 300 characters.").addClass('xim_admin_error').hide().fadeIn("slow");
 		setTimeout(function() { 
-			xoops_imAdmin('#xim_admin_error').html("<br>").hide().fadeIn("fast");
+			$('#xim_admin_error').html("<br>").hide().fadeIn("fast");
 		}, 2000);	 
 	 return false; 
 	}	else{
@@ -88,12 +88,12 @@ function limitChars(limit){
 }
 
 function postData(){
-	var xim_admin_message = xoops_imAdmin('#xim_admin_message').val();
+	var xim_admin_message = $('#xim_admin_message').val();
 	 var dataString = 'xim_admin_message=' + xim_admin_message;  
 	 if (xim_admin_message === '') {
 	 return false;
 	 }
-	 xoops_imAdmin.ajax({  
+	 $.ajax({  
 	   type: "POST",  
 	   url: "../admin/adminsend.php",  
 	   data: dataString,  
@@ -102,11 +102,11 @@ function postData(){
 		 return false; 
 	   },
 	   success: function() {
-		 xoops_imAdmin('#xim_admin_error').html("Message inserted!").addClass('success').hide().fadeIn("slow");
+		 $('#xim_admin_error').html("Message inserted!").addClass('success').hide().fadeIn("slow");
 		 setTimeout(function() { 
-			xoops_imAdmin('#xim_admin_message').val("");
-			xoops_imAdmin('#xim_admin_count').html('0');
-			xoops_imAdmin('#xim_admin_error').html("<br>").hide().fadeIn("fast");
+			$('#xim_admin_message').val("");
+			$('#xim_admin_count').html('0');
+			$('#xim_admin_error').html("<br>").hide().fadeIn("fast");
 			
 		}, 2000);	 
 	   }
@@ -122,13 +122,13 @@ function postData(){
  * @copyright    2009 Evan Byrne (http://www.evanbot.com)
  */ 
 
-xoops_imAdmin.timer = function(time,func,callback){
+$.timer = function(time,func,callback){
 	var a = {timer:setTimeout(func,time),callback:null}
 	if(typeof(callback) == 'function'){a.callback = callback;}
 	return a;
 };
 
-xoops_imAdmin.clearTimer = function(a){
+$.clearTimer = function(a){
 	clearTimeout(a.timer);
 	if(typeof(a.callback) == 'function'){a.callback();};
 	return this;
