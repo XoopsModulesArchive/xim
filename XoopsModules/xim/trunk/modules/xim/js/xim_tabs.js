@@ -21,24 +21,24 @@
 * @author          Culex  - homepage.: http://culex.dk		& email.: culex@culex.dk
 */
 
-var xoops_imAdmin = jQuery.noConflict();
+var $ = jQuery.noConflict();
 
-xoops_imAdmin(document).ready(function() {
+$(document).ready(function() {
 
 	//When page loads...
-	xoops_imAdmin(".ximadmin_tab_content").hide(); //Hide all content
-	xoops_imAdmin("ul.ximadmin_tabs li:first").addClass("active").show(); //Activate first tab
-	xoops_imAdmin(".ximadmin_tab_content:first").show(); //Show first tab content
+	$(".ximadmin_tab_content").hide(); //Hide all content
+	$("ul.ximadmin_tabs li:first").addClass("active").show(); //Activate first tab
+	$(".ximadmin_tab_content:first").show(); //Show first tab content
 
 	//On Click Event
-	xoops_imAdmin("ul.ximadmin_tabs li").click(function() {
+	$("ul.ximadmin_tabs li").click(function() {
 
-		xoops_imAdmin("ul.ximadmin_tabs li").removeClass("active"); //Remove any "active" class
-		xoops_imAdmin(this).addClass("active"); //Add "active" class to selected tab
-		xoops_imAdmin(".ximadmin_tab_content").hide(); //Hide all tab content
+		$("ul.ximadmin_tabs li").removeClass("active"); //Remove any "active" class
+		$(this).addClass("active"); //Add "active" class to selected tab
+		$(".ximadmin_tab_content").hide(); //Hide all tab content
 
-		var activeTab = xoops_imAdmin(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
-		xoops_imAdmin(activeTab).fadeIn(); //Fade in the active ID content
+		var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
+		$(activeTab).fadeIn(); //Fade in the active ID content
 		return false;
 	});
 

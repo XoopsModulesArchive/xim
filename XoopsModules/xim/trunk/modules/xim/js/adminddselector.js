@@ -24,12 +24,12 @@
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 //  ------------------------------------------------------------------------ //
 
-xoops_imAdmin(function() {
-xoops_imAdmin(".ximAdminLogs_update_button").click(function()
+$(function() {
+$(".ximAdminLogs_update_button").click(function()
 {
-var AdminDDoptions = xoops_imAdmin("#AdminDDoptions").val();
+var AdminDDoptions = $("#AdminDDoptions").val();
 
-dataString = xoops_imAdmin("#ximAdminLogMaintnance").serialize();
+dataString = $("#ximAdminLogMaintnance").serialize();
 //var dataString = 'AdminDDoptions='+ AdminDDoptions;
 if(AdminDDoptions=='')
 {
@@ -37,16 +37,16 @@ alert('Please Give Valid Details');
 }
 else
 {
-xoops_imAdmin("#flash").show();
-xoops_imAdmin("#flash").fadeIn(800).html('<img src="../images/ajaxloader.gif" alt=""/>Saved!');
-xoops_imAdmin.ajax({
+$("#flash").show();
+$("#flash").fadeIn(800).html('<img src="../images/ajaxloader.gif" alt=""/>Saved!');
+$.ajax({
 type: "POST",
 url: "do_logmaintnance.php",
 data: dataString,
 cache: false,
 success: function(html){
 dataStrint = '';
-xoops_imAdmin("#flash").hide(2000);
+$("#flash").hide(2000);
 }
 });
 }return false;
