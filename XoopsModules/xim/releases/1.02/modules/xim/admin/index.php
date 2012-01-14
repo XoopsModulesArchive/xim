@@ -28,7 +28,7 @@ require_once '../../../include/cp_header.php';
 require_once XOOPS_ROOT_PATH . '/class/template.php';
 if (!isset($xoopsTpl)) {$xoopsTpl = new XoopsTpl();}
 $xoopsTpl->xoops_setCaching(0);
-//require_once XOOPS_ROOT_PATH . '/modules/xim/class/adminclass.php';
+require_once XOOPS_ROOT_PATH . '/modules/xim/class/adminclass.php';
 xoops_cp_header();
 if (isset($_POST['xim_admin_message'])) {$_POST['xim_admin_message'] = '';}
 $admin = new ximAdmin();
@@ -164,8 +164,9 @@ $admindropdown = $admin->DoDropDown();
 	$xoTheme->addStyleSheet('modules/xim/css/ximAdmin.css');
 	$xoTheme->addScript(XOOPS_URL . '/browse.php?Frameworks/jquery/jquery.js');
 	$xoTheme->addScript(XOOPS_URL . '/browse.php?Frameworks/jquery/plugins/jquery.ui.js');
-	$xoTheme->addScript(XOOPS_URL . '/browse.php?Frameworks/jquery/plugins/jquery.form.js');
 	$xoTheme->addScript('modules/xim/js/xim_tabs.js');
+	$xoTheme->addScript(XOOPS_URL . '/browse.php?Frameworks/jquery/plugins/jquery.form.js');
+	
 	$xoTheme->addScript('modules/xim/js/adminddselector.js');
 	$xoTheme->addScript(XOOPS_URL . '/modules/xim/js/jquery.form.js');
 	
