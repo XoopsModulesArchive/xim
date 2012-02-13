@@ -38,8 +38,8 @@ $xoopsLogger->activated = false;
     if (is_object($xoopsUser)) {
         $uid = $xoopsUser->getVar('uid');
         $uname = $xoopsUser->getVar('uname');
-	$_SESSION['username'] = $uname;
-	xim_setPersonalConfig (); // Function to create/check personal config (culex)
+        $_SESSION['username'] = $uname;
+        xim_setPersonalConfig (); // Function to create/check personal config (culex)
     } else {
         $uid = 0;
         $uname = '';
@@ -54,41 +54,44 @@ $xoopsLogger->activated = false;
     $userlist='';
     if (false != $onlines) {
         $total = count($onlines);
-	$count = 0;
+        $count = 0;
         for ($i = 0; $i < $total; $i++) {
-	    if (($onlines[$i]['online_uid'] > 0) && ($onlines[$i]['online_uid']!=$uid)) {
-		$count++;
-		$user = new XoopsUser($onlines[$i]['online_uid']);
-		$avatar =$user->user_avatar();
-		if ($avatar!='blank.gif') {
-			$avatarURL = XOOPS_URL."/uploads/".$avatar;
-		} else {
-			$avatarURL = XOOPS_URL."/modules/xim/images/default_avatar.png";
-		}
-		
-		// testing if avatar really exists physically on server
-		if (file_exists("../../uploads/".$avatar)) {
-		} else {
-			$avatarURL = XOOPS_URL."/modules/xim/images/default_avatar.png";
-		}
-		
-		
-		$config = im_Getconfig($onlines[$i]['online_uname']);
-		$status = $config['status'];
-		$userid=$onlines[$i]['online_uid'];
-		$username = $onlines[$i]['online_uname'];
-		if ($status == 3) {$count = $count -1;}
-		if ($status!=3){
-			$userlist .= <<<EOD
-{"id":"$userid","n":"$username","a":"$avatarURL","status":$status},
-EOD;
-		}	    
-	    }
+            if (($onlines[$i]['online_uid'] > 0) && ($onlines[$i]['online_uid']!=$uid)) {
+                $count++;
+                $user = new XoopsUser($onlines[$i]['online_uid']);
+                $avatar =$user->user_avatar();
+                if ($avatar!='blank.gif') {
+                    $avatarURL = XOOPS_URL."/uploads/".$avatar;
+                } else {
+                    $avatarURL = XOOPS_URL."/modules/xim/images/default_avatar.png";
+                }
+                
+                // testing if avatar really exists physically on server
+                if (file_exists("../../uploads/".$avatar)) {
+                } else {
+                    $avatarURL = XOOPS_URL."/modules/xim/images/default_avatar.png";
+                }
+                
+                
+                $config = im_Getconfig($onlines[$i]['online_uname']);
+                $status = $config['status'];
+                $userid=$onlines[$i]['online_uid'];
+                $username = $onlines[$i]['online_uname'];
+                if ($status == 3) {
+                    $count = $count - 1;
+                }
+                if ($status != 3) {
+                    $userlist .= '{"id":"'.$userid.'","n":"'.$username.'","a":"'.$avatarURL.'","status":'.$status.'},';
+                }	    
+            }
         }
-$userlist = substr($userlist, 0, -1);
-    }
-    header('Content-type: application/json');
-    echo "{\"total\":$count, \"users\":[$userlist]}";
+        $userlist = substr($userlist, 0, -1);
+        header('Content-type: application/json');
+        echo "{\"total\":$count, \"users\":[$userlist]}";
+   } else {
+        header('Content-type: application/json');
+        echo "{\"total\":\"0\", \"users\":\"\"}";   
+   }
 
 
 ?>
