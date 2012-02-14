@@ -415,7 +415,7 @@ function updateUserList() {
 				break;
 			    }
 				// fix strange ie bug  	<li><span>Family Members</span></li>
-				xoops_im("#userlist").append('<li><a href="javascript:void(0)" onclick="javascript:chatWith(\''+user.id+'\',\''+user.n+'\');" title=""><img class="image" src="'+user.a+'" alt="">'+user.n+'<img class="status" src="'+userstatus+'" alt=""></a>');
+				xoops_im("#userlist").append('<li><a href="javascript:void(0)" onclick="javascript:chatWith(\''+user.id+'\',\''+user.n+'\');" title=""><img class="image" src="'+user.a+'" alt="">'+user.n+'<img class="status" src="'+userstatus+'" alt=""></a></li>');
 			}
 		});
 	}});
