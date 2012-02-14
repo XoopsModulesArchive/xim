@@ -25,7 +25,7 @@
 include_once("../../mainfile.php");
 
 $xoopsOption['template_main'] = 'xim_index.html';
-include_once("class/buddy.php");
+//include_once("class/buddy.php");
 include_once(XOOPS_ROOT_PATH."/header.php");
 global $xoopsUser, $xoTheme;;
 // Content here
