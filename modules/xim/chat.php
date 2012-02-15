@@ -41,6 +41,7 @@
 **/
 
 include 'header.php';
+require_once XOOPS_ROOT_PATH."/modules/xim/include/functions.php"
 global $xoopsLogger;
 $xoopsLogger->activated = false;
 
@@ -72,7 +73,7 @@ function chatHeartbeat() {
             $items = $_SESSION['chatHistory'][$chat['from']];
         }
         
-        $chat['message'] = sanitize($chat['message']);	
+        $chat['message'] = xoops_smallworld($chat['message']);	
 	$user = new XoopsUser($chat['from']);
 	// changed to show link to user info for user "from"
 	if ($chat['sys'] != '-1') {
@@ -235,7 +236,7 @@ function sendChat() {
 	$soundUrl = XOOPS_URL.'/modules/xim/media/0.mp3';
 	$status = $config['status'];
     
-    $messagesan = sanitize($message);
+    $messagesan = xoops_smallworld($message);
     header('Content-type: application/json');
     echo '{"message":"'.$messagesan.'"}'; 
     if (!isset($_SESSION['chatHistory'][$_POST['to']])) {
