@@ -41,7 +41,7 @@
 **/
 
 include 'header.php';
-require_once XOOPS_ROOT_PATH."/modules/xim/include/functions.php"
+require_once XOOPS_ROOT_PATH."/modules/xim/include/functions.php";
 global $xoopsLogger;
 $xoopsLogger->activated = false;
 
