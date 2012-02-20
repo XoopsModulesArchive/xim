@@ -35,10 +35,11 @@ var newMessagesWin = new Array();
 var newMessagesUser = new Array();
 var chatBoxes = new Array();
 document.containers= new Object();
-
+xoops_im(document).ready(function(){
 	var refreshId = setInterval(function() {
 	xoops_im('#online_friends').load(xim_url+'blocks/blockupdater.php');
 	}, 5000);
+});
 
 xoops_im(document).ready(function(){
 createFooterBar();
@@ -258,6 +259,7 @@ function checkChatBoxInputKey(event,chatboxtextarea,chatboxID) {
 
 function startChatSession(){  
 	  reSetConf();
+      updateUserList();
 	  if (showFooterBar==1) {
 		setTimeout('updateUserList()',200);
 	  }

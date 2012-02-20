@@ -124,16 +124,17 @@ function xim_GetModuleOption($option, $repmodule='xim')
 	return $retval;
 }
 
-	function xim_sanitize($text) 
-    {
-        $text = htmlspecialchars($text, ENT_QUOTES); 
-        $myts = MyTextSanitizer::getInstance();
-        $text = $myts->displayTarea($text, 1, 1, 1, 1);
-        $text = str_replace("\n\r", "\n", $text);
-        $text = str_replace("\r\n", "\n", $text);
-        $text = str_replace("\n", "<br />", $text);
-        $text = str_replace("\"", "'", $text);
-        return $text;
+	function xim_sanitize($text) {
+    $text = htmlspecialchars($text, ENT_QUOTES);
+    //$text = preg_replace('/([^\s]{10})(?=[^\s])/m', '$1<br />', $text); 
+    $myts = MyTextSanitizer::getInstance();
+    $text = $myts->displayTarea($text,1,1,1,1);
+    $text = str_replace("\n\r","\n",$text);
+    $text = str_replace("\r\n","\n",$text);
+    $text = str_replace("\n","<br />",$text);
+    $text = str_replace("\"","'",$text);
+
+    return $text;
     }
 
 ?>
