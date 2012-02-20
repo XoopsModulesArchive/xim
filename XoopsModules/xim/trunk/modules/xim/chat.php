@@ -41,7 +41,7 @@
 **/
 
 include 'header.php';
-require_once XOOPS_ROOT_PATH."/modules/xim/include/functions.php";
+include_once XOOPS_ROOT_PATH.'/modules/xim/include/functions.php';
 global $xoopsLogger;
 $xoopsLogger->activated = false;
 
@@ -73,7 +73,7 @@ function chatHeartbeat() {
             $items = $_SESSION['chatHistory'][$chat['from']];
         }
         
-        $chat['message'] = xoops_smallworld($chat['message']);	
+        $chat['message'] = xim_sanitize($chat['message']);	
 	$user = new XoopsUser($chat['from']);
 	// changed to show link to user info for user "from"
 	if ($chat['sys'] != '-1') {
@@ -236,7 +236,7 @@ function sendChat() {
 	$soundUrl = XOOPS_URL.'/modules/xim/media/0.mp3';
 	$status = $config['status'];
     
-    $messagesan = xoops_smallworld($message);
+    $messagesan = xim_sanitize($message);
     header('Content-type: application/json');
     echo '{"message":"'.$messagesan.'"}'; 
     if (!isset($_SESSION['chatHistory'][$_POST['to']])) {
@@ -249,7 +249,7 @@ EOD;
     
     unset($_SESSION['tsChatBoxes'][$_POST['to']]);
     
-    $sql = "insert into ".$xoopsDB->prefix(xim_chat)." (".$xoopsDB->prefix(xim_chat).".from,".$xoopsDB->prefix(xim_chat).".to,message,sent) values ('".mysql_real_escape_string($from)."', '".mysql_real_escape_string($to)."','".mysql_real_escape_string($message)."',NOW())";
+    $sql = "insert into ".$xoopsDB->prefix('xim_chat')." (".$xoopsDB->prefix('xim_chat').".from,".$xoopsDB->prefix('xim_chat').".to,message,sent) values ('".mysql_real_escape_string($from)."', '".mysql_real_escape_string($to)."','".mysql_real_escape_string($message)."',NOW())";
     $query = $xoopsDB->queryF($sql);
     exit(0);
 }
@@ -280,19 +280,19 @@ function xoops_xim_checkStatus ($to, $from) {
 	 if ($status == '0') {
 		// User is away
 		$sysmessage = _XIM_SYSTEM_AWAY;
-		 $sql = "insert into ".$xoopsDB->prefix(xim_chat)." (".$xoopsDB->prefix(xim_chat).".from,".$xoopsDB->prefix(xim_chat).".to,message,sent) values ('".mysql_real_escape_string($to)."', '".mysql_real_escape_string($from)."','".mysql_real_escape_string($sysmessage)."',NOW())";
+		 $sql = "insert into ".$xoopsDB->prefix('xim_chat')." (".$xoopsDB->prefix('xim_chat').".from,".$xoopsDB->prefix('xim_chat').".to,message,sent) values ('".mysql_real_escape_string($to)."', '".mysql_real_escape_string($from)."','".mysql_real_escape_string($sysmessage)."',NOW())";
 		 $query = $xoopsDB->queryF($sql);
 	 }
 	 if ($status == '1') {
 		// User is busy
 		$sysmessage = _XIM_SYSTEM_BUSY;
-		 $sql = "insert into ".$xoopsDB->prefix(xim_chat)." (".$xoopsDB->prefix(xim_chat).".from,".$xoopsDB->prefix(xim_chat).".to,message,sent) values ('".mysql_real_escape_string($to)."', '".mysql_real_escape_string($from)."','".mysql_real_escape_string($sysmessage)."',NOW())";
+		 $sql = "insert into ".$xoopsDB->prefix('xim_chat')." (".$xoopsDB->prefix('xim_chat').".from,".$xoopsDB->prefix('xim_chat').".to,message,sent) values ('".mysql_real_escape_string($to)."', '".mysql_real_escape_string($from)."','".mysql_real_escape_string($sysmessage)."',NOW())";
 		 $query = $xoopsDB->queryF($sql);
 	 }
 	 if ($status == '3') {
 		// User is offline
 		$sysmessage = _XIM_SYSTEM_OFFLINE;
-		 $sql = "insert into ".$xoopsDB->prefix(xim_chat)." (".$xoopsDB->prefix(xim_chat).".from,".$xoopsDB->prefix(xim_chat).".to,message,sent) values ('".mysql_real_escape_string($to)."', '".mysql_real_escape_string($from)."','".mysql_real_escape_string($sysmessage)."',NOW())";
+		 $sql = "insert into ".$xoopsDB->prefix('xim_chat')." (".$xoopsDB->prefix('xim_chat').".from,".$xoopsDB->prefix('xim_chat').".to,message,sent) values ('".mysql_real_escape_string($to)."', '".mysql_real_escape_string($from)."','".mysql_real_escape_string($sysmessage)."',NOW())";
 		 $query = $xoopsDB->queryF($sql);
 	 }
 }
