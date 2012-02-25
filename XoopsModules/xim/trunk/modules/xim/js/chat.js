@@ -42,7 +42,6 @@ xoops_im(document).ready(function(){
 });
 
 xoops_im(document).ready(function(){
-createFooterBar();
 	// if exists zetagenesis toolbar do hide it to not overlap 2 toolbars
 	xoops_im('#xo-footerstatic').hide();
 	originalTitle = document.title;
@@ -258,8 +257,7 @@ function checkChatBoxInputKey(event,chatboxtextarea,chatboxID) {
 }
 
 function startChatSession(){  
-	  reSetConf();
-      updateUserList();
+    createFooterBar();
 	  if (showFooterBar==1) {
 		setTimeout('updateUserList()',200);
 	  }
@@ -294,6 +292,7 @@ function startChatSession(){
 			xoops_im("#MBchatbox_"+chatboxID+" .mbcontainercontent").scrollTop(xoops_im("#MBchatbox_"+chatboxID+" .mbcontainercontent")[0].scrollHeight);
 			setTimeout('xoops_im("#MBchatbox_"+chatboxID+" .mbcontainercontent").scrollTop(xoops_im("#MBchatbox_"+chatboxID+" .mbcontainercontent")[0].scrollHeight);', 100); // yet another strange ie bug
 		}
+    reSetConf();
 	setTimeout('chatHeartbeat();',chatHeartbeatTime);		
 	}});
 	
@@ -521,8 +520,9 @@ function keepInWindow (containerId) {
 // Function to reset sound & Status select:Selected in forms after send and in pagerefresh
 function reSetConf() {
 	var data;
+    var xim_RandNumGenerate = Math.floor(Math.random()*101);
 	xoops_im.ajax({
-	  url: xim_url+"getmystats.php",
+	  url: xim_url+"getmystats.php?chk="+xim_RandNumGenerate,
 	  cache: false,
 	  dataType: "json",
 	  success: function(data) {
@@ -530,7 +530,7 @@ function reSetConf() {
 		xoops_im("select[name=status] option[value="+data.uss+"]").attr("selected", true);
 		xoops_im("select[name=soundf] option[value="+data.uso+"]").attr("selected", true);
 		xoops_im("select[name=statusf] option[value="+data.uss+"]").attr("selected", true);
-			}
-		});
+      }
+	});
 	return;
 }
