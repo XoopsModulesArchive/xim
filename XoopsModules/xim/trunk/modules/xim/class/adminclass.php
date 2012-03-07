@@ -236,6 +236,7 @@ class ximAdmin {
 	
 function doCheckUpdate ()
 {
+    global $pathIcon16;
     $version = $this->ModuleInstallVersion ();
     $critical = false;
     $update = false;

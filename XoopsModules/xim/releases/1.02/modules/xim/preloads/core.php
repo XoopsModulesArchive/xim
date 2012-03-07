@@ -22,7 +22,7 @@
 * @author          Culex  - homepage.: http://culex.dk		& email.: culex@culex.dk
 **/
 defined('XOOPS_ROOT_PATH') or die('Restricted access');
-
+include_once(XOOPS_ROOT_PATH."/modules/xim/include/functions.php");
 class XimCorePreload extends XoopsPreloadItem{
 
     function eventCoreHeaderAddmeta(){
@@ -79,7 +79,12 @@ if ($xoopsUser) {
 	$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/jquery.metadata.js');
 	
 	
-	$xoops_url= XOOPS_URL;
+    // Check if request url is with www or without
+    $urltest = xim_getHostRequest();
+    $xoops_url = XOOPS_URL;
+    if (!strstr($urltest, 'www.')) {
+        $xoops_url = str_replace( 'www.', '', $xoops_url );
+    }
 	$script= <<<SCRIPT
 	var xoops_url="$xoops_url";
 	var xim_url="$xoops_url/modules/xim/";

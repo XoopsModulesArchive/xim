@@ -135,5 +135,18 @@ function xim_GetModuleOption($option, $repmodule='xim')
         $text = str_replace("\"", "'", $text);
         return $text;
     }
-
+   
+   /**
+     * @Get url of smallworld
+     * @returns string
+     */ 
+    function xim_getHostRequest() 
+    {
+        $protocol = strpos(strtolower($_SERVER['SERVER_PROTOCOL']),'https') === FALSE ? 'http' : 'https';
+        $host     = $_SERVER['HTTP_HOST'];
+        $script   = $_SERVER['SCRIPT_NAME'];
+        $params   = $_SERVER['QUERY_STRING'];
+        $currentUrl = $protocol . '://' . $host;
+        return $currentUrl;
+    }    
 ?>
