@@ -46,6 +46,14 @@ $xoopsLogger->activated = false;
 		$status = $myrow['status'];
 		$sound = $myrow['sound'];
 	 }
+     
+     if ($sound == '') {
+        $sound = 0;
+     }
+     
+     if ($status == '') {
+        $status = 0;
+     }
     header('Content-type: application/json');
     echo "{\"myid\":$uid, \"uso\":$sound, \"uss\":$status}";
 
