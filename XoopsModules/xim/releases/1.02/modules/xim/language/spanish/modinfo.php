@@ -24,25 +24,25 @@
 **/
 
 define('_MI_XIM_MODULE_NAME','XIM');
-define('_MI_XIM_ADMENU','Administración');
-define('_MI_XIM_MODULE_DESC', 'Un bloque para mostrar a los usuarios actualmente en línea. Pulse sobre el nombre para abrir ventana de chat');
-define('_MB_XIM_BLOCK', 'IM');
-define('_XIM_CREDIT', 'Script Original de Anant Garg (anantgarg.com)');
-define('_XIM_SHOW_FOOTER_BAR', 'Mostrar barra de pie de página?');
-define('_XIM_FOOTER_BAR_STYLE', 'Estilo de Barra de pie de Página');
-define('_XIM_FOOTER_FULL', 'Completa');
-define('_XIM_FOOTER_TINY', 'Pequeña');
+define('_MI_XIM_ADMENU','AdministraciÃ³n');
+define('_MI_XIM_MODULE_DESC','Un bloque para mostrar a los usuarios actualmente en lÃ­nea. Pulse sobre el nombre para abrir ventana de chat');
+define('_MB_XIM_BLOCK','IM');
+define('_XIM_CREDIT','Script Original de Anant Garg (anantgarg.com)');
+define('_XIM_SHOW_FOOTER_BAR','Mostrar barra de pie de pÃ¡gina?');
+define('_XIM_FOOTER_BAR_STYLE','Estilo de Barra de pie de PÃ¡gina');
+define('_XIM_FOOTER_FULL','Completa');
+define('_XIM_FOOTER_TINY','PequeÃ±a');
 
 //styling for chat windows
-define('_XIM_CHATWINDOWSTYLE_STYLE', 'Tema de la ventana del Chat');
-define('_XIM_CHATWINDOWSTYLE_DESC', 'Elija aquí el estilo de sus ventanas de chat');
-define('_XIM_CHATWINDOWSTYLE_DEFAULT', 'Predeterminada');
-define('_XIM_CHATWINDOWSTYLE_WHITE', 'Blanco');
-define('_XIM_CHATWINDOWSTYLE_BLACK', 'Negro');
-define('_XIM_CHATWINDOWSTYLE_STIKY', 'Stiky');
-define('_XIM_CHATWINDOWSTYLE_ALERT', 'Alerta');
+define('_XIM_CHATWINDOWSTYLE_STYLE','Tema de la ventana del Chat');
+define('_XIM_CHATWINDOWSTYLE_DESC','Elija aquÃ­ el estilo de sus ventanas de chat');
+define('_XIM_CHATWINDOWSTYLE_DEFAULT','Predeterminada');
+define('_XIM_CHATWINDOWSTYLE_WHITE','Blanco');
+define('_XIM_CHATWINDOWSTYLE_BLACK','Negro');
+define('_XIM_CHATWINDOWSTYLE_STIKY','Stiky');
+define('_XIM_CHATWINDOWSTYLE_ALERT','Alerta');
 
 // about logs
-define('_XIM_CHATDELETE_LOGS', 'Eliminar mensajes ..');
-define('_XIM_CHATDELETE_LOGS_DESC', 'Nunca eliminar = 0. <br/> Establezca un número para borrar los mensajes recibidos de más de X minutos. <br/> Es recomendable un número mayor de 60.');
+define('_XIM_CHATDELETE_LOGS','Eliminar mensajes ..');
+define('_XIM_CHATDELETE_LOGS_DESC','Nunca eliminar = 0. <br/> Establezca un nÃºmero para borrar los mensajes recibidos de mÃ¡s de X minutos. <br/> Es recomendable un nÃºmero mayor de 60.');
 ?>

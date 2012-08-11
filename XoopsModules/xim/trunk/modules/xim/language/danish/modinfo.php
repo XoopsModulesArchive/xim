@@ -33,7 +33,7 @@
 **/
 define('_MI_XIM_MODULE_NAME','XIM');
 define('_MI_XIM_ADMENU','Administration');
-define('_MI_XIM_MODULE_DESC', 'En blok der viser online brugere lige nu. Klik brugernavn for at åbne chatvindue.');
+define('_MI_XIM_MODULE_DESC','En blok der viser online brugere lige nu. Klik brugernavn for at åbne chatvindue.');
 define("_MB_XIM_BLOCK","IM");
 define('_XIM_CREDIT','Originalscript af Anant Garg (anantgarg.com)');
 define('_XIM_SHOW_FOOTER_BAR','Vis footerbar?');

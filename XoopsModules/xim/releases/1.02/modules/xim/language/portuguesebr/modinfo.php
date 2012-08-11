@@ -23,19 +23,19 @@
 **/
 
 define('_MI_XIM_MODULE_NAME','XIM');
-define('_MI_XIM_ADMENU','AdministraÁ„o');
-define('_MI_XIM_MODULE_DESC', 'Um bloco para mostrar os usuarios online no momento. Clique no nome para abrir a janela do chat');
+define('_MI_XIM_ADMENU','Administra√ß√£o');
+define('_MI_XIM_MODULE_DESC','Um bloco para mostrar os usuarios online no momento. Clique no nome para abrir a janela do chat');
 define('_MB_XIM_BLOCK','IM');
 define('_XIM_CREDIT','Script original por Anant Garg (anantgarg.com)');
-define('_XIM_SHOW_FOOTER_BAR','Exibir a barra no rodapÈ da p·gina?');
-define('_XIM_FOOTER_BAR_STYLE','Estilo da barra no rodapÈ');
+define('_XIM_SHOW_FOOTER_BAR','Exibir a barra no rodap√© da p√°gina?');
+define('_XIM_FOOTER_BAR_STYLE','Estilo da barra no rodap√©');
 define('_XIM_FOOTER_FULL','Completo');
 define('_XIM_FOOTER_TINY','Mini');
 
 //styling for chat windows
 define('_XIM_CHATWINDOWSTYLE_STYLE','Tema da janela de Chat');
 define('_XIM_CHATWINDOWSTYLE_DESC','Escolha aqui o tema das suas janelas de chat');
-define('_XIM_CHATWINDOWSTYLE_DEFAULT','Padr„o');
+define('_XIM_CHATWINDOWSTYLE_DEFAULT','Padr√£o');
 define('_XIM_CHATWINDOWSTYLE_WHITE','Branco');
 define('_XIM_CHATWINDOWSTYLE_BLACK','Preto');
 define('_XIM_CHATWINDOWSTYLE_STIKY','Stiky');
@@ -43,5 +43,5 @@ define('_XIM_CHATWINDOWSTYLE_ALERT','Alerta');
 
 // about logs
 define('_XIM_CHATDELETE_LOGS','Apagando mensagens..');
-define('_XIM_CHATDELETE_LOGS_DESC','Nunca apagar = 0. <br/>Defina um n˙mero para apagar as mensagens recebidas com mais de X minutos.<br/>… recomendado um numero maior que 60.');
+define('_XIM_CHATDELETE_LOGS_DESC','Nunca apagar = 0. <br/>Defina um n√∫mero para apagar as mensagens recebidas com mais de X minutos.<br/>√â recomendado um numero maior que 60.');
 ?>

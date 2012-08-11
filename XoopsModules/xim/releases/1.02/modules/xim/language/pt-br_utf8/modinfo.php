@@ -24,7 +24,7 @@
 
 define('_MI_XIM_MODULE_NAME','XIM');
 define('_MI_XIM_ADMENU','Administração');
-define('_MI_XIM_MODULE_DESC', 'Um bloco para mostrar os usuarios online no momento. Clique no nome para abrir a janela do chat');
+define('_MI_XIM_MODULE_DESC','Um bloco para mostrar os usuarios online no momento. Clique no nome para abrir a janela do chat');
 define('_MB_XIM_BLOCK','IM');
 define('_XIM_CREDIT','Script original por Anant Garg (anantgarg.com)');
 define('_XIM_SHOW_FOOTER_BAR','Exibir a barra no rodapé da página?');

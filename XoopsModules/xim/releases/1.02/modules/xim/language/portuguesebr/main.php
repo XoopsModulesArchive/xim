@@ -44,17 +44,17 @@ define("_XIM_UPDATE","Atualizar");
 
 define("_XIM_FRIENDS","Amigos");
 define("_XIM_FRIENDS_ONLINE","Amigos Online");  
-define("_XIM_BAR_ADMIN","AdministraÁ„o");
-define("_XIM_BAR_HOME","InÌcio");
+define("_XIM_BAR_ADMIN","Administra√ß√£o");
+define("_XIM_BAR_HOME","In√≠cio");
 define("_XIM_BAR_VIEW_PROFILE","Ver Perfil");
 define("_XIM_BAR_EDIT_PROFILE","Editar Prefil");
-define("_XIM_BAR_NOTIFICATIONS","NotificaÁıes");
+define("_XIM_BAR_NOTIFICATIONS","Notifica√ß√µes");
 define("_XIM_BAR_MESSAGES","Mensagens");
 define("_XIM_SENTATTIME","Enviado em");
-define("_XIM_SYSTEM_BUSY","[color=990000][size=small]Estou ocupado no momento. Os alertas sonoros foram desabilitados pelo sistema. Eu retorno a mensagem assim que possÌvel![/size][/color]");
-define("_XIM_SYSTEM_AWAY","[color=990000][size=small]Eu estou fora no momento. As mensagens ser„o lidas quando eu retornar![/size][/color]");
-define("_XIM_SYSTEM_OFFLINE","[color=990000][size=small]Eu estou desconectado no momento.\nAs mensagens sÛ ser„o recebidas quando eu ficar online novamente[/size][/color]");
-define("_XIM_SYSTEMNAME", "Sistema");
+define("_XIM_SYSTEM_BUSY","[color=990000][size=small]Estou ocupado no momento. Os alertas sonoros foram desabilitados pelo sistema. Eu retorno a mensagem assim que poss√≠vel![/size][/color]");
+define("_XIM_SYSTEM_AWAY","[color=990000][size=small]Eu estou fora no momento. As mensagens ser√£o lidas quando eu retornar![/size][/color]");
+define("_XIM_SYSTEM_OFFLINE","[color=990000][size=small]Eu estou desconectado no momento.\nAs mensagens s√≥ ser√£o recebidas quando eu ficar online novamente[/size][/color]");
+define("_XIM_SYSTEMNAME","Sistema");
 
 /*define("_XIM_USER_SEARCH",'Search users');
 define("_XIM_SEARCH",'Search');*/

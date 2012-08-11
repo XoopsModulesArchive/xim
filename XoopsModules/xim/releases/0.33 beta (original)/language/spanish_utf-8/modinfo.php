@@ -1,6 +1,6 @@
 <?php
 define('_MI_XIM_MODULE_NAME','XIM');
-define('_MI_XIM_MODULE_DESC', 'Un bloque para mostrar a los usuarios actualmente en línea. Pulse sobre el nombre para abrir ventana de chat');
+define('_MI_XIM_MODULE_DESC','Un bloque para mostrar a los usuarios actualmente en línea. Pulse sobre el nombre para abrir ventana de chat');
 define("_MB_XIM_BLOCK","IM");
 define('_XIM_STYLE','Estilo de Chat');
 define('_XIM_DEFAULT','Predeterminado');

@@ -1,6 +1,6 @@
 <?php
 define('_MI_XIM_MODULE_NAME','XIM');
-define('_MI_XIM_MODULE_DESC', 'Un bloc affichant les utilisateurs en ligne. Un clic sur un nom ouvre la fenêtre de communication');
+define('_MI_XIM_MODULE_DESC','Un bloc affichant les utilisateurs en ligne. Un clic sur un nom ouvre la fenêtre de communication');
 define("_MB_XIM_BLOCK","IM");
 define('_XIM_STYLE','Style "Chat"');
 define('_XIM_DEFAULT','Défaut');

@@ -56,7 +56,7 @@ define("_XIM_SENTATTIME","Sent den");
 define("_XIM_SYSTEM_BUSY","[color=990000][size=small]Jeg er optaget for tiden. Xim har slået min lyd fra! Men jeg vil svare tilbage så hurtigt som muligt[/size][/color]");
 define("_XIM_SYSTEM_AWAY","[color=990000][size=small]Jeg er ikke tilstede. Beskeden vil blive afleveret og læst når jeg igen er tilbage![/size][/color]");
 define("_XIM_SYSTEM_OFFLINE","[color=990000][size=small]Jeg er OFFLINE. Beskeden vil blive afleveret når jeg igen er online.[/size][/color]");
-define("_XIM_SYSTEMNAME", "System");
+define("_XIM_SYSTEMNAME","System");
 
 /*define("_XIM_USER_SEARCH",'Search users');
 define("_XIM_SEARCH",'Serach');*/

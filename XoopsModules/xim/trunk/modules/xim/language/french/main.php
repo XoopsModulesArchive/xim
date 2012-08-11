@@ -54,7 +54,7 @@ define("_XIM_SENTATTIME","Envoyé dans l'heure");
 define("_XIM_SYSTEM_BUSY","[color=990000][size=small]Je suis occupé en ce moment. Le son est coupé ! Je reviens vers vous dès que possible[/size][/color]");
 define("_XIM_SYSTEM_AWAY","[color=990000][size=small]Je suis absent. Les messages me seront délivrés et lus à mon retour ![/size][/color]");
 define("_XIM_SYSTEM_OFFLINE","[color=990000][size=small]Je suis \"Hors ligne\".\nLe message me sera délivré à mon retour[/size][/color]");
-define("_XIM_SYSTEMNAME", "Système");
+define("_XIM_SYSTEMNAME","Système");
 
 /*define("_XIM_USER_SEARCH",'Recherche d\'utilisateur(s)');
 define("_XIM_SEARCH",'Recherche');*/

@@ -24,7 +24,7 @@
 
 define('_MI_XIM_MODULE_NAME','Chat');
 define('_MI_XIM_ADMENU','Administracija');
-define('_MI_XIM_MODULE_DESC', 'Blok za članove koji su online, klikni na nik ime i otvoriće se Chat blok');
+define('_MI_XIM_MODULE_DESC','Blok za članove koji su online, klikni na nik ime i otvoriće se Chat blok');
 define("_MB_XIM_BLOCK","Chat blok");
 define('_XIM_CREDIT','Originalni script od Anant Garg (anantgarg.com)');
 define('_XIM_SHOW_FOOTER_BAR','Prikaži na dnu navigaciju?');
