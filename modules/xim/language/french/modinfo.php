@@ -24,7 +24,7 @@
 
 define("_MI_XIM_MODULE_NAME","XIM");
 define("_MI_XIM_ADMENU","Index");
-define("_MI_XIM_MODULE_DESC", "Un bloc affichant les utilisateurs en ligne. Un clic sur un nom ouvre la fenêtre de communication");
+define("_MI_XIM_MODULE_DESC","Un bloc affichant les utilisateurs en ligne. Un clic sur un nom ouvre la fenêtre de communication");
 define("_MB_XIM_BLOCK","Instant Messenger");
 define("_XIM_CREDIT","Script original par Anant Garg (anantgarg.com)");
 define("_XIM_SHOW_FOOTER_BAR","Afficher une barre en pied de page ?");

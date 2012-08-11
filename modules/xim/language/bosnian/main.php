@@ -54,7 +54,7 @@ define("_XIM_SENTATTIME","Vrijeme slanja");
 define("_XIM_SYSTEM_BUSY","[color=990000][size=small]Trenutno sam zauzet/a system ce vas zvučno obavijestiti kada budem ponovo dostupan/a[/size][/color]");
 define("_XIM_SYSTEM_AWAY","[color=990000][size=small]Ja sam odsutan/a i kada se vratim poruka će biti pročitana i dobićeš odgovor[/size][/color]");
 define("_XIM_SYSTEM_OFFLINE","[color=990000][size=small]Ja sam OFFLINE.\nPoruku ću pročitati kada budem online[/size][/color]");
-define("_XIM_SYSTEMNAME", "System");
+define("_XIM_SYSTEMNAME","System");
 
 /*define("_XIM_USER_SEARCH",'Search users');
 define("_XIM_SEARCH",'Search');*/
