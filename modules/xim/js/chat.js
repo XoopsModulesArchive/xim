@@ -300,7 +300,7 @@ function startChatSession(){
 }
 
 function createFooterBar() {
-    xoops_im(" <div />" ).attr("id","footpanel")
+    xoops_im("<div />" ).attr("id","footpanel")
     .appendTo(xoops_im( "body" ));
     xoops_im("footpanel").show();
     xoops_im('#footpanel').load(xim_url+"footer_bar.php?style="+footerBarStyle , function() {  
