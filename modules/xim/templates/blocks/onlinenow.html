@@ -2,7 +2,7 @@
 		<ul>
 			<{foreach item=user from=$block.amigos}>
 				<li style="text-align:left;list-style-type:none;">
-					<a href="javascript:void(0)" onclick="javascript:chatWith('<{$user.id}>','<{$user.nome}>')" title="<{$user.nome}>">
+					<a href="javascript:void(0)" onclick="javascript:xim_chatWith('<{$user.id}>','<{$user.nome}>')" title="<{$user.nome}>">
 						<img src="<{$user.status}>" style="margin-bottom:-3px" title="<{$user.nome}>" /> <{$user.nome}>
 					</a>
 				</li>

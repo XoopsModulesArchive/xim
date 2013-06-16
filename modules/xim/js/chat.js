@@ -17,8 +17,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 */
 //Algumas alterações realizada por Andrax na adptação ao XOOPS
+
 var windowFocus = true;
-var username;
+var xim_username;
 var userAvatar;
 var userSound = 0;
 var chatHeartbeatCount = 0;
@@ -44,7 +45,7 @@ xoops_im(document).ready(function(){
 	// if exists zetagenesis toolbar do hide it to not overlap 2 toolbars
 	xoops_im('#xo-footerstatic').hide();
 	originalTitle = document.title;
-	startChatSession();
+	xim_startChatSession();
 	xoops_im([window, document]).blur(function(){
 		windowFocus = false;
 	}).focus(function(){
@@ -53,17 +54,17 @@ xoops_im(document).ready(function(){
 	});
 });
 
-function chatWith(userId, chatusername) {
+function xim_chatWith(userId, chatusername) {
 	if (showFooterBar ==1) {
 		xoops_im(".subpanel").hide(); //hide subpanel
 		xoops_im("#footpanel li a").removeClass('active'); //remove active class on subpanel 
 	}
-	avatar = getAvatar(userId);
-	createChatBox(userId, chatusername, avatar);
+	avatar = xim_getAvatar(userId);
+	xim_createChatBox(userId, chatusername, avatar);
 	xoops_im("#MBchatbox_"+userId+" .chatboxtextarea").focus();
 }
 
-function createChatBox(containerId,chatBoxName,avatar){
+function xim_createChatBox(containerId,chatBoxName,avatar){
 	if (xoops_im("#MBchatbox_"+containerId).length > 0) {
 		 if (xoops_im("#MBchatbox_"+containerId).mb_getState('iconized')) {
 			xoops_im("#MBchatbox_"+containerId).mb_iconize();
@@ -95,7 +96,7 @@ function createChatBox(containerId,chatBoxName,avatar){
 		onResize:function(o){},
             onLoad:function(o){
               document.containers[o.attr("id")]=1;
-			  keepInWindow (containerId);
+			  xim_keepInWindow (containerId);
             },
             onClose:function(o){
               o.mb_removeCookie("closed");
@@ -110,7 +111,7 @@ function createChatBox(containerId,chatBoxName,avatar){
       chatBoxes.push(containerId);
 }
 
-function chatHeartbeat(){
+function xim_chatHeartbeat(){
 
 	var itemsfound = 0;
 	if (windowFocus == false) {
@@ -157,23 +158,23 @@ function chatHeartbeat(){
 	  success: function(data) {
 		xoops_im.each(data.items, function(i,item){
 			if (item)	{ // fix strange ie bug
-
 				chatboxID = item.f;
 				userSound = item.q;
+                
 				if (xoops_im("#MBchatbox_"+chatboxID).length <= 0) {
-					createChatBox(chatboxID,item.n, item.a);
+					xim_createChatBox(chatboxID,item.n, item.a);
 				}
 				if (xoops_im("#MBchatbox_"+chatboxID).mb_getState('closed')) {
 					xoops_im("#MBchatbox_"+chatboxID).mb_open();
-					doBounce (chatboxID,1,un);
+					xim_doBounce (chatboxID,1,un);
 				}
 				// if iconized do bounce in dock
 				if (xoops_im("#MBchatbox_"+chatboxID).mb_getState('iconized')) {
 					un = xoops_im(item.n).attr('title');
-					doBounce (chatboxID,0,un);
+					xim_doBounce (chatboxID,0,un);
 				}				
 				if (item.s == 1) {
-					item.f = username;
+					item.f = xim_username;
 				}
 				if (item.s == 2) {
 					xoops_im("#MBchatbox_"+chatboxID+" .mbcontainercontent").append('<div class="chatboxmessage"><span class="chatboxinfo">'+item.m+'</span></div>');
@@ -181,8 +182,7 @@ function chatHeartbeat(){
 					newMessages[chatboxID] = true;
 					newMessagesWin[chatboxID] = true;
 				// Added stripHTML function to remove html tags in document.title	
-					newMessagesUser[chatboxID]= stripHTML(item.n);
-
+					newMessagesUser[chatboxID]= xim_stripHTML(item.n);
 					xoops_im("#MBchatbox_"+chatboxID).find(".mbcontainercontent:first").append('<div class="chatboxmessage"><span class="ghost"></span><span class="chatAvatar"><img src="'+item.a+'" alt=""/></span><span class="chatboxmessagefrom">'+item.n+':&nbsp;&nbsp;</span><span class="chatboxmessagecontent">'+item.m+'</span></div>');
 	
 				// Making sure soundmanager is ready before calling play
@@ -198,7 +198,7 @@ function chatHeartbeat(){
 					soundManager.play(userSound, userSound);
 				}); // End soundmager call
 					// bounce chat window
-					doBounce (chatboxID,1,un);
+					xim_doBounce (chatboxID,1,un);
 				}
 				xoops_im("#MBchatbox_"+chatboxID+" .mbcontainercontent").scrollTop(xoops_im("#MBchatbox_"+chatboxID+" .mbcontainercontent")[0].scrollHeight);
 				itemsfound += 1;
@@ -216,7 +216,7 @@ function chatHeartbeat(){
 				chatHeartbeatTime = maxChatHeartbeat;
 			}
 		}
-		setTimeout('chatHeartbeat();',chatHeartbeatTime);
+		setTimeout('xim_chatHeartbeat();',chatHeartbeatTime);
 	}});
 }
 
@@ -237,7 +237,7 @@ function checkChatBoxInputKey(event,chatboxtextarea,chatboxID) {
 			xoops_im.post(xim_url+"chat.php?action=sendchat", {to: chatboxID, message: message} , function(data){
 
 				message = data.message;
-				xoops_im("#MBchatbox_"+chatboxID).find(".mbcontainercontent:first").append('<div class="chatboxmessage"><span class="ghost"></span><span class="chatAvatar"><img src="'+userAvatar+'" alt=""/></span><span class="chatboxmessagefrom">'+username+':&nbsp;&nbsp;</span><span class="chatboxmessagecontent">'+message+'</span></div>');
+				xoops_im("#MBchatbox_"+chatboxID).find(".mbcontainercontent:first").append('<div class="chatboxmessage"><span class="ghost"></span><span class="chatAvatar"><img src="'+userAvatar+'" alt=""/></span><span class="chatboxmessagefrom">'+xim_username+':&nbsp;&nbsp;</span><span class="chatboxmessagecontent">'+message+'</span></div>');
 				xoops_im("#MBchatbox_"+chatboxID+" .mbcontainercontent").scrollTop(xoops_im("#MBchatbox_"+chatboxID+" .mbcontainercontent")[0].scrollHeight);
 			}, "json");
 		}
@@ -255,12 +255,12 @@ function checkChatBoxInputKey(event,chatboxtextarea,chatboxID) {
  	}
 }
 
-function startChatSession(){  
+function xim_startChatSession(){  
   if (showFooterBar !== 0) {  
-    createFooterBar();
+    xim_createFooterBar();
   }
 	  if (showFooterBar==1) {
-		setTimeout('updateUserList()',200);
+		setTimeout('xim_updateUserList()',200);
 	  }
 	xoops_im.ajax({
 	  url: xim_url+"chat.php?action=startchatsession",
@@ -268,18 +268,18 @@ function startChatSession(){
 	  dataType: "json",
 	  success: function(data) {
 		userSound = data.q;
-		username = data.username;
+		xim_username = data.username;
 		userAvatar = data.avatar; 
 		xoops_im.each(data.items, function(i,item){
 			if (item)	{ // fix strange ie bug
 				chatboxID = item.f;
 				if (xoops_im("#MBchatbox_"+chatboxID).length <= 0) {
 					if (item.s <= 1) {
-					createChatBox(chatboxID,item.n,item.a);
+					xim_createChatBox(chatboxID,item.n,item.a);
 					}
 				}
 				if (item.s == 1) {
-					item.f = username;
+					item.f = xim_username;
 				}
 				if (item.s == 2) {
 					xoops_im("#MBchatbox_"+chatboxID).find(".mbcontainercontent:first").append('<div class="chatboxmessage"><span class="chatboxinfo">'+item.m+'</span></div>');
@@ -293,13 +293,13 @@ function startChatSession(){
 			xoops_im("#MBchatbox_"+chatboxID+" .mbcontainercontent").scrollTop(xoops_im("#MBchatbox_"+chatboxID+" .mbcontainercontent")[0].scrollHeight);
 			setTimeout('xoops_im("#MBchatbox_"+chatboxID+" .mbcontainercontent").scrollTop(xoops_im("#MBchatbox_"+chatboxID+" .mbcontainercontent")[0].scrollHeight);', 100); // yet another strange ie bug
 		}
-    reSetConf();
-	setTimeout('chatHeartbeat();',chatHeartbeatTime);		
+    xim_reSetConf();
+	setTimeout('xim_chatHeartbeat();',chatHeartbeatTime);		
 	}});
 	
 }
 
-function createFooterBar() {
+function xim_createFooterBar() {
     xoops_im("<div />" ).attr("id","footpanel")
     .appendTo(xoops_im( "body" ));
     xoops_im("footpanel").show();
@@ -360,7 +360,7 @@ function createFooterBar() {
 	//Config Panel
 	xoops_im(".xim_configDiv_bodyf").hide();
 	xoops_im(".xim_img_infof").click(function() {
-	reSetConf();
+	xim_reSetConf();
 	      xoops_im(".xim_configDiv_bodyf").slideToggle(2500);
 	      return false;
 	});
@@ -398,7 +398,7 @@ function createFooterBar() {
     });  
 }
 
-function updateUserList() {
+function xim_updateUserList() {
 	xoops_im.ajax({
 	  url: xim_url+"ajax_userlist.php",
 	  cache: false,
@@ -417,15 +417,15 @@ function updateUserList() {
 				break;
 			    }
 				// fix strange ie bug  	<li><span>Family Members</span></li>
-				xoops_im("#userlist").append('<li><a href="javascript:void(0)" onclick="javascript:chatWith(\''+user.id+'\',\''+user.n+'\');" title=""><img class="image" src="'+user.a+'" alt="">'+user.n+'<img class="status" src="'+userstatus+'" alt=""></a></li>');
+				xoops_im("#userlist").append('<li><a href="javascript:void(0)" onclick="javascript:xim_chatWith(\''+user.id+'\',\''+user.n+'\');" title=""><img class="image" src="'+user.a+'" alt="">'+user.n+'<img class="status" src="'+userstatus+'" alt=""></a></li>');
 			}
 		});
 	}});
-	setTimeout('updateUserList();',10000);
+	setTimeout('xim_updateUserList();',10000);
 }
 
 // Strip html from string and return oly text
-function stripHTML(oldString) {
+function xim_stripHTML(oldString) {
    var newString = "";
    var inTag = false;
    for(var i = 0; i < oldString.length; i++) {
@@ -445,7 +445,7 @@ function stripHTML(oldString) {
 }
 
 
-function getAvatar(uid){
+function xim_getAvatar(uid){
 	xoops_im.ajax({
 	  url: xim_url+"chat.php?action=avatar",
 	  cache: false,
@@ -457,9 +457,9 @@ function getAvatar(uid){
  });
 };
 
-function keepDivs (divname,divname2,height, id) {
+function xim_keepDivs (divname,divname2,height, id) {
 			// Added these repetative lines to prevent textarea popping out main div in IE (culex)
-			// usage for instance keepDivs (".chatboxtextarea",".mbcontainercontent:first","44px", containerId);
+			// usage for instance xim_keepDivs (".chatboxtextarea",".mbcontainercontent:first","44px", containerId);
 			xoops_im(divname).val('');
 			xoops_im(divname).focus();
 			xoops_im(divname).css('height',height);
@@ -476,7 +476,7 @@ function keepDivs (divname,divname2,height, id) {
 	// state: 0=iconized or 1=opened
 	// name: name to check for in conttitle atribute for img
 	// culex dec 28-2010
-function doBounce (chatboxID,state,name) {
+function xim_doBounce (chatboxID,state,name) {
 	//If opened window
 	if (state==1) {
 	xoops_im(function() {
@@ -509,7 +509,7 @@ function doBounce (chatboxID,state,name) {
 }
 
 // Function to keep container in window view when scrolling
-function keepInWindow (containerId) {
+function xim_keepInWindow (containerId) {
 		var scrollingDiv = xoops_im("#MBchatbox_"+containerId);
  		xoops_im(window).scroll(function(){			
 			scrollingDiv
@@ -519,7 +519,7 @@ function keepInWindow (containerId) {
 }
 
 // Function to reset sound & Status select:Selected in forms after send and in pagerefresh
-function reSetConf() {
+function xim_reSetConf() {
 	var data;
     var xim_RandNumGenerate = Math.floor(Math.random()*101);
 	xoops_im.ajax({

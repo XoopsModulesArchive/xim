@@ -93,7 +93,7 @@ if ($xoopsUser) {
 	var userSound ='';
 	var cws = '$cws';
 	var xoops_im = jQuery.noConflict();
-	var $ = jQuery;
+	//var $ = jQuery;
 SCRIPT;
 		$xoTheme->addScript('','',$script);
 		$xoTheme->addScript(XOOPS_URL.'/modules/xim/js/chat.js');
