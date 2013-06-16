@@ -45,22 +45,22 @@ require_once XOOPS_ROOT_PATH."/modules/xim/include/functions.php";
 global $xoopsLogger;
 $xoopsLogger->activated = false;
 
-if ($_GET['action'] == "chatheartbeat") { chatHeartbeat(); } 
-if ($_GET['action'] == "sendchat") { sendChat(); } 
-if ($_GET['action'] == "closechat") { closeChat(); } 
-if ($_GET['action'] == "startchatsession") { startChatSession(); } 
-if ($_GET['action'] == "avatar") { getAvatar(); } 
+if ($_GET['action'] == "chatheartbeat") { xim_chatHeartbeat(); } 
+if ($_GET['action'] == "sendchat") { xim_sendChat(); } 
+if ($_GET['action'] == "closechat") { xim_closeChat(); } 
+if ($_GET['action'] == "startchatsession") { xim_startChatSession(); } 
+if ($_GET['action'] == "avatar") { xim_getAvatar(); } 
 
-if (!isset($_SESSION['chatHistory'])) {
-    $_SESSION['chatHistory'] = array();	
+if (!isset($_SESSION['xim_chatHistory'])) {
+    $_SESSION['xim_chatHistory'] = array();	
 }
 
-if (!isset($_SESSION['openChatBoxes'])) {
-    $_SESSION['openChatBoxes'] = array();	
+if (!isset($_SESSION['xim_openChatBoxes'])) {
+    $_SESSION['xim_openChatBoxes'] = array();	
 }
 
 // Function to be used in setInterval. This function do all the essential
-function chatHeartbeat() {
+function xim_chatHeartbeat() {
     global $xoopsDB, $xoopsUser,$soundUrl;
 	$sql = "select * from ".$xoopsDB->prefix('xim_chat')." where (".$xoopsDB->prefix(xim_chat).".to = '".mysql_real_escape_string($_SESSION['xoopsUserId'])."' AND recd = 0) order by id ASC";
     $query = $xoopsDB->query($sql);
@@ -69,12 +69,12 @@ function chatHeartbeat() {
 	$config=array();
     while ($chat = mysql_fetch_array($query)) {
         
-        if (!isset($_SESSION['openChatBoxes'][$chat['from']]) && isset($_SESSION['chatHistory'][$chat['from']])) {
-            $items = $_SESSION['chatHistory'][$chat['from']];
+        if (!isset($_SESSION['xim_openChatBoxes'][$chat['from']]) && isset($_SESSION['xim_chatHistory'][$chat['from']])) {
+            $items = $_SESSION['xim_chatHistory'][$chat['from']];
         }
         
         $chat['message'] = xim_sanitize($chat['message']);	
-	$user = new XoopsUser($chat['from']);
+	$user = new xoopsUser($chat['from']);
 	// changed to show link to user info for user "from"
 	if ($chat['sys'] != '-1') {
 	$uname = "<a href='".XOOPS_URL."/userinfo.php?uid=".$chat['from']."' title='".$user->uname()."'>".$user->uname()."</a>";
@@ -96,41 +96,43 @@ function chatHeartbeat() {
 	$config = im_Getconfig($xoopsUser->uname());
 	$status = $config['status'];
 	
-		if ($config['sound'] == '0') {$soundUrl = XOOPS_URL.'/modules/xim/media/0.mp3';}
-		if ($config['sound'] == '1') {$soundUrl = XOOPS_URL.'/modules/xim/media/1.mp3';}
-		if ($config['sound'] == '2') {$soundUrl = XOOPS_URL.'/modules/xim/media/2.mp3';}
-		if ($config['sound'] == '3') {$soundUrl = XOOPS_URL.'/modules/xim/media/3.mp3';}
-		if ($config['sound'] == '4') {$soundUrl = XOOPS_URL.'/modules/xim/media/4.mp3';}
-		if ($config['sound'] == '5') {$soundUrl = XOOPS_URL.'/modules/xim/media/5.mp3';}
-		if ($config['sound'] == '6') {$soundUrl = XOOPS_URL.'/modules/xim/media/6.mp3';}
-		if ($config['sound'] == '7') {$soundUrl = XOOPS_URL.'/modules/xim/media/7.mp3';}
-		if ($config['sound'] == '8') {$soundUrl = XOOPS_URL.'/modules/xim/media/8.mp3';}
-		if ($config['sound'] == '9') {$soundUrl = XOOPS_URL.'/modules/xim/media/9.mp3';}
+		if ($config['sound'] == '0')  {$soundUrl = XOOPS_URL.'/modules/xim/media/0.mp3';}
+		if ($config['sound'] == '1')  {$soundUrl = XOOPS_URL.'/modules/xim/media/1.mp3';}
+		if ($config['sound'] == '2')  {$soundUrl = XOOPS_URL.'/modules/xim/media/2.mp3';}
+		if ($config['sound'] == '3')  {$soundUrl = XOOPS_URL.'/modules/xim/media/3.mp3';}
+		if ($config['sound'] == '4')  {$soundUrl = XOOPS_URL.'/modules/xim/media/4.mp3';}
+		if ($config['sound'] == '5')  {$soundUrl = XOOPS_URL.'/modules/xim/media/5.mp3';}
+		if ($config['sound'] == '6')  {$soundUrl = XOOPS_URL.'/modules/xim/media/6.mp3';}
+		if ($config['sound'] == '7')  {$soundUrl = XOOPS_URL.'/modules/xim/media/7.mp3';}
+		if ($config['sound'] == '8')  {$soundUrl = XOOPS_URL.'/modules/xim/media/8.mp3';}
+		if ($config['sound'] == '9')  {$soundUrl = XOOPS_URL.'/modules/xim/media/9.mp3';}
 		if ($config['sound'] == '10') {$soundUrl = XOOPS_URL.'/modules/xim/media/10.mp3';}
+        if ($config['sound'] == '')   {$soundUrl = XOOPS_URL.'/modules/xim/media/0.mp3';}
 
 		// check status to mute un-mute sound
 		if ($config['status'] == '0') {$soundUrl = XOOPS_URL.'/modules/xim/media/0.mp3';}
 		if ($config['status'] == '1') {$soundUrl = XOOPS_URL.'/modules/xim/media/0.mp3';}
 		if ($config['status'] == '3') {$soundUrl = XOOPS_URL.'/modules/xim/media/0.mp3';}
+        if ($config['status'] == '') {$soundUrl = XOOPS_URL.'/modules/xim/media/0.mp3';}
 
         $items .= <<<EOD
 {"s":"0","n":"{$uname}","a":"$avatarURL","f":"{$chat['from']}","m":"{$chat['message']}","p":"$status","q":"$soundUrl"},
 EOD;
-        if (!isset($_SESSION['chatHistory'][$chat['from']])) {
-            $_SESSION['chatHistory'][$chat['from']] = '';
+        if (!isset($_SESSION['xim_chatHistory'][$chat['from']])) {
+            $_SESSION['xim_chatHistory'][$chat['from']] = '';
         }
         
-        $_SESSION['chatHistory'][$chat['from']] .= <<<EOD
+        $_SESSION['xim_chatHistory'][$chat['from']] .= <<<EOD
 {"s":"0","n":"{$uname}","a":"$avatarURL","f":"{$chat['from']}","m":"{$chat['message']}"},
 EOD;
         
-        unset($_SESSION['tsChatBoxes'][$chat['from']]);
-        $_SESSION['openChatBoxes'][$chat['from']] = $chat['sent'];
+        unset($_SESSION['xim_tsChatBoxes'][$chat['from']]);
+        $_SESSION['xim_openChatBoxes'][$chat['from']] = $chat['sent'];
     }
     
-    if (!empty($_SESSION['openChatBoxes'])) {
-        foreach ($_SESSION['openChatBoxes'] as $chatbox => $time) {
-            if (!isset($_SESSION['tsChatBoxes'][$chatbox])) {
+    if (!empty($_SESSION['xim_openChatBoxes'])) {
+        foreach ($_SESSION['xim_openChatBoxes'] as $chatbox => $time) {
+            if (!isset($_SESSION['xim_tsChatBoxes'][$chatbox])) {
                 $now = time()-strtotime($time);
                 $time = date('g:iA M dS', strtotime($time));
                 
@@ -140,14 +142,14 @@ EOD;
 {"s":"2","f":"$chatbox","m":"{$message}"},
 EOD;
                     
-                    if (!isset($_SESSION['chatHistory'][$chatbox])) {
-                        $_SESSION['chatHistory'][$chatbox] = '';
+                    if (!isset($_SESSION['xim_chatHistory'][$chatbox])) {
+                        $_SESSION['xim_chatHistory'][$chatbox] = '';
                     }
                     
-                    $_SESSION['chatHistory'][$chatbox] .= <<<EOD
+                    $_SESSION['xim_chatHistory'][$chatbox] .= <<<EOD
 {"s":"2","f":"$chatbox","m":"{$message}"},
 EOD;
-                    $_SESSION['tsChatBoxes'][$chatbox] = 1;
+                    $_SESSION['xim_tsChatBoxes'][$chatbox] = 1;
                 }
             }
         }
@@ -164,20 +166,20 @@ EOD;
     exit(0);
 }
 
-function chatBoxSession($chatbox) { 
+function xim_chatBoxSession($chatbox) { 
     $items = '';   
-    if (isset($_SESSION['chatHistory'][$chatbox])) {
-        $items = $_SESSION['chatHistory'][$chatbox];
+    if (isset($_SESSION['xim_chatHistory'][$chatbox])) {
+        $items = $_SESSION['xim_chatHistory'][$chatbox];
     }    
     return $items;
 }
 
-function startChatSession() {
+function xim_startChatSession() {
     global $xoopsUser;
 	$items = '';
-    if (!empty($_SESSION['openChatBoxes'])) {
-        foreach ($_SESSION['openChatBoxes'] as $chatbox => $void) {
-            $items .= chatBoxSession($chatbox);
+    if (!empty($_SESSION['xim_openChatBoxes'])) {
+        foreach ($_SESSION['xim_openChatBoxes'] as $chatbox => $void) {
+            $items .= xim_chatBoxSession($chatbox);
         }
     }    
     if ($items != '') {
@@ -216,13 +218,13 @@ EOD;
     exit(0);
 }
 
-function sendChat() {
+function xim_sendChat() {
     global $xoopsDB, $xoopsUser;
 	$from = $_SESSION['xoopsUserId'];
     $to = $_POST['to'];
 	xoops_xim_checkStatus ($to, $from);
     $message = $_POST['message'];
-    $user = new XoopsUser($from);
+    $user = new xoopsUser($from);
     $uname = $user->uname();
 	$avatar =$user->user_avatar();
 	if ($avatar!='blank.gif') {
@@ -230,7 +232,7 @@ function sendChat() {
 	} else {
 	    $avatarURL = XOOPS_URL."/modules/xim/images/default_avatar.png";
 	}
-    $_SESSION['openChatBoxes'][$_POST['to']] = date('Y-m-d H:i:s', time());
+    $_SESSION['xim_openChatBoxes'][$_POST['to']] = date('Y-m-d H:i:s', time());
 	
 	$config = im_Getconfig($user);
 	$soundUrl = XOOPS_URL.'/modules/xim/media/0.mp3';
@@ -239,31 +241,31 @@ function sendChat() {
     $messagesan = xim_sanitize($message);
     header('Content-type: application/json');
     echo '{"message":"'.$messagesan.'"}'; 
-    if (!isset($_SESSION['chatHistory'][$_POST['to']])) {
-        $_SESSION['chatHistory'][$_POST['to']] = '';
+    if (!isset($_SESSION['xim_chatHistory'][$_POST['to']])) {
+        $_SESSION['xim_chatHistory'][$_POST['to']] = '';
     }
     
-    $_SESSION['chatHistory'][$_POST['to']] .= <<<EOD
+    $_SESSION['xim_chatHistory'][$_POST['to']] .= <<<EOD
 {"s":"1","n":"{$uname}","a":"$avatarURL","f":"{$to}","m":"{$messagesan}","q":"$soundUrl","p":"$status"},
 EOD;
     
-    unset($_SESSION['tsChatBoxes'][$_POST['to']]);
+    unset($_SESSION['xim_tsChatBoxes'][$_POST['to']]);
     
     $sql = "insert into ".$xoopsDB->prefix(xim_chat)." (".$xoopsDB->prefix(xim_chat).".from,".$xoopsDB->prefix(xim_chat).".to,message,sent) values ('".mysql_real_escape_string($from)."', '".mysql_real_escape_string($to)."','".mysql_real_escape_string($message)."',NOW())";
     $query = $xoopsDB->queryF($sql);
     exit(0);
 }
 
-function closeChat() {
-    unset($_SESSION['openChatBoxes'][$_POST['chatbox']]);
+function xim_closeChat() {
+    unset($_SESSION['xim_openChatBoxes'][$_POST['chatbox']]);
     echo "1";
     exit(0);
 }
 
 function xoops_xim_checkStatus ($to, $from) {
-	global $xoopsDB, $XoopsUser;
-	$user_to = new XoopsUser($to);
-	$user_from = new XoopsUser($from);
+	global $xoopsDB, $xoopsUser;
+	$user_to = new xoopsUser($to);
+	$user_from = new xoopsUser($from);
 	
 	$recieverName = $user_to->uname();
 	$senderName = $user_from->uname();
@@ -297,8 +299,8 @@ function xoops_xim_checkStatus ($to, $from) {
 	 }
 }
 
-function getAvatar(){
-	$user = new XoopsUser($_GET['uid']);
+function xim_getAvatar(){
+	$user = new xoopsUser($_GET['uid']);
 	$avatar =$user->user_avatar();
 	if ($avatar!='blank.gif') {
 	    $avatarURL = XOOPS_URL."/uploads/".$avatar;

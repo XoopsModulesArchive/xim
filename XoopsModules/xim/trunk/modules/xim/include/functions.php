@@ -23,7 +23,7 @@
 **/
 
 
-function getAmigos() {
+function xim_getAmigos() {
     global $xoopsDB, $xoopsUser;
     $sql = 'SELECT amigosList FROM '.$xoopsDB->prefix('xim_amigos');
     $sql .= ' WHERE (uid='.$xoopsUser->getVar('uid').')';
@@ -36,7 +36,7 @@ function getAmigos() {
 return $result;
 }
 
-function adicionaAmigo($id) {
+function xim_adicionaAmigo($id) {
     global $xoopsDB,  $xoopsUser;
     $sql = 'SELECT amigosList FROM '.$xoopsDB->prefix('xim_amigos');
     $sql .= ' WHERE (uid='.$xoopsUser->getVar('uid').')';
