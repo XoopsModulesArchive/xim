@@ -27,7 +27,7 @@ require_once '../../../include/cp_header.php';
 
 require_once XOOPS_ROOT_PATH . '/class/template.php';
 if (!isset($xoopsTpl)) {$xoopsTpl = new XoopsTpl();}
-$xoopsTpl->xoops_setCaching(0);
+$xoopsTpl->caching=0;
 require_once XOOPS_ROOT_PATH . '/modules/xim/class/adminclass.php';
 xoops_cp_header();
 if (isset($_POST['xim_admin_message'])) {$_POST['xim_admin_message'] = '';}
