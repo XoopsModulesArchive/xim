@@ -62,7 +62,7 @@ if (!isset($_SESSION['xim_openChatBoxes'])) {
 // Function to be used in setInterval. This function do all the essential
 function xim_chatHeartbeat() {
     global $xoopsDB, $xoopsUser,$soundUrl;
-	$sql = "select * from ".$xoopsDB->prefix('xim_chat')." where (".$xoopsDB->prefix(xim_chat).".to = '".mysql_real_escape_string($_SESSION['xoopsUserId'])."' AND recd = 0) order by id ASC";
+	$sql = "select * from ".$xoopsDB->prefix('xim_chat')." where (".$xoopsDB->prefix('xim_chat').".to = '".mysql_real_escape_string($_SESSION['xoopsUserId'])."' AND recd = 0) order by id ASC";
     $query = $xoopsDB->query($sql);
     $items = '';
     $chatBoxes = array();
@@ -74,7 +74,7 @@ function xim_chatHeartbeat() {
         }
         
         $chat['message'] = xim_sanitize($chat['message']);	
-	$user = new xoopsUser($chat['from']);
+	$user = new XoopsUser($chat['from']);
 	// changed to show link to user info for user "from"
 	if ($chat['sys'] != '-1') {
 	$uname = "<a href='".XOOPS_URL."/userinfo.php?uid=".$chat['from']."' title='".$user->uname()."'>".$user->uname()."</a>";
@@ -155,7 +155,7 @@ EOD;
         }
     }
     
-    $sql = "update ".$xoopsDB->prefix(xim_chat)."  set recd = 1 where ".$xoopsDB->prefix(xim_chat).".to = '".mysql_real_escape_string($_SESSION['xoopsUserId'])."' and recd = 0";
+    $sql = "update ".$xoopsDB->prefix('xim_chat')."  set recd = 1 where ".$xoopsDB->prefix('xim_chat').".to = '".mysql_real_escape_string($_SESSION['xoopsUserId'])."' and recd = 0";
     $query = $xoopsDB->queryF($sql);
     
     if ($items != '') {
@@ -224,7 +224,7 @@ function xim_sendChat() {
     $to = $_POST['to'];
 	xoops_xim_checkStatus ($to, $from);
     $message = $_POST['message'];
-    $user = new xoopsUser($from);
+    $user = new XoopsUser($from);
     $uname = $user->uname();
 	$avatar =$user->user_avatar();
 	if ($avatar!='blank.gif') {
@@ -251,7 +251,7 @@ EOD;
     
     unset($_SESSION['xim_tsChatBoxes'][$_POST['to']]);
     
-    $sql = "insert into ".$xoopsDB->prefix(xim_chat)." (".$xoopsDB->prefix(xim_chat).".from,".$xoopsDB->prefix(xim_chat).".to,message,sent) values ('".mysql_real_escape_string($from)."', '".mysql_real_escape_string($to)."','".mysql_real_escape_string($message)."',NOW())";
+    $sql = "insert into ".$xoopsDB->prefix('xim_chat')." (".$xoopsDB->prefix('xim_chat').".from,".$xoopsDB->prefix('xim_chat').".to,message,sent) values ('".mysql_real_escape_string($from)."', '".mysql_real_escape_string($to)."','".mysql_real_escape_string($message)."',NOW())";
     $query = $xoopsDB->queryF($sql);
     exit(0);
 }
@@ -263,9 +263,9 @@ function xim_closeChat() {
 }
 
 function xoops_xim_checkStatus ($to, $from) {
-	global $xoopsDB, $xoopsUser;
-	$user_to = new xoopsUser($to);
-	$user_from = new xoopsUser($from);
+	global $xoopsDB, $XoopsUser;
+	$user_to = new XoopsUser($to);
+	$user_from = new XoopsUser($from);
 	
 	$recieverName = $user_to->uname();
 	$senderName = $user_from->uname();
@@ -282,25 +282,25 @@ function xoops_xim_checkStatus ($to, $from) {
 	 if ($status == '0') {
 		// User is away
 		$sysmessage = _XIM_SYSTEM_AWAY;
-		 $sql = "insert into ".$xoopsDB->prefix(xim_chat)." (".$xoopsDB->prefix(xim_chat).".from,".$xoopsDB->prefix(xim_chat).".to,message,sent) values ('".mysql_real_escape_string($to)."', '".mysql_real_escape_string($from)."','".mysql_real_escape_string($sysmessage)."',NOW())";
+		 $sql = "insert into ".$xoopsDB->prefix('xim_chat')." (".$xoopsDB->prefix('xim_chat').".from,".$xoopsDB->prefix('xim_chat').".to,message,sent) values ('".mysql_real_escape_string($to)."', '".mysql_real_escape_string($from)."','".mysql_real_escape_string($sysmessage)."',NOW())";
 		 $query = $xoopsDB->queryF($sql);
 	 }
 	 if ($status == '1') {
 		// User is busy
 		$sysmessage = _XIM_SYSTEM_BUSY;
-		 $sql = "insert into ".$xoopsDB->prefix(xim_chat)." (".$xoopsDB->prefix(xim_chat).".from,".$xoopsDB->prefix(xim_chat).".to,message,sent) values ('".mysql_real_escape_string($to)."', '".mysql_real_escape_string($from)."','".mysql_real_escape_string($sysmessage)."',NOW())";
+		 $sql = "insert into ".$xoopsDB->prefix('xim_chat')." (".$xoopsDB->prefix('xim_chat').".from,".$xoopsDB->prefix('xim_chat').".to,message,sent) values ('".mysql_real_escape_string($to)."', '".mysql_real_escape_string($from)."','".mysql_real_escape_string($sysmessage)."',NOW())";
 		 $query = $xoopsDB->queryF($sql);
 	 }
 	 if ($status == '3') {
 		// User is offline
 		$sysmessage = _XIM_SYSTEM_OFFLINE;
-		 $sql = "insert into ".$xoopsDB->prefix(xim_chat)." (".$xoopsDB->prefix(xim_chat).".from,".$xoopsDB->prefix(xim_chat).".to,message,sent) values ('".mysql_real_escape_string($to)."', '".mysql_real_escape_string($from)."','".mysql_real_escape_string($sysmessage)."',NOW())";
+		 $sql = "insert into ".$xoopsDB->prefix('xim_chat')." (".$xoopsDB->prefix('xim_chat').".from,".$xoopsDB->prefix('xim_chat').".to,message,sent) values ('".mysql_real_escape_string($to)."', '".mysql_real_escape_string($from)."','".mysql_real_escape_string($sysmessage)."',NOW())";
 		 $query = $xoopsDB->queryF($sql);
 	 }
 }
 
 function xim_getAvatar(){
-	$user = new xoopsUser($_GET['uid']);
+	$user = new XoopsUser($_GET['uid']);
 	$avatar =$user->user_avatar();
 	if ($avatar!='blank.gif') {
 	    $avatarURL = XOOPS_URL."/uploads/".$avatar;
