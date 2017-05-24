@@ -56,7 +56,7 @@ if ($_GET['style']==0) {
     
 	$pm_handler =& xoops_gethandler('privmessage');
     
-	$xoopsPreload =& XoopsPreload::getInstance();
+	$xoopsPreload = XoopsPreload::getInstance();
 	$xoopsPreload->triggerEvent('system.panels.system_panels.usershow', array(&$pm_handler));
 
 	$panel['new_messages'] = $pm_handler->getCount($criteria);
